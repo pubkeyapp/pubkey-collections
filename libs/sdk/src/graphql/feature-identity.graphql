@@ -1,0 +1,23 @@
+fragment IdentityDetails on Identity {
+  createdAt
+  provider
+  providerId
+  id
+  updatedAt
+}
+
+query adminFindIdentities($input: AdminFindIdentitiesInput!) {
+  items: adminFindIdentities(input: $input) {
+    ...IdentityDetails
+  }
+}
+
+mutation adminCreateIdentity($input: AdminCreateIdentityInput!) {
+  created: adminCreateIdentity(input: $input) {
+    ...IdentityDetails
+  }
+}
+
+mutation adminDeleteIdentity($identityId: String!) {
+  deleted: adminDeleteIdentity(identityId: $identityId)
+}

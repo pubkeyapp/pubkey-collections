@@ -1,0 +1,49 @@
+fragment NotificationDetails on Notification {
+  createdAt
+  id
+  message
+  read
+  type
+  updatedAt
+  actor {
+    ...UserDetails
+  }
+}
+
+query adminFindNotifications($input: AdminFindNotificationsInput!) {
+  count: adminFindNotificationsCount(input: $input) {
+    ...PagingDetails
+  }
+  items: adminFindNotifications(input: $input) {
+    ...NotificationDetails
+  }
+}
+
+mutation adminDeleteNotification($notificationId: String!) {
+  deleted: adminDeleteNotification(notificationId: $notificationId)
+}
+
+query userFindNotifications($input: UserFindNotificationsInput!) {
+  count: userFindNotificationsCount(input: $input) {
+    ...PagingDetails
+  }
+  items: userFindNotifications(input: $input) {
+    ...NotificationDetails
+  }
+}
+
+mutation userDeleteNotification($notificationId: String!) {
+  deleted: userDeleteNotification(notificationId: $notificationId)
+}
+
+mutation userPoke($pokeId: String!) {
+  poked: userPoke(pokeId: $pokeId)
+}
+
+mutation userReadNotification($notificationId: String!) {
+  read: userReadNotification(notificationId: $notificationId)
+}
+
+mutation userReadAllNotifications {
+  read: userReadAllNotifications
+}

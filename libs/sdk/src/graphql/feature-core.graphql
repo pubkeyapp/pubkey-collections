@@ -1,0 +1,10 @@
+fragment PagingDetails on Paging {
+  count
+  skip
+  take
+  total
+}
+
+query uptime {
+  uptime
+}

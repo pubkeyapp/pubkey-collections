@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Email {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  default   Boolean  @default(false)
+  email     String   @unique
+  private   Boolean  @default(false)
+  verified  Boolean  @default(false)
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   String
+}
+
+model Identity {
+  id         String           @id @default(cuid())
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @default(now()) @updatedAt
+  provider   IdentityProvider
+  providerId String
+  profile    Json?
+  verified   Boolean          @default(false)
+  owner      User             @relation(fields: [ownerId], references: [id])
+  ownerId    String
+
+  @@unique([provider, providerId])
+}
+
+enum IdentityProvider {
+  GitHub
+}
+
+model Invite {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  expiresAt DateTime?
+  maxUses   Int       @default(0)
+  useCount  Int       @default(0)
+  code      String    @unique
+  users     User[]    @relation("UsedInvite")
+  owner     User      @relation(fields: [ownerId], references: [id])
+  ownerId   String
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @default(now()) @updatedAt
+  message   String
+  type      NotificationType @default(System)
+  read      Boolean          @default(false)
+  readAt    DateTime?
+  owner     User             @relation("UserNotications", fields: [ownerId], references: [id])
+  ownerId   String
+  actor     User?            @relation("UserNoticationsActor", fields: [actorId], references: [id])
+  actorId   String?
+}
+
+enum NotificationType {
+  Poke
+  System
+}
+
+model User {
+  id                 String         @id @default(cuid())
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  allowDm            Boolean        @default(false)
+  avatarUrl          String?
+  developer          Boolean        @default(false)
+  language           String?
+  location           String?
+  name               String?
+  password           String?
+  role               UserRole       @default(User)
+  status             UserStatus     @default(Created)
+  username           String         @unique
+  verified           Boolean        @default(false)
+  identities         Identity[]
+  emails             Email[]
+  invites            Invite[]
+  usedInvite         Invite?        @relation("UsedInvite", fields: [usedInviteId], references: [id])
+  usedInviteId       String?
+  notifications      Notification[] @relation("UserNotications")
+  notificationsActor Notification[] @relation("UserNoticationsActor")
+}
+
+enum UserRole {
+  Admin
+  User
+}
+
+enum UserStatus {
+  Active
+  Created
+  Inactive
+}
+
+model Source {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  content   String
+  schemas   Schema[]
+}
+
+model Schema {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  enums     Enum[]
+  models    Model[]
+  source    Source?  @relation(fields: [sourceId], references: [id])
+  sourceId  String?
+}
+
+model Enum {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  values    String[]
+  schema    Schema   @relation(fields: [schemaId], references: [id])
+  schemaId  String
+}
+
+// Model
+model Model {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @unique
+  fields    Field[]
+  schema    Schema   @relation(fields: [schemaId], references: [id])
+  schemaId  String
+}
+
+// Field
+model Field {
+  id         String    @id @default(uuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  name       String
+  type       FieldType
+  isUnique   Boolean
+  isRequired Boolean
+  isList     Boolean
+  isId       Boolean
+  model      Model     @relation(fields: [modelId], references: [id])
+  modelId    String
+}
+
+enum FieldType {
+  String
+  Int
+  Float
+  Boolean
+  DateTime
+  Json
+  Enum
+  Relation
+}

@@ -1,0 +1,81 @@
+fragment InviteDetails on Invite {
+  id
+  createdAt
+  updatedAt
+  expiresAt
+  code
+  maxUses
+  useCount
+  inviteUrl
+  isExpired
+  isUsedUp
+  owner {
+    ...UserDetails
+  }
+}
+
+query adminGetInvite($inviteId: String!) {
+  item: adminGetInvite(inviteId: $inviteId) {
+    ...InviteDetails
+    users {
+      ...UserDetails
+    }
+  }
+}
+
+query adminFindInvites($input: AdminFindInvitesInput!) {
+  count: adminFindInvitesCount(input: $input) {
+    ...PagingDetails
+  }
+  items: adminFindInvites(input: $input) {
+    ...InviteDetails
+  }
+}
+
+mutation adminCreateInvite($input: AdminCreateInviteInput!) {
+  item: adminCreateInvite(input: $input) {
+    ...InviteDetails
+  }
+}
+
+mutation adminUpdateInvite($inviteId: String!, $input: AdminUpdateInviteInput!) {
+  item: adminUpdateInvite(inviteId: $inviteId, input: $input) {
+    ...InviteDetails
+  }
+}
+
+mutation adminDeleteInvite($inviteId: String!) {
+  item: adminDeleteInvite(inviteId: $inviteId) {
+    ...InviteDetails
+  }
+}
+
+query anonGetInvite($code: String!) {
+  item: anonGetInvite(code: $code) {
+    ...InviteDetails
+    users {
+      ...UserDetails
+    }
+  }
+}
+
+query userGetInvites {
+  items: userGetInvites {
+    ...InviteDetails
+  }
+}
+
+query userGetInvite {
+  item: userGetInvite {
+    ...InviteDetails
+    users {
+      ...UserDetails
+    }
+  }
+}
+
+mutation userAcceptInvite($code: String!) {
+  item: userAcceptInvite(code: $code) {
+    ...InviteDetails
+  }
+}

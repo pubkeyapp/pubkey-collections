@@ -1,0 +1,6 @@
+export * from './lib/api-identity-data-access.module'
+export * from './lib/api-identity-admin.service'
+export * from './lib/dto/admin-create-identity.input'
+export * from './lib/dto/admin-find-identities.input'
+export * from './lib/entity/identity.entity'
+export * from './lib/entity/identity-provider.enum'
