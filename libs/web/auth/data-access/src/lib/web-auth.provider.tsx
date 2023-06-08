@@ -1,8 +1,9 @@
 import { LoginInput, RegisterInput, User } from '@pubkey-collections/sdk'
-import { useMeQuery, useWebSdk } from '@pubkey-collections/web/shell/data-access'
+import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
 import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
 
 import { createContext, ReactNode, useContext, useEffect, useReducer } from 'react'
+import { useMeQuery } from './use-me-query'
 
 type AuthStatus = 'authenticated' | 'unauthenticated' | 'loading' | 'error'
 
