@@ -1,13 +1,14 @@
+import { Button } from '@mantine/core'
 import { useAdminInvites } from '@pubkey-collections/web/admin/data-access'
 import { AdminUiBack, AdminUiInviteTable, AdminUiPage } from '@pubkey-collections/web/admin/ui'
 
 import { UiAlert, UiCard, UiLoader, UiPagination, UiSearchField, UiStack } from '@pubkey-collections/web/ui/core'
-import { Button } from '@mantine/core'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export function WebAdminInviteListFeature() {
   const { query, invites, pagination, setSearch, deleteInvite } = useAdminInvites()
-
+  const [queryValue, setQueryValue] = useState('')
   return (
     <AdminUiPage
       title="Invites"
@@ -20,7 +21,12 @@ export function WebAdminInviteListFeature() {
     >
       <UiStack>
         <UiCard>
-          <UiSearchField placeholder="Search invite" setSearch={setSearch} />
+          <UiSearchField
+            placeholder="Search notifications"
+            onSearch={() => setSearch(queryValue)}
+            value={queryValue}
+            setValue={setQueryValue}
+          />
         </UiCard>
 
         {query.isLoading ? (

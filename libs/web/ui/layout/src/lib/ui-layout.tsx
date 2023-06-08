@@ -2,7 +2,16 @@ import { AppShell, useMantineTheme } from '@mantine/core'
 import { useWebAuth } from '@pubkey-collections/web/auth/data-access'
 import { useUserNotifications } from '@pubkey-collections/web/notification/data-access'
 import { UiLoader } from '@pubkey-collections/web/ui/core'
-import { IconBell, IconBug, IconDashboard, IconDatabase, IconSettings, IconShield, IconUser } from '@tabler/icons-react'
+import {
+  IconBell,
+  IconBug,
+  IconDashboard,
+  IconDatabase,
+  IconSettings,
+  IconShield,
+  IconStack3,
+  IconUser,
+} from '@tabler/icons-react'
 import { ReactNode, Suspense, useMemo, useState } from 'react'
 
 import { UiNavbar, UiNavbarLink } from './ui-navbar'
@@ -18,6 +27,7 @@ export function UiLayout({ children, profile }: { children: ReactNode; profile?:
   const navbarLinks: UiNavbarLink[] = useMemo(() => {
     return [
       { link: '/dashboard', label: 'Dashboard', icon: IconDashboard },
+      { link: '/collections', label: 'Collections', icon: IconStack3 },
       { link: '/dev', label: 'Development', icon: IconBug },
       { link: '/notifications', label: 'Notifications', icon: IconBell, counter: unreadCount },
       { link: '/profile', label: 'Profile', icon: IconUser },

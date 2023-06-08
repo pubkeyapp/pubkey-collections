@@ -1,13 +1,14 @@
-import { TextInput, TextInputProps } from '@mantine/core'
-import { ChangeEvent, KeyboardEvent, useState } from 'react'
+import { ActionIcon, TextInput, TextInputProps } from '@mantine/core'
+import { IconSearch } from '@tabler/icons-react'
+import { ChangeEvent, KeyboardEvent } from 'react'
 
 export interface UiSearchFieldProps extends TextInputProps {
-  setSearch: (query: string) => void
+  onSearch: () => void
+  setValue: (value: string) => void
+  value: string
 }
 
-export function UiSearchField({ placeholder = 'Search...', setSearch }: UiSearchFieldProps) {
-  const [value, setValue] = useState<string>('')
-
+export function UiSearchField({ setValue, onSearch, placeholder, value }: UiSearchFieldProps) {
   return (
     <TextInput
       sx={{ flexGrow: 1 }}
@@ -16,9 +17,14 @@ export function UiSearchField({ placeholder = 'Search...', setSearch }: UiSearch
       onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value)}
       onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-          setSearch(value.trim())
+          onSearch()
         }
       }}
+      rightSection={
+        <ActionIcon variant="filled" onClick={() => onSearch()}>
+          <IconSearch size={16} />
+        </ActionIcon>
+      }
     />
   )
 }

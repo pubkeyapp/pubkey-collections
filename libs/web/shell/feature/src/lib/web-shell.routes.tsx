@@ -5,6 +5,7 @@ import { useGuardedRoutes } from './use-guarded-routes'
 
 export const LazyAdminFeature = lazy(() => import('@pubkey-collections/web/admin/feature'))
 export const LazyAuthFeature = lazy(() => import('@pubkey-collections/web/auth/feature'))
+export const LazyCollectionFeature = lazy(() => import('@pubkey-collections/web/collection/feature'))
 export const LazyDashboardFeature = lazy(() => import('@pubkey-collections/web/dashboard/feature'))
 export const LazyDevFeature = lazy(() => import('@pubkey-collections/web/dev/feature'))
 export const LazyNotificationFeature = lazy(() => import('@pubkey-collections/web/notification/feature'))
@@ -22,6 +23,7 @@ export function WebShellRoutes() {
     ],
     layout: [
       // Here you can add routes that are part of the main layout
+      { path: '/collections/*', element: <LazyCollectionFeature /> },
       { path: '/dashboard', element: <LazyDashboardFeature /> },
       { path: '/dev/*', element: <LazyDevFeature /> },
       { path: '/notifications/*', element: <LazyNotificationFeature /> },

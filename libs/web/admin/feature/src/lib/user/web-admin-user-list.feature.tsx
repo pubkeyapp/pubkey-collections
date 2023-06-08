@@ -1,3 +1,4 @@
+import { Button, Group, Select } from '@mantine/core'
 import { User, UserRole, UserStatus } from '@pubkey-collections/sdk'
 import { useAdminUsers } from '@pubkey-collections/web/admin/data-access'
 import {
@@ -8,12 +9,12 @@ import {
   userStatusOptions,
 } from '@pubkey-collections/web/admin/ui'
 import { UiAlert, UiCard, UiLoader, UiPagination, UiSearchField, UiStack } from '@pubkey-collections/web/ui/core'
-import { Button, Group, Select } from '@mantine/core'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export function WebAdminUserListFeature() {
   const { deleteUser, pagination, query, role, setRole, setSearch, setStatus, status } = useAdminUsers()
-
+  const [queryValue, setQueryValue] = useState('')
   return (
     <AdminUiPage
       title="Users"
@@ -27,7 +28,7 @@ export function WebAdminUserListFeature() {
       <UiStack>
         <UiCard>
           <Group>
-            <UiSearchField placeholder="Search user" setSearch={setSearch} />
+            <UiSearchField onSearch={() => setSearch(queryValue)} value={queryValue} setValue={setQueryValue} />
             <Select
               value={role?.toString() ?? ''}
               onChange={(role) => {

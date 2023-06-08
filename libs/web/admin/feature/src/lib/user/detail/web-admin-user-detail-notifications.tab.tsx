@@ -10,15 +10,21 @@ import {
   UiStack,
 } from '@pubkey-collections/web/ui/core'
 import { Button, Group } from '@mantine/core'
+import { useState } from 'react'
 
 export function WebAdminUserDetailNotificationsTab({ userId }: { userId: string }) {
   const { query, setSearch, pagination, poke, deleteNotification } = useAdminUserNotifications(userId)
-
+  const [queryValue, setQueryValue] = useState('')
   return (
     <UiStack>
       <UiCard>
         <Group>
-          <UiSearchField placeholder="Search notifications" setSearch={setSearch} />
+          <UiSearchField
+            placeholder="Search notifications"
+            onSearch={() => setSearch(queryValue)}
+            value={queryValue}
+            setValue={setQueryValue}
+          />
           <Button onClick={poke}>Poke</Button>
           <UiDebugModal data={query.data} />
         </Group>
