@@ -30,4 +30,5 @@ export interface Collection {
   image: string
   publisher: string
   accounts: string[]
+  traits: CollectionTraitMap
 }

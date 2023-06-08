@@ -92,3 +92,33 @@ export function itemSummary(item: ReadApiAsset): CollectionItem {
     traits: traits ?? [],
   }
 }
+
+export function expandTraits(traits: { [key: string]: string[] }): CollectionTraitMap {
+  return Object.keys(traits).reduce((acc, key) => {
+    acc[key] = traits[key].map((value) => ({
+      key,
+      value,
+    }))
+    return acc
+  }, {} as CollectionTraitMap)
+}
+
+export function traitSummary(input?: CollectionTraitMap): { groups: number; traits: number } {
+  const traitMap = input ?? {}
+  const groups = Object.keys(traitMap).length
+  const traits = Object.keys(traitMap).reduce((acc, key) => acc + traitMap[key].length, 0)
+
+  return { groups, traits }
+}
+
+export function missingTraits(collection: CollectionTraitMap, user: CollectionTraitMap): CollectionTrait[] {
+  return Object.keys(collection)
+    .map((key) => collection[key])
+    .reduce(
+      (acc, traitValues) => [
+        ...acc,
+        ...traitValues.filter((value) => !user[value.key]?.find((t) => t.value === value.value)),
+      ],
+      [],
+    )
+}

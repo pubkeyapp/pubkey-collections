@@ -1,5 +1,10 @@
-import { Box } from '@mantine/core'
-import { CollectionSet, CollectionTrait, parseAssets } from '@pubkey-collections/web/collection/data-access'
+import { Box, Title } from '@mantine/core'
+import {
+  CollectionSet,
+  CollectionTrait,
+  missingTraits,
+  parseAssets,
+} from '@pubkey-collections/web/collection/data-access'
 import {
   CollectionHeader,
   CollectionItemGrid,
@@ -7,7 +12,7 @@ import {
   CollectionTraitGroups,
 } from '@pubkey-collections/web/collection/ui'
 import { useSolana } from '@pubkey-collections/web/shell/data-access'
-import { UiAlert, UiCard, UiDebug, UiLoader, UiSearchField, UiStack } from '@pubkey-collections/web/ui/core'
+import { UiAlert, UiCard, UiLoader, UiSearchField, UiStack } from '@pubkey-collections/web/ui/core'
 import { PublicKey } from '@solana/web3.js'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -67,6 +72,17 @@ export function WebCollectionDetail() {
     })
   }, [items, selectedTraits])
 
+  const missing = useMemo(() => {
+    const collectionTraits = collection?.traits ?? {}
+    const userTraits = traits ?? {}
+
+    if (!Object.keys(collectionTraits)?.length || !Object.keys(userTraits)?.length) {
+      return []
+    }
+
+    return missingTraits(collectionTraits, userTraits)
+  }, [collection, traits])
+
   if (loading) {
     return <UiLoader />
   }
@@ -83,9 +99,16 @@ export function WebCollectionDetail() {
         </UiCard>
         <UiStack>
           <CollectionTraitGroups traits={traits} selected={selectedTraits} toggleTrait={toggleTrait} />
+          {/*<UiDebug data={summary} />*/}
           {selectedTraits.length ? (
             <Box p="xs">
               <CollectionTraitGroup traits={selectedTraits} selected={selectedTraits} toggleTrait={toggleTrait} />
+            </Box>
+          ) : null}
+          {missingTraits.length ? (
+            <Box p="xs">
+              <Title order={3}>Missing traits</Title>
+              <CollectionTraitGroup traits={missing} />
             </Box>
           ) : null}
         </UiStack>

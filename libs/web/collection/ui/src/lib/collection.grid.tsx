@@ -1,9 +1,12 @@
 import { Anchor, Group, Image, SimpleGrid, Text } from '@mantine/core'
 import { Collection } from '@pubkey-collections/web/collection/data-access'
 import { UiCard } from '@pubkey-collections/web/ui/core'
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
 export function CollectionGrid({ items, link }: { items: Collection[]; link?: boolean }) {
+  const sorted = useMemo(() => items.sort((a, b) => a.name.localeCompare(b.name)), [items])
+
   return (
     <SimpleGrid
       breakpoints={[
@@ -12,7 +15,7 @@ export function CollectionGrid({ items, link }: { items: Collection[]; link?: bo
         { minWidth: 1200, cols: 6 },
       ]}
     >
-      {items.map((item) =>
+      {sorted.map((item) =>
         link ? (
           <Anchor component={Link} underline={false} to={item.id} key={item.id}>
             <CollectionGridItem item={item} />

@@ -47,7 +47,7 @@ export function CollectionTraitGroups({
   toggleTrait: (trait: CollectionTrait) => void
 }) {
   return (
-    <Accordion mb={0} variant="contained">
+    <Accordion mb={0} variant="contained" multiple>
       {Object.keys(traits).map((key) => (
         <Accordion.Item key={key} value={key}>
           <Accordion.Control>{key}</Accordion.Control>
@@ -66,8 +66,8 @@ export function CollectionTraitGroup({
   toggleTrait,
 }: {
   traits: CollectionTrait[]
-  selected: CollectionTrait[]
-  toggleTrait: (trait: CollectionTrait) => void
+  selected?: CollectionTrait[]
+  toggleTrait?: (trait: CollectionTrait) => void
 }) {
   return (
     <Group>
@@ -75,7 +75,7 @@ export function CollectionTraitGroup({
         <CollectionTraitButton
           trait={trait}
           toggleTrait={toggleTrait}
-          selected={selected.some((s) => s.key === trait.key && s.value === trait.value)}
+          selected={selected?.some((s) => s.key === trait.key && s.value === trait.value)}
           key={trait.value}
         />
       ))}
