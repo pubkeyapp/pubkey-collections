@@ -1,4 +1,4 @@
-import { collections } from '@pubkey-collections/web/collection/data-access'
+import { collections } from '@pubkeyapp/collections'
 import { CollectionGrid } from '@pubkey-collections/web/collection/ui'
 import { Route, Routes } from 'react-router-dom'
 import { WebCollectionDetail } from './web-collection-detail-feature'

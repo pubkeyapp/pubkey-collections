@@ -1,5 +1,5 @@
 import { Group, Image, SimpleGrid, Text } from '@mantine/core'
-import { CollectionItem } from '@pubkey-collections/web/collection/data-access'
+import { CollectionItem } from '@pubkeyapp/collections'
 import { UiCard } from '@pubkey-collections/web/ui/core'
 import React from 'react'
 

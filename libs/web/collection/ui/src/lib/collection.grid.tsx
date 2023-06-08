@@ -1,5 +1,5 @@
 import { Anchor, Group, Image, SimpleGrid, Text } from '@mantine/core'
-import { Collection } from '@pubkey-collections/web/collection/data-access'
+import { Collection } from '@pubkeyapp/collections'
 import { UiCard } from '@pubkey-collections/web/ui/core'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'

@@ -1,10 +1,5 @@
 import { Box, Title } from '@mantine/core'
-import {
-  CollectionSet,
-  CollectionTrait,
-  missingTraits,
-  parseAssets,
-} from '@pubkey-collections/web/collection/data-access'
+import { CollectionSet, CollectionTrait, missingTraits, parseAssets } from '@pubkeyapp/collections'
 import {
   CollectionHeader,
   CollectionItemGrid,
@@ -102,7 +97,12 @@ export function WebCollectionDetail() {
           {/*<UiDebug data={summary} />*/}
           {selectedTraits.length ? (
             <Box p="xs">
-              <CollectionTraitGroup traits={selectedTraits} selected={selectedTraits} toggleTrait={toggleTrait} />
+              <CollectionTraitGroup
+                withLabel
+                traits={selectedTraits}
+                selected={selectedTraits}
+                toggleTrait={toggleTrait}
+              />
             </Box>
           ) : null}
           {missingTraits.length ? (

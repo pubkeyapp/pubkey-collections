@@ -6,9 +6,6 @@ export function getCollectionByAccount(account: string): Collection | undefined 
   return collections.find((collection) => collection.accounts.includes(account))
 }
 
-/**
- * Filter out assets that are not in the collections registry
- */
 export function filterCollections(data: ReadApiAsset[]) {
   const withGrouping = data.filter((i) => i.grouping?.length)
   return withGrouping.filter((i) => i.grouping?.map((g) => g.group_value)?.some((a) => getCollectionByAccount(a)))

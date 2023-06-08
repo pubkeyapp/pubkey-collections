@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`collections should expand traits 1`] = `
+{
+  "Background": [
+    {
+      "key": "Background",
+      "value": "Red",
+    },
+    {
+      "key": "Background",
+      "value": "Blue",
+    },
+  ],
+  "Eyes": [
+    {
+      "key": "Eyes",
+      "value": "Green",
+    },
+  ],
+  "Hair": [],
+}
+`;

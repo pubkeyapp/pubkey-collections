@@ -1,5 +1,5 @@
 import { Accordion, Avatar, Group, Text } from '@mantine/core'
-import { Collection, CollectionTrait, CollectionTraitMap } from '@pubkey-collections/web/collection/data-access'
+import { Collection, CollectionTrait, CollectionTraitMap } from '@pubkeyapp/collections'
 import { UiGroup } from '@pubkey-collections/web/ui/core'
 import React from 'react'
 
@@ -61,10 +61,12 @@ export function CollectionTraitGroups({
 }
 
 export function CollectionTraitGroup({
+  withLabel = false,
   traits,
   selected,
   toggleTrait,
 }: {
+  withLabel?: boolean
   traits: CollectionTrait[]
   selected?: CollectionTrait[]
   toggleTrait?: (trait: CollectionTrait) => void
@@ -73,6 +75,7 @@ export function CollectionTraitGroup({
     <Group>
       {traits.map((trait) => (
         <CollectionTraitButton
+          withLabel={withLabel}
           trait={trait}
           toggleTrait={toggleTrait}
           selected={selected?.some((s) => s.key === trait.key && s.value === trait.value)}

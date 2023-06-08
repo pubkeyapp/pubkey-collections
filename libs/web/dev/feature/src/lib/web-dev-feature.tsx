@@ -1,4 +1,4 @@
-import { CollectionSet, CollectionTrait, parseAssets } from '@pubkey-collections/web/collection/data-access'
+import { CollectionSet, CollectionTrait, parseAssets } from '@pubkeyapp/collections'
 import {
   CollectionHeader,
   CollectionItemGrid,
