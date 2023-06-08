@@ -37,6 +37,7 @@
       "@pubkey-collections/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
       "@pubkey-collections/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
       "@pubkey-collections/web/dashboard/feature": ["libs/web/dashboard/feature/src/index.ts"],
+      "@pubkey-collections/web/dev/feature": ["libs/web/dev/feature/src/index.ts"],
       "@pubkey-collections/web/notification/data-access": ["libs/web/notification/data-access/src/index.ts"],
       "@pubkey-collections/web/notification/feature": ["libs/web/notification/feature/src/index.ts"],
       "@pubkey-collections/web/notification/ui": ["libs/web/notification/ui/src/index.ts"],
