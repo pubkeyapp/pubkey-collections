@@ -1,6 +1,6 @@
 import { useWebAuth } from '@pubkey-collections/web/auth/data-access'
 import { Anchor, Burger, Group, Header, MediaQuery, Text, useMantineTheme } from '@mantine/core'
-import { ComponentType } from 'react'
+import { ComponentType, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { UiThemeToggle } from './ui-theme.toggle'
 
@@ -9,9 +9,10 @@ export interface UiHeaderProps {
   icon: ComponentType<{ size: number }>
   opened: boolean
   setOpened: (opened: boolean) => void
+  profile?: ReactNode
 }
 
-export function UiHeader({ icon: Icon, opened, setOpened, text }: UiHeaderProps) {
+export function UiHeader({ icon: Icon, opened, profile, setOpened, text }: UiHeaderProps) {
   const { authenticated } = useWebAuth()
   const theme = useMantineTheme()
   return (
@@ -31,7 +32,10 @@ export function UiHeader({ icon: Icon, opened, setOpened, text }: UiHeaderProps)
               </Text>
             </Group>
           </Anchor>
-          <UiThemeToggle />
+          <Group>
+            {profile}
+            <UiThemeToggle />
+          </Group>
         </Group>
       </div>
     </Header>

@@ -8,7 +8,7 @@ import { ReactNode, Suspense, useMemo, useState } from 'react'
 import { UiNavbar, UiNavbarLink } from './ui-navbar'
 import { UiHeader } from './ui.header'
 
-export function UiLayout({ children }: { children: ReactNode }) {
+export function UiLayout({ children, profile }: { children: ReactNode; profile?: ReactNode }) {
   const { authenticated } = useWebAuth()
   const theme = useMantineTheme()
   const [opened, setOpened] = useState(false)
@@ -27,7 +27,7 @@ export function UiLayout({ children }: { children: ReactNode }) {
 
   return (
     <AppShell
-      header={<UiHeader text="PubKey" icon={IconDatabase} opened={opened} setOpened={setOpened} />}
+      header={<UiHeader text="PubKey" icon={IconDatabase} opened={opened} setOpened={setOpened} profile={profile} />}
       navbar={authenticated ? <UiNavbar links={navbarLinks} opened={opened} setOpened={setOpened} /> : undefined}
       navbarOffsetBreakpoint="sm"
       styles={{

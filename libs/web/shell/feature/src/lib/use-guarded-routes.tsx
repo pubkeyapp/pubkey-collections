@@ -3,6 +3,7 @@ import { AuthGuard, UserRoleGuard, UserStatusGuard } from '@pubkey-collections/w
 import { UserNotificationsProvider } from '@pubkey-collections/web/notification/data-access'
 import { UiError, UiFull, UiLoader, UiWarn } from '@pubkey-collections/web/ui/core'
 import { UiLayout } from '@pubkey-collections/web/ui/layout'
+import { WalletMultiButton } from '@pubkeyapp/wallet-adapter-mantine-ui'
 import { Navigate, Outlet, RouteObject, useRoutes } from 'react-router-dom'
 
 export function useGuardedRoutes({
@@ -31,7 +32,7 @@ export function useGuardedRoutes({
             {
               // This adds the main layout to the routes
               element: (
-                <UiLayout>
+                <UiLayout profile={<WalletMultiButton variant="default" />}>
                   <Outlet />
                 </UiLayout>
               ),
