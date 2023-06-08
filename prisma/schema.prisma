@@ -35,6 +35,7 @@ model Identity {
 
 enum IdentityProvider {
   GitHub
+  Solana
 }
 
 model Invite {

@@ -104,6 +104,7 @@ type Identity {
 
 enum IdentityProvider {
   GitHub
+  Solana
 }
 
 type Invite {
