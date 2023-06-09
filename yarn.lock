@@ -4084,6 +4084,11 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
+"@pubkeyapp/logo@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@pubkeyapp/logo/-/logo-1.1.1.tgz#ccf7bb8f3b508c667d2ded20cd85baeefdfd31b0"
+  integrity sha512-V0mQ75V2+MUMTLubtIUMNi9qko4s3GUtfTRQbd19PdfVjJitJJyshrLJ3hhIoVNqHH3LMntzwmfQPnHvQ2r1OQ==
+
 "@pubkeyapp/wallet-adapter-mantine-ui@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@pubkeyapp/wallet-adapter-mantine-ui/-/wallet-adapter-mantine-ui-1.1.1.tgz#ac7e489849469bac3abb7e5a9cdbba2a392713d5"
@@ -7362,6 +7367,11 @@ core-js-pure@^3.23.3:
   version "3.30.2"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.30.2.tgz#005a82551f4af3250dcfb46ed360fad32ced114e"
   integrity sha512-p/npFUJXXBkCCTIlEGBdghofn00jWG6ZOtdoIXSJmAu2QBvN0IqpZXWweOytcwE6cfx8ZvVUy1vw8zxhe4Y2vg==
+
+core-js@^3.30.2:
+  version "3.30.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.30.2.tgz#6528abfda65e5ad728143ea23f7a14f0dcf503fc"
+  integrity sha512-uBJiDmwqsbJCWHAwjrx3cvjbMXP7xD72Dmsn5LOJpiRmE3WbBbN5rCqQ2Qh6Ek6/eOrjlWngEynBWo4VxerQhg==
 
 core-util-is@1.0.2:
   version "1.0.2"

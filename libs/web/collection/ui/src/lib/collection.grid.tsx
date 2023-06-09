@@ -8,13 +8,7 @@ export function CollectionGrid({ items, link }: { items: Collection[]; link?: bo
   const sorted = useMemo(() => items.sort((a, b) => a.name.localeCompare(b.name)), [items])
 
   return (
-    <SimpleGrid
-      breakpoints={[
-        { minWidth: 'sm', cols: 2 },
-        { minWidth: 'md', cols: 3 },
-        { minWidth: 1200, cols: 6 },
-      ]}
-    >
+    <SimpleGrid breakpoints={[{ minWidth: 'sm', cols: sorted?.length < 4 ? 2 : 3 }]}>
       {sorted.map((item) =>
         link ? (
           <Anchor component={Link} underline={false} to={item.id} key={item.id}>

@@ -8,7 +8,7 @@ export interface UiSearchFieldProps extends TextInputProps {
   value: string
 }
 
-export function UiSearchField({ setValue, onSearch, placeholder, value }: UiSearchFieldProps) {
+export function UiSearchField({ setValue, onSearch, placeholder, value, ...props }: UiSearchFieldProps) {
   return (
     <TextInput
       sx={{ flexGrow: 1 }}
@@ -25,6 +25,7 @@ export function UiSearchField({ setValue, onSearch, placeholder, value }: UiSear
           <IconSearch size={16} />
         </ActionIcon>
       }
+      {...props}
     />
   )
 }

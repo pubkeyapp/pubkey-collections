@@ -4,6 +4,8 @@ import {
   CollectionHeader,
   CollectionItemGrid,
   CollectionSort,
+  CollectionSortKeys,
+  CollectionStats,
   CollectionTraitGroup,
   CollectionTraitGroups,
 } from '@pubkey-collections/web/collection/ui'
@@ -13,7 +15,6 @@ import {
   CollectionCombo,
   CollectionSet,
   CollectionTrait,
-  CollectionTraitMap,
   findCollectionById,
   findItemsWithCombos,
   findItemsWithTraits,
@@ -131,10 +132,11 @@ export function WebCollectionDetail() {
 
   return (
     <UiStack>
-      <UiSearchField value={publicKey} setValue={setPublicKey} onSearch={handleSearch} />
       <UiStack key={collection.id}>
         <UiCard>
-          <CollectionHeader collection={collection} />
+          <CollectionHeader collection={collection}>
+            <UiSearchField size="lg" value={publicKey} setValue={setPublicKey} onSearch={handleSearch} />
+          </CollectionHeader>
         </UiCard>
 
         {loading ? (
@@ -197,72 +199,5 @@ export function WebCollectionDetail() {
         )}
       </UiStack>
     </UiStack>
-  )
-}
-
-function CollectionSortKeys({
-  keys,
-  selected,
-  select,
-}: {
-  keys: string[]
-  selected: string | undefined
-  select: (key: string) => void
-}) {
-  return (
-    <UiStack>
-      <Title order={3}>Sort by</Title>
-      <CollectionSort keys={keys} selected={selected} select={select} />
-    </UiStack>
-  )
-}
-
-const linkColors = ['violet', 'indigo', 'blue', 'green', 'teal', 'cyan', 'pink', 'red', 'orange']
-
-export function getColorByIndex(index: number) {
-  return linkColors[index % linkColors.length]
-}
-export function CollectionStats({ stats }: { stats: CollectionTraitMap }) {
-  const groups = Object.keys(stats)
-    .map((key) => {
-      return { key, stats: stats[key] }
-    })
-    .filter((group) => group.stats.length > 1)
-    .map((group) => {
-      const total = group.stats.reduce((acc, cur) => acc + (cur.count ?? 0), 0)
-      const items = group.stats.map((stat) => ({
-        value: stat.value,
-        percent: ((stat.count ?? 0) / total) * 100,
-      }))
-      return {
-        key: group.key,
-        items,
-      }
-    })
-
-  return (
-    <UiCard>
-      <UiStack>
-        <Title order={3}>Stats</Title>
-        {groups.map((group) => {
-          return (
-            <Box>
-              <Title order={4}>{group.key}</Title>
-              <Progress
-                size="xl"
-                sections={group.items.map((item, index) => {
-                  return {
-                    value: item.percent,
-                    color: getColorByIndex(index),
-                    label: item?.percent > 10 ? item.value : item.value.slice(0, 1),
-                    tooltip: item.value + ' ' + item.percent.toFixed(2) + '%',
-                  }
-                })}
-              />
-            </Box>
-          )
-        })}
-      </UiStack>
-    </UiCard>
   )
 }
