@@ -1,8 +1,8 @@
-import { Anchor, Group, Image, SimpleGrid, Text } from '@mantine/core'
+import { Anchor, SimpleGrid } from '@mantine/core'
 import { Collection } from '@pubkeyapp/collections'
-import { UiCard } from '@pubkey-collections/web/ui/core'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import { CollectionGridItem } from './collection-grid-item'
 
 export function CollectionGrid({ items, link }: { items: Collection[]; link?: boolean }) {
   const sorted = useMemo(() => items.sort((a, b) => a.name.localeCompare(b.name)), [items])
@@ -25,23 +25,5 @@ export function CollectionGrid({ items, link }: { items: Collection[]; link?: bo
         ),
       )}
     </SimpleGrid>
-  )
-}
-
-export function CollectionGridItem({ item }: { item: Collection }) {
-  return (
-    <UiCard p={0}>
-      <Image src={item.image} alt={item.name} />
-      <Group position="apart" p="md">
-        <Text size="xl" weight={700}>
-          {item.name}
-        </Text>
-        {item.publisher ? (
-          <Text size="sm" weight={500} color="dimmed">
-            by {item.publisher}
-          </Text>
-        ) : null}
-      </Group>
-    </UiCard>
   )
 }

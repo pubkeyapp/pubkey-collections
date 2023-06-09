@@ -1,3 +1,3 @@
-export * from './lib/collection-helpers'
-export * from './lib/collection-registry'
-export * from './lib/collection-types'
+export * from './lib/data'
+export * from './lib/helpers'
+export * from './lib/types'

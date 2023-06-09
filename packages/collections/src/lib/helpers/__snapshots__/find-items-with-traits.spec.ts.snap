@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`find-items-with-traits should find items with traits 1`] = `
+[
+  {
+    "collectionId": "items",
+    "id": "item-3",
+    "image": "image-3",
+    "name": "Item 3",
+    "traits": [
+      {
+        "key": "Background",
+        "value": "Red",
+      },
+      {
+        "key": "Foreground",
+        "value": "White",
+      },
+      {
+        "key": "Shape",
+        "value": "Square",
+      },
+    ],
+  },
+  {
+    "collectionId": "items",
+    "id": "item-4",
+    "image": "image-4",
+    "name": "Item 4",
+    "traits": [
+      {
+        "key": "Background",
+        "value": "Red",
+      },
+      {
+        "key": "Foreground",
+        "value": "White",
+      },
+      {
+        "key": "Shape",
+        "value": "Circle",
+      },
+    ],
+  },
+]
+`;

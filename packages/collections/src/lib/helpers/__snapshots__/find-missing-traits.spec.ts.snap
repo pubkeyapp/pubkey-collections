@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`find-missing-traits should find missing traits 1`] = `
+[
+  {
+    "key": "Background",
+    "value": "Blue",
+  },
+]
+`;
