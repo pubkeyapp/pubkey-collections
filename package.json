@@ -44,6 +44,7 @@
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.1.1",
     "@nestjs/serve-static": "^3.0.1",
+    "@portal-payments/solana-wallet-names": "^2.0.4",
     "@prisma/client": "4.14.0",
     "@pubkeyapp/logo": "^1.1.1",
     "@pubkeyapp/wallet-adapter-mantine-ui": "^1.1.1",

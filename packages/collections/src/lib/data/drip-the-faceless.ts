@@ -39,17 +39,24 @@ export const dripTheFaceless: Collection = {
       ],
     },
     {
-      name: 'Poncho and Sombrero',
-      traits: [
-        { key: 'Headwear', value: 'Sombrero' },
-        { key: 'Outfits', value: 'Poncho' },
-      ],
-    },
-    {
       name: 'Protagonist',
       traits: [
         { key: 'Headwear', value: 'Protagonist Headband' },
         { key: 'Outfits', value: 'Protagonist' },
+      ],
+    },
+    {
+      name: 'Undead',
+      traits: [
+        { key: 'Hoods', value: 'Undead' },
+        { key: 'Masks', value: 'Skull' },
+      ],
+    },
+    {
+      name: 'Poncho and Sombrero',
+      traits: [
+        { key: 'Headwear', value: 'Sombrero' },
+        { key: 'Outfits', value: 'Poncho' },
       ],
     },
     {
