@@ -7,7 +7,7 @@ export function WebShellFeature() {
   return (
     <BrowserRouter>
       <UiThemeProvider>
-        <SolanaProvider cluster="https://rpc.helius.xyz/?api-key=2a88ca2b-67c0-44c7-b2b6-1f7851af671f">
+        <SolanaProvider cluster="https://rpc.pubkey.network">
           <WebShellRoutes />
         </SolanaProvider>
       </UiThemeProvider>

@@ -9,7 +9,7 @@ export function UiCard({ loading = false, title, ...props }: UiCardProps) {
   const { isSmall } = useUiTheme()
 
   return (
-    <Paper p={isSmall ? 'xs' : 'md'} withBorder {...props}>
+    <Paper p={isSmall ? 'xs' : 'md'} radius={0} withBorder {...props}>
       {title ? (
         <Title order={3} mb={isSmall ? 'xs' : 'md'}>
           {title}

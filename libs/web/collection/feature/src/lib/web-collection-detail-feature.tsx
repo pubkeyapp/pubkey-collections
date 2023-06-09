@@ -1,20 +1,27 @@
-import { Avatar, Box, Group, Progress, Tabs, Title } from '@mantine/core'
+import { Avatar, Box, Group, Tabs, Title } from '@mantine/core'
+import {
+  walletAddressToNameAndProfilePicture,
+  walletNameToAddressAndProfilePicture,
+} from '@portal-payments/solana-wallet-names'
 import {
   CollectionCombos,
   CollectionHeader,
   CollectionItemGrid,
   CollectionSort,
-  CollectionSortKeys,
   CollectionStats,
   CollectionTraitGroup,
   CollectionTraitGroups,
 } from '@pubkey-collections/web/collection/ui'
 import { useSolana } from '@pubkey-collections/web/shell/data-access'
 import {
-  walletNameToAddressAndProfilePicture,
-  walletAddressToNameAndProfilePicture,
-} from '@portal-payments/solana-wallet-names'
-import { UiAlert, UiCard, UiDebugModal, UiLoader, UiSearchField, UiStack } from '@pubkey-collections/web/ui/core'
+  UiAlert,
+  UiCard,
+  UiDebugModal,
+  UiLoader,
+  UiSearchField,
+  UiStack,
+  useUiTheme,
+} from '@pubkey-collections/web/ui/core'
 import {
   CollectionCombo,
   CollectionSet,
@@ -92,6 +99,7 @@ const FIXME_accountCombos: { [key: string]: CollectionCombo[] } = {
 }
 
 export function WebCollectionDetail() {
+  const { isSmall } = useUiTheme()
   const [searchQuery, setSearchQuery] = useState('beeman.sol')
   const [wallet, setWallet] = useState<Wallet | undefined>(undefined)
   const [sortKey, setSortKey] = useState<string | undefined>(undefined)
@@ -213,7 +221,12 @@ export function WebCollectionDetail() {
                     </Box>
                   ) : null}
 
-                  <CollectionSortKeys keys={collectionTraitKeys} selected={sortKey} select={(key) => setSortKey(key)} />
+                  <CollectionSort
+                    keys={collectionTraitKeys}
+                    selected={sortKey}
+                    select={(key) => setSortKey(key)}
+                    position={isSmall ? 'center' : 'left'}
+                  />
                   <CollectionItemGrid items={sortCollectionItems(filtered, sortKey)} toggleTrait={toggleTrait} />
                 </UiStack>
                 <UiDebugModal data={filtered} />

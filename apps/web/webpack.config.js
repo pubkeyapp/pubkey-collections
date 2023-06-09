@@ -9,6 +9,7 @@ module.exports = composePlugins(withNx(), withReact(), (config) => {
   config.resolve.fallback = {
     assert: require.resolve('assert/'),
     crypto: require.resolve('crypto-browserify'),
+    buffer: require.resolve('buffer/'),
     path: require.resolve('path-browserify'),
     stream: require.resolve('stream-browserify'),
     util: require.resolve('util'),

@@ -14,6 +14,7 @@ export function CollectionItemGrid({
   return (
     <SimpleGrid
       breakpoints={[
+        { maxWidth: 'sm', cols: 2 },
         { minWidth: 'sm', cols: 2 },
         { minWidth: 'md', cols: 3 },
         { minWidth: 1200, cols: 6 },

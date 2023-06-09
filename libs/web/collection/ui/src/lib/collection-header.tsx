@@ -1,12 +1,17 @@
-import { Avatar, Box, Group, Progress, Text, Title } from '@mantine/core'
-import { UiCard, UiGroup, UiStack } from '@pubkey-collections/web/ui/core'
+import { Avatar, Box, Group, Progress, Stack, Text, Title } from '@mantine/core'
+import { UiCard, UiStack, useUiTheme } from '@pubkey-collections/web/ui/core'
 import { Collection, CollectionTraitMap } from '@pubkeyapp/collections'
 import React, { ReactNode } from 'react'
-import { CollectionSort } from './collection-sort'
 
 export function CollectionHeader({ children, collection }: { children: ReactNode; collection: Collection }) {
+  const { isSmall } = useUiTheme()
   return (
-    <UiGroup spacing="xl">
+    <Stack
+      sx={{ flexDirection: isSmall ? 'column' : 'row' }}
+      justify={isSmall ? 'stretch' : 'space-between'}
+      align={'center'}
+      spacing={isSmall ? 'xs' : 'md'}
+    >
       <Group spacing="xs">
         <Avatar size="lg" src={collection.image} alt={collection.name} />
         <UiStack spacing={0}>
@@ -21,7 +26,7 @@ export function CollectionHeader({ children, collection }: { children: ReactNode
         </UiStack>
       </Group>
       {children}
-    </UiGroup>
+    </Stack>
   )
 }
 
@@ -68,22 +73,5 @@ export function CollectionStats({ stats }: { stats: CollectionTraitMap }) {
         ))}
       </UiStack>
     </UiCard>
-  )
-}
-
-export function CollectionSortKeys({
-  keys,
-  selected,
-  select,
-}: {
-  keys: string[]
-  selected: string | undefined
-  select: (key: string) => void
-}) {
-  return (
-    <UiStack>
-      <Title order={3}>Sort by</Title>
-      <CollectionSort keys={keys} selected={selected} select={select} />
-    </UiStack>
   )
 }

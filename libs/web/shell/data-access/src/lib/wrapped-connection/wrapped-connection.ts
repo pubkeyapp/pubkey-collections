@@ -91,7 +91,7 @@ export const toMetadataFromReadApiAsset = (input: ReadApiAsset): Metadata => {
       Uint8Array.from(new BN(input.compression.leaf_id).toArray('le', 8)),
     ]),
     mintAddress: new PublicKey(input.id),
-    updateAuthorityAddress: new PublicKey(updateAuthority!.address),
+    updateAuthorityAddress: new PublicKey(updateAuthority?.address as string),
 
     name: input.content.metadata?.name ?? '',
     symbol: input.content.metadata?.symbol ?? '',
@@ -111,6 +111,7 @@ export const toMetadataFromReadApiAsset = (input: ReadApiAsset): Metadata => {
     collection: collection ? { address: new PublicKey(collection.group_value), verified: false } : null,
 
     // Current regular `Metadata` does not currently have a `compression` value
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     compression: input.compression,
 
