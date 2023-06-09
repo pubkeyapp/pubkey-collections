@@ -1,10 +1,12 @@
 import { Group, GroupProps } from '@mantine/core'
+import { MantineSize } from '@mantine/styles'
 import { CollectionTrait } from '@pubkeyapp/collections'
 import React from 'react'
 import { CollectionTraitButton } from './collection-trait.button'
 
 export interface CollectionTraitGroupProps extends GroupProps {
   withLabel?: boolean
+  buttonSize?: MantineSize
   traits: CollectionTrait[]
   selected?: CollectionTrait[]
   toggleTrait?: (trait: CollectionTrait) => void
@@ -13,6 +15,7 @@ export interface CollectionTraitGroupProps extends GroupProps {
 export function CollectionTraitGroup({
   withLabel = false,
   traits,
+  buttonSize = 'sm',
   selected,
   toggleTrait,
   ...props
@@ -21,6 +24,7 @@ export function CollectionTraitGroup({
     <Group {...props}>
       {traits.map((trait) => (
         <CollectionTraitButton
+          size={buttonSize}
           withLabel={withLabel}
           trait={trait}
           toggleTrait={toggleTrait}

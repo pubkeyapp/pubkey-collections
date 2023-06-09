@@ -4,7 +4,7 @@ import { CollectionItemImage } from './collection-item-image'
 
 export function CollectionItemGroup({ items, width }: { items: CollectionItem[]; width?: number }) {
   return (
-    <Group>
+    <Group position="center">
       {items.map((item) => (
         <CollectionItemImage key={item.id} item={item} width={width} />
       ))}

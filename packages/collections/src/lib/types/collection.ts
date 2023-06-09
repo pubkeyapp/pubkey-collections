@@ -9,5 +9,6 @@ export interface Collection {
   publisher: string
   accounts: string[]
   traits: CollectionTraitMap
+  traitStats?: string[]
   combos?: CollectionCombo[]
 }

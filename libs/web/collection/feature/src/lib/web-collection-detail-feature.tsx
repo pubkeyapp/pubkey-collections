@@ -1,4 +1,4 @@
-import { Box, Tabs, Title } from '@mantine/core'
+import { Box, Progress, Tabs, Title } from '@mantine/core'
 import {
   CollectionCombos,
   CollectionHeader,
@@ -13,12 +13,14 @@ import {
   CollectionCombo,
   CollectionSet,
   CollectionTrait,
+  CollectionTraitMap,
   findCollectionById,
   findItemsWithCombos,
   findItemsWithTraits,
   findMissingTraits,
   processApiAssets,
   sortCollectionItems,
+  sortTraitMapByCount,
 } from '@pubkeyapp/collections'
 import { PublicKey } from '@solana/web3.js'
 import React, { useEffect, useMemo, useState } from 'react'
@@ -45,12 +47,22 @@ const FIXME_accountCombos: { [key: string]: CollectionCombo[] } = {
       sortKey: 'Headwear',
     },
     {
+      name: 'White and Blue',
+      traits: [
+        { key: 'Outfits', value: 'Hawain Shirt' },
+        { key: 'Masks', value: 'Blue' },
+        { key: 'Hoods', value: 'White' },
+      ],
+      sortKey: 'Headwear',
+    },
+    {
       name: 'Black and Skull',
       traits: [
         { key: 'Outfits', value: 'Police' },
         { key: 'Masks', value: 'Blue' },
         { key: 'Hoods', value: 'Black' },
       ],
+      sortKey: 'Backgrounds',
     },
   ],
 }
@@ -111,6 +123,8 @@ export function WebCollectionDetail() {
     }
   }, [collectionTraitKeys, sortKey])
 
+  const stats = useMemo(() => sortTraitMapByCount(traits, collection?.traitStats), [collection?.traitStats, traits])
+
   if (!collection) {
     return <UiAlert title="Collection not found" message="Please check the URL" />
   }
@@ -130,6 +144,7 @@ export function WebCollectionDetail() {
             <Tabs.List>
               <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
               <Tabs.Tab value="combos">Combos</Tabs.Tab>
+              <Tabs.Tab value="stats">Stats</Tabs.Tab>
             </Tabs.List>
 
             <Tabs.Panel value="gallery" pt="xs">
@@ -155,7 +170,7 @@ export function WebCollectionDetail() {
                 ) : null}
 
                 <CollectionSortKeys keys={collectionTraitKeys} selected={sortKey} select={(key) => setSortKey(key)} />
-                <CollectionItemGrid items={sortCollectionItems(filtered, sortKey)} />
+                <CollectionItemGrid items={sortCollectionItems(filtered, sortKey)} toggleTrait={toggleTrait} />
               </UiStack>
               <UiDebugModal data={filtered} />
             </Tabs.Panel>
@@ -169,8 +184,14 @@ export function WebCollectionDetail() {
                   <CollectionCombos combos={accountComboData ?? []} />
                 </UiStack>
               ) : (
-                <UiDebugModal data={collection} />
+                <UiAlert message={`No combos found for ${collection.name}`} />
               )}
+            </Tabs.Panel>
+
+            <Tabs.Panel value="stats" pt="xs">
+              <UiStack>
+                <CollectionStats stats={stats} />
+              </UiStack>
             </Tabs.Panel>
           </Tabs>
         )}
@@ -193,5 +214,55 @@ function CollectionSortKeys({
       <Title order={3}>Sort by</Title>
       <CollectionSort keys={keys} selected={selected} select={select} />
     </UiStack>
+  )
+}
+
+const linkColors = ['violet', 'indigo', 'blue', 'green', 'teal', 'cyan', 'pink', 'red', 'orange']
+
+export function getColorByIndex(index: number) {
+  return linkColors[index % linkColors.length]
+}
+export function CollectionStats({ stats }: { stats: CollectionTraitMap }) {
+  const groups = Object.keys(stats)
+    .map((key) => {
+      return { key, stats: stats[key] }
+    })
+    .filter((group) => group.stats.length > 1)
+    .map((group) => {
+      const total = group.stats.reduce((acc, cur) => acc + (cur.count ?? 0), 0)
+      const items = group.stats.map((stat) => ({
+        value: stat.value,
+        percent: ((stat.count ?? 0) / total) * 100,
+      }))
+      return {
+        key: group.key,
+        items,
+      }
+    })
+
+  return (
+    <UiCard>
+      <UiStack>
+        <Title order={3}>Stats</Title>
+        {groups.map((group) => {
+          return (
+            <Box>
+              <Title order={4}>{group.key}</Title>
+              <Progress
+                size="xl"
+                sections={group.items.map((item, index) => {
+                  return {
+                    value: item.percent,
+                    color: getColorByIndex(index),
+                    label: item?.percent > 10 ? item.value : item.value.slice(0, 1),
+                    tooltip: item.value + ' ' + item.percent.toFixed(2) + '%',
+                  }
+                })}
+              />
+            </Box>
+          )
+        })}
+      </UiStack>
+    </UiCard>
   )
 }

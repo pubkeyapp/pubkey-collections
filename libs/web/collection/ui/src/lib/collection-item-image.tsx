@@ -1,14 +1,15 @@
-import { Box, Code, Group, Image, ImageProps, Modal, Text, UnstyledButton } from '@mantine/core'
+import { Group, Image, ImageProps, Modal, Text, UnstyledButton } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { UiCopy, UiDebug, UiStack } from '@pubkey-collections/web/ui/core'
-import { CollectionItem } from '@pubkeyapp/collections'
+import { UiCopy, UiStack } from '@pubkey-collections/web/ui/core'
+import { CollectionItem, CollectionTrait } from '@pubkeyapp/collections'
 import { CollectionTraitGroup } from './collection-trait-group'
 
 export interface CollectionItemProps extends ImageProps {
   item: CollectionItem
+  toggleTrait?: (trait: CollectionTrait) => void
 }
 
-export function CollectionItemImage({ item, ...props }: CollectionItemProps) {
+export function CollectionItemImage({ item, toggleTrait, ...props }: CollectionItemProps) {
   const [opened, { open, close }] = useDisclosure(false)
 
   return (
@@ -24,7 +25,7 @@ export function CollectionItemImage({ item, ...props }: CollectionItemProps) {
           },
         }}
       >
-        <CollectionItemCard item={item} />
+        <CollectionItemCard item={item} toggleTrait={toggleTrait} />
       </Modal>
       <UnstyledButton display="inherit" onClick={open}>
         <Image key={item.id} src={item.image} alt={item.name} {...props} />
@@ -33,11 +34,17 @@ export function CollectionItemImage({ item, ...props }: CollectionItemProps) {
   )
 }
 
-export function CollectionItemCard({ item, ...props }: CollectionItemProps) {
+export function CollectionItemCard({
+  item,
+  toggleTrait,
+}: {
+  item: CollectionItem
+  toggleTrait?: (trait: CollectionTrait) => void
+}) {
   return (
     <UiStack pb="md">
       <Image key={item.id} src={item.image} alt={item.name} />
-      <CollectionTraitGroup position="center" traits={item.traits} withLabel />
+      <CollectionTraitGroup position="center" traits={item.traits} withLabel toggleTrait={toggleTrait} />
       <Group position="center" spacing={2}>
         <Text size="xs" color="dimmed">
           {item.id}

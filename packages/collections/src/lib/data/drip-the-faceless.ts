@@ -46,7 +46,7 @@ export const dripTheFaceless: Collection = {
       ],
     },
     {
-      name: 'Protagonist and Protagonist Headband',
+      name: 'Protagonist',
       traits: [
         { key: 'Headwear', value: 'Protagonist Headband' },
         { key: 'Outfits', value: 'Protagonist' },
@@ -60,6 +60,7 @@ export const dripTheFaceless: Collection = {
       ],
     },
   ],
+  traitStats: ['Background', 'Headwear', 'Hoods', 'Masks', 'Outfits', 'Rarity'],
   traits: expandTraitSummary({
     Backgrounds: [
       'Solana Gradient',

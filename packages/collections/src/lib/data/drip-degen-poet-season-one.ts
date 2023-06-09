@@ -9,6 +9,7 @@ export const dripDegenPoetSeasonOne: Collection = {
     'https://frzovltfodfxl2dqnxiklane2vmsbyl3yh6tnkl3mudmpf4yvkbq.arweave.net/LHLqrmVwy3XocG3QpYGk1Vkg4XvB_Tape2UGx5eYqoM?ext=jpg',
   publisher: 'DRiP',
   accounts: ['DGPTxgKaBPJv3Ng7dc9AFDpX6E7kgUMZEgyTm3VGWPW6'],
+  traitStats: ['created', 'dimensions', 'drop', 'filetype', 'orientation', 'rarity'],
   traits: expandTraitSummary({
     created: [
       '2023-05-22',
