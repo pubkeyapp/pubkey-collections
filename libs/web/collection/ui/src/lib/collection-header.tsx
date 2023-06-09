@@ -6,7 +6,7 @@ import { CollectionSort } from './collection-sort'
 
 export function CollectionHeader({ children, collection }: { children: ReactNode; collection: Collection }) {
   return (
-    <UiGroup>
+    <UiGroup spacing="xl">
       <Group spacing="xs">
         <Avatar size="lg" src={collection.image} alt={collection.name} />
         <UiStack spacing={0}>
