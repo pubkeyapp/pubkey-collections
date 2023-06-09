@@ -6,4 +6,5 @@ export interface CollectionSet {
   collection: Collection
   items: CollectionItem[]
   traits: CollectionTraitMap
+  traitKeys: string[]
 }

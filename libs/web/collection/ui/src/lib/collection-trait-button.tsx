@@ -16,12 +16,14 @@ export function CollectionTraitButton({
   selected?: boolean
   toggleTrait?: (trait: CollectionTrait) => void
 }) {
+  const count = trait.count ?? 0
   return (
     <Badge
+      color={count > 0 || selected ? 'brand' : 'yellow'}
       sx={{ cursor: 'pointer' }}
       component={'button'}
       onClick={() => (toggleTrait ? toggleTrait(trait) : null)}
-      variant={selected ? 'light' : 'outline'}
+      variant={selected ? 'light' : count > 0 ? 'outline' : 'dot'}
       size={size ?? 'sm'}
       radius="sm"
     >

@@ -12,3 +12,8 @@ export interface Collection {
   traitStats?: string[]
   combos?: CollectionCombo[]
 }
+
+export interface CollectionWallet {
+  picture?: string
+  address?: string
+}

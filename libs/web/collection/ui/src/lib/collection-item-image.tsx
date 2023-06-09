@@ -1,15 +1,14 @@
-import { Group, Image, ImageProps, Modal, Text, UnstyledButton } from '@mantine/core'
+import { Group, Image, ImageProps, Modal, UnstyledButton } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { UiCopy, UiStack } from '@pubkey-collections/web/ui/core'
-import { CollectionItem, CollectionTrait } from '@pubkeyapp/collections'
-import { CollectionTraitGroup } from './collection-trait-group'
+import { UiCopy } from '@pubkey-collections/web/ui/core'
+import { CollectionItem } from '@pubkeyapp/collections'
+import { CollectionItemCard } from './collection-item-card'
 
 export interface CollectionItemProps extends ImageProps {
   item: CollectionItem
-  toggleTrait?: (trait: CollectionTrait) => void
 }
 
-export function CollectionItemImage({ item, toggleTrait, ...props }: CollectionItemProps) {
+export function CollectionItemImage({ item, ...props }: CollectionItemProps) {
   const [opened, { open, close }] = useDisclosure(false)
 
   return (
@@ -17,7 +16,12 @@ export function CollectionItemImage({ item, toggleTrait, ...props }: CollectionI
       <Modal
         opened={opened}
         onClose={close}
-        title={item.name ?? ''}
+        title={
+          <Group position="center" spacing={2}>
+            {item.name}
+            <UiCopy text={item.id} tooltip={`Copy Collection Item ID (${item.id.slice(0, 4)})... `} />
+          </Group>
+        }
         centered
         styles={{
           body: {
@@ -25,32 +29,11 @@ export function CollectionItemImage({ item, toggleTrait, ...props }: CollectionI
           },
         }}
       >
-        <CollectionItemCard item={item} toggleTrait={toggleTrait} />
+        <CollectionItemCard item={item} />
       </Modal>
       <UnstyledButton display="inherit" onClick={open}>
         <Image key={item.id} src={item.image} alt={item.name} {...props} />
       </UnstyledButton>
     </>
-  )
-}
-
-export function CollectionItemCard({
-  item,
-  toggleTrait,
-}: {
-  item: CollectionItem
-  toggleTrait?: (trait: CollectionTrait) => void
-}) {
-  return (
-    <UiStack pb="md">
-      <Image key={item.id} src={item.image} alt={item.name} />
-      <CollectionTraitGroup position="center" traits={item.traits} withLabel toggleTrait={toggleTrait} />
-      <Group position="center" spacing={2}>
-        <Text size="xs" color="dimmed">
-          {item.id}
-        </Text>
-        <UiCopy text={item.id} tooltip="Copy Collection Item ID" />
-      </Group>
-    </UiStack>
   )
 }

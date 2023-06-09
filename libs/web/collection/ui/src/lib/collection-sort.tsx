@@ -1,15 +1,15 @@
 import { Badge, Group, GroupProps } from '@mantine/core'
+import { useCollection } from '@pubkey-collections/web/collection/data-access'
 import React from 'react'
 import { CollectionSortButton } from './collection-sort-button'
 
 export interface CollectionSortProps extends GroupProps {
   label?: string
-  keys: string[]
-  selected?: string
-  select?: (trait: string) => void
 }
 
-export function CollectionSort({ label = 'Sort by', keys, selected, select, ...props }: CollectionSortProps) {
+export function CollectionSort({ label = 'Sort by', ...props }: CollectionSortProps) {
+  const { traitKeys: keys, setSortKey: select, sortKey: selected } = useCollection()
+
   return (
     <Group {...props}>
       {label ? (
@@ -18,7 +18,7 @@ export function CollectionSort({ label = 'Sort by', keys, selected, select, ...p
         </Badge>
       ) : null}
       {keys.map((key) => (
-        <CollectionSortButton key={key} label={key} select={select} selected={selected === key} />
+        <CollectionSortButton key={key} label={key} select={(key) => select(key)} selected={selected === key} />
       ))}
     </Group>
   )

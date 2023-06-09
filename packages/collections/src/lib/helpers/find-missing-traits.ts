@@ -6,7 +6,11 @@ export function findMissingTraits(collection: CollectionTraitMap, user: Collecti
     .reduce(
       (acc, traitValues) => [
         ...acc,
-        ...traitValues.filter((value) => !user[value.key]?.find((t) => t.value === value.value)),
+        ...traitValues.filter((value) => {
+          const found = user[value.key]?.find((t) => t.value === value.value)
+
+          return !found || (found.count ?? 0) < 1
+        }),
       ],
       [],
     )

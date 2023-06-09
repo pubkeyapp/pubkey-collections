@@ -1,21 +1,15 @@
 import { SimpleGrid } from '@mantine/core'
 import { UiCard } from '@pubkey-collections/web/ui/core'
-import { CollectionItem, CollectionTrait } from '@pubkeyapp/collections'
+import { CollectionItem } from '@pubkeyapp/collections'
 import React from 'react'
 import { CollectionItemImage } from './collection-item-image'
 
-export function CollectionItemGrid({
-  items,
-  toggleTrait,
-}: {
-  items: CollectionItem[]
-  toggleTrait?: (trait: CollectionTrait) => void
-}) {
+export function CollectionItemGrid({ items }: { items: CollectionItem[] }) {
   return (
     <SimpleGrid
       breakpoints={[
-        { maxWidth: 'sm', cols: 2 },
-        { minWidth: 'sm', cols: 2 },
+        { maxWidth: 'sm', cols: 3 },
+        { minWidth: 'sm', cols: 3 },
         { minWidth: 'md', cols: 3 },
         { minWidth: 1200, cols: 6 },
         { minWidth: 1500, cols: 8 },
@@ -25,7 +19,7 @@ export function CollectionItemGrid({
     >
       {items.map((item) => (
         <UiCard key={item.id} p={0}>
-          <CollectionItemImage item={item} toggleTrait={toggleTrait} />
+          <CollectionItemImage item={item} />
         </UiCard>
       ))}
     </SimpleGrid>
