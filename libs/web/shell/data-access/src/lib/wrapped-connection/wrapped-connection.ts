@@ -1,20 +1,19 @@
-import { Commitment, Connection, ConnectionConfig, PublicKey } from '@solana/web3.js'
-import BN from 'bn.js'
-
-import { TokenStandard } from '@metaplex-foundation/mpl-token-metadata'
+import type { Metadata, Mint, NftOriginalEdition, SplTokenCurrency } from '@metaplex-foundation/js'
+// import from the `@metaplex-foundation/js`
+import { amount, MetaplexError, Pda, toBigNumber } from '@metaplex-foundation/js'
 import { PROGRAM_ID as BUBBLEGUM_PROGRAM_ID } from '@metaplex-foundation/mpl-bubblegum'
 
-// import from the `@metaplex-foundation/js`
-import { MetaplexError, toBigNumber, Pda, amount } from '@metaplex-foundation/js'
-import type { SplTokenCurrency, Metadata, Mint, NftOriginalEdition } from '@metaplex-foundation/js'
+import { TokenStandard } from '@metaplex-foundation/mpl-token-metadata'
+import { Connection, PublicKey } from '@solana/web3.js'
+import BN from 'bn.js'
 
 // local imports for the ReadApi types
 import type {
   GetAssetProofRpcInput,
   GetAssetProofRpcResponse,
   GetAssetRpcInput,
-  GetAssetsByOwnerRpcInput,
   GetAssetsByGroupRpcInput,
+  GetAssetsByOwnerRpcInput,
   ReadApiAsset,
   ReadApiAssetList,
 } from './types'

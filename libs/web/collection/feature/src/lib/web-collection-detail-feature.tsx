@@ -10,7 +10,6 @@ import {
 import { useSolana } from '@pubkey-collections/web/shell/data-access'
 import { UiAlert, UiCard, UiDebugModal, UiLoader, UiSearchField, UiStack } from '@pubkey-collections/web/ui/core'
 import {
-  ApiAsset,
   CollectionCombo,
   CollectionSet,
   CollectionTrait,
@@ -72,7 +71,7 @@ export function WebCollectionDetail() {
     setLoading(true)
     connection.getAssetsByOwner({ ownerAddress: publicKey }).then((res) => {
       setLoading(false)
-      setCollectionSet(processApiAssets(collection, res.items as unknown as ApiAsset[]))
+      setCollectionSet(processApiAssets(collection, res.items))
     })
   }
 
@@ -112,15 +111,8 @@ export function WebCollectionDetail() {
     }
   }, [collectionTraitKeys, sortKey])
 
-  if (loading) {
-    return <UiLoader />
-  }
   if (!collection) {
     return <UiAlert title="Collection not found" message="Please check the URL" />
-  }
-
-  if (!traits) {
-    return <UiAlert title="No traits found" message="Please check the URL and account" />
   }
 
   return (
@@ -131,51 +123,57 @@ export function WebCollectionDetail() {
           <CollectionHeader collection={collection} />
         </UiCard>
 
-        <Tabs defaultValue="gallery">
-          <Tabs.List>
-            <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-            <Tabs.Tab value="combos">Combos</Tabs.Tab>
-          </Tabs.List>
+        {loading ? (
+          <UiLoader />
+        ) : (
+          <Tabs defaultValue="gallery">
+            <Tabs.List>
+              <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
+              <Tabs.Tab value="combos">Combos</Tabs.Tab>
+            </Tabs.List>
 
-          <Tabs.Panel value="gallery" pt="xs">
-            <UiStack>
-              <CollectionTraitGroups traits={traits} selected={selectedTraits} toggleTrait={toggleTrait} />
-              {selectedTraits.length ? (
-                <Box p="xs">
-                  <CollectionTraitGroup
-                    withLabel
-                    traits={selectedTraits}
-                    selected={selectedTraits}
-                    toggleTrait={toggleTrait}
-                  />
-                </Box>
-              ) : null}
-              {missing.length ? (
-                <Box p="xs">
-                  <Title order={3}>Missing traits</Title>
-                  <CollectionTraitGroup traits={missing} />
-                </Box>
-              ) : null}
-
-              <CollectionSortKeys keys={collectionTraitKeys} selected={sortKey} select={(key) => setSortKey(key)} />
-              <CollectionItemGrid items={sortCollectionItems(filtered, sortKey)} />
-            </UiStack>
-            <UiDebugModal data={filtered} />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="combos" pt="xs">
-            {collection.combos?.length ? (
+            <Tabs.Panel value="gallery" pt="xs">
               <UiStack>
-                <Title order={3}>Collection Combos</Title>
-                <CollectionCombos combos={collectionCombos ?? []} />
-                <Title order={3}>Account Combos</Title>
-                <CollectionCombos combos={accountComboData ?? []} />
+                {traits ? (
+                  <CollectionTraitGroups traits={traits} selected={selectedTraits} toggleTrait={toggleTrait} />
+                ) : null}
+                {selectedTraits.length ? (
+                  <Box p="xs">
+                    <CollectionTraitGroup
+                      withLabel
+                      traits={selectedTraits}
+                      selected={selectedTraits}
+                      toggleTrait={toggleTrait}
+                    />
+                  </Box>
+                ) : null}
+                {missing.length ? (
+                  <Box p="xs">
+                    <Title order={3}>Missing traits</Title>
+                    <CollectionTraitGroup traits={missing} />
+                  </Box>
+                ) : null}
+
+                <CollectionSortKeys keys={collectionTraitKeys} selected={sortKey} select={(key) => setSortKey(key)} />
+                <CollectionItemGrid items={sortCollectionItems(filtered, sortKey)} />
               </UiStack>
-            ) : (
-              <UiDebugModal data={collection} />
-            )}
-          </Tabs.Panel>
-        </Tabs>
+              <UiDebugModal data={filtered} />
+            </Tabs.Panel>
+
+            <Tabs.Panel value="combos" pt="xs">
+              {collection.combos?.length ? (
+                <UiStack>
+                  <Title order={3}>Collection Combos</Title>
+                  <CollectionCombos combos={collectionCombos ?? []} />
+                  <Title order={3}>Account Combos</Title>
+                  <CollectionCombos combos={accountComboData ?? []} />
+                </UiStack>
+              ) : (
+                <UiDebugModal data={collection} />
+              )}
+            </Tabs.Panel>
+          </Tabs>
+        )}
       </UiStack>
     </UiStack>
   )

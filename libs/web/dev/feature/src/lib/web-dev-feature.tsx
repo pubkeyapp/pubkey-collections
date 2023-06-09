@@ -15,7 +15,7 @@ import {
   UiSearchField,
   UiStack,
 } from '@pubkey-collections/web/ui/core'
-import { ApiAsset, collections, CollectionSet, CollectionTrait, parseApiAssets } from '@pubkeyapp/collections'
+import { CollectionSet, CollectionTrait, parseApiAssets } from '@pubkeyapp/collections'
 import { PublicKey } from '@solana/web3.js'
 import React, { useMemo, useState } from 'react'
 
@@ -43,7 +43,7 @@ export function WebDevFeature() {
     setLoading(true)
     connection.getAssetsByOwner({ ownerAddress: publicKey }).then((res) => {
       setLoading(false)
-      setCollectionSet(parseApiAssets(res.items as unknown as ApiAsset[]))
+      setCollectionSet(parseApiAssets(res.items))
     })
   }
 

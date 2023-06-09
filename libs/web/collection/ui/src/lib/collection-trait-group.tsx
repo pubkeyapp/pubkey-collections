@@ -1,21 +1,24 @@
-import { Group } from '@mantine/core'
+import { Group, GroupProps } from '@mantine/core'
 import { CollectionTrait } from '@pubkeyapp/collections'
 import React from 'react'
 import { CollectionTraitButton } from './collection-trait.button'
+
+export interface CollectionTraitGroupProps extends GroupProps {
+  withLabel?: boolean
+  traits: CollectionTrait[]
+  selected?: CollectionTrait[]
+  toggleTrait?: (trait: CollectionTrait) => void
+}
 
 export function CollectionTraitGroup({
   withLabel = false,
   traits,
   selected,
   toggleTrait,
-}: {
-  withLabel?: boolean
-  traits: CollectionTrait[]
-  selected?: CollectionTrait[]
-  toggleTrait?: (trait: CollectionTrait) => void
-}) {
+  ...props
+}: CollectionTraitGroupProps) {
   return (
-    <Group>
+    <Group {...props}>
       {traits.map((trait) => (
         <CollectionTraitButton
           withLabel={withLabel}

@@ -3,6 +3,7 @@
 */
 
 import type { Metadata, Option } from '@metaplex-foundation/js'
+import { ApiAsset } from '@pubkeyapp/collections'
 import { ConcurrentMerkleTreeAccount } from '@solana/spl-account-compression'
 
 export type ReadApiAssetInterface =
@@ -145,7 +146,7 @@ export type ReadApiAssetList = {
   /**
    * listing of individual assets, and their associated metadata
    */
-  items: Array<ReadApiAsset>
+  items: Array<ApiAsset>
 
   /**
    * `page` is only provided when using page based pagination, as apposed

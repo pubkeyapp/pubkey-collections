@@ -13,7 +13,7 @@ export interface ApiAsset {
       uri: string
       cdn_uri: string
       mime: string
-    }
+    }[]
   }
   grouping: Array<{
     group_type: string
