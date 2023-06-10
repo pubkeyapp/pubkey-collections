@@ -1,5 +1,13 @@
 import { expandTraitSummary } from '../helpers'
-import { Collection } from '../types'
+import { Collection, CollectionCombo } from '../types'
+
+function createDrop(drop: string, rarity?: string): CollectionCombo {
+  return {
+    name: `Drop ${drop} ${rarity ? ` - ${rarity}` : ''}`,
+    group: true,
+    traits: [{ key: 'drop', value: drop }, ...(rarity ? [{ key: 'rarity', value: rarity }] : [])],
+  }
+}
 
 export const dripDegenPoetSeasonOne: Collection = {
   id: 'drip_degenpoet',
@@ -9,6 +17,17 @@ export const dripDegenPoetSeasonOne: Collection = {
     'https://frzovltfodfxl2dqnxiklane2vmsbyl3yh6tnkl3mudmpf4yvkbq.arweave.net/LHLqrmVwy3XocG3QpYGk1Vkg4XvB_Tape2UGx5eYqoM?ext=jpg',
   publisher: 'DRiP',
   accounts: ['DGPTxgKaBPJv3Ng7dc9AFDpX6E7kgUMZEgyTm3VGWPW6'],
+  comboGroups: [
+    { name: 'Drop 1', combos: [createDrop('1')] },
+    { name: 'Drop 2', combos: [createDrop('2', 'common'), createDrop('2', 'rare'), createDrop('2', 'legendary')] },
+    { name: 'Drop 3', combos: [createDrop('3', 'common'), createDrop('3', 'rare'), createDrop('3', 'legendary')] },
+    { name: 'Drop 4', combos: [createDrop('4', 'common'), createDrop('4', 'rare'), createDrop('4', 'legendary')] },
+    { name: 'Drop 5', combos: [createDrop('5', 'common'), createDrop('5', 'rare'), createDrop('5', 'legendary')] },
+    { name: 'Drop 6', combos: [createDrop('6', 'common'), createDrop('6', 'rare'), createDrop('6', 'legendary')] },
+    { name: 'Drop 7', combos: [createDrop('7', 'common'), createDrop('7', 'rare'), createDrop('7', 'legendary')] },
+    { name: 'Drop 8', combos: [createDrop('8', 'common'), createDrop('8', 'rare'), createDrop('8', 'legendary')] },
+  ],
+  traitGroups: ['dimensions', 'drop', 'filetype', 'rarity'],
   traitStats: ['created', 'dimensions', 'drop', 'filetype', 'orientation', 'rarity'],
   traits: expandTraitSummary({
     created: [

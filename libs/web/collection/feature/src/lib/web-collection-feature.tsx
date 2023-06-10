@@ -6,7 +6,7 @@ import { WebCollectionDetail } from './web-collection-detail-feature'
 export function WebCollectionFeature() {
   return (
     <Routes>
-      <Route index element={<CollectionGrid items={collections} link />} />
+      <Route index element={<CollectionGrid items={collections} />} />
       <Route path=":collectionId" element={<WebCollectionDetail />} />
     </Routes>
   )

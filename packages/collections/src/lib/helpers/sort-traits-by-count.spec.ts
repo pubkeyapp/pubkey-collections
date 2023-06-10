@@ -8,6 +8,7 @@ describe('sort-traits-by-count', () => {
       { key: 'Background', value: 'Red', count: 10 },
       { key: 'Background', value: 'Blue', count: 100 },
       { key: 'Eyes', value: 'Blue', count: 30 },
+      { key: 'Eyes', value: 'Yellow', count: 0 },
       { key: 'Background', value: 'Blue', count: 30 },
       { key: 'Eyes', value: 'Green', count: 2 },
     ]
@@ -21,6 +22,7 @@ describe('sort-traits-by-count', () => {
       { key: 'Background', value: 'Blue', count: 30 },
       { key: 'Background', value: 'Red', count: 10 },
       { key: 'Eyes', value: 'Green', count: 2 },
+      { key: 'Eyes', value: 'Yellow', count: 0 },
     ])
   })
 })
