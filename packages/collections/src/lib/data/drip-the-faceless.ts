@@ -9,61 +9,71 @@ export const dripTheFaceless: Collection = {
     'https://i6z5zem6ofbyazty7mmrhz4xohr6lynyrfufwklttgjuytivjgqq.arweave.net/R7PckZ5xQ4BmePsZE-eXcePl4biJaFspc5mTTE0VSaE?ext=gif',
   publisher: 'DRiP',
   accounts: ['WoMbiTtXKwUtf4wosoffv45khVF8yA2mPkinGosCFQ4'],
-  combos: [
+  comboGroups: [
     {
-      name: 'McDegens',
-      traits: [
-        { key: 'Headwear', value: 'McDegens' },
-        { key: 'Outfits', value: 'McDegens' },
+      name: `SubDAO's`,
+      combos: [
+        {
+          name: 'McDegens',
+          traits: [
+            { key: 'Headwear', value: 'McDegens' },
+            { key: 'Outfits', value: 'McDegens' },
+          ],
+        },
       ],
     },
     {
-      name: 'Admiral',
-      traits: [
-        { key: 'Headwear', value: 'Admiral' },
-        { key: 'Outfits', value: 'Admiral' },
-      ],
-    },
-    {
-      name: 'Military',
-      traits: [
-        { key: 'Headwear', value: 'Military' },
-        { key: 'Outfits', value: 'Military' },
-      ],
-    },
-    {
-      name: 'Monster Hunter',
-      traits: [
-        { key: 'Headwear', value: 'Monster Hunter Cap' },
-        { key: 'Outfits', value: 'Monster Hunter' },
-      ],
-    },
-    {
-      name: 'Protagonist',
-      traits: [
-        { key: 'Headwear', value: 'Protagonist Headband' },
-        { key: 'Outfits', value: 'Protagonist' },
-      ],
-    },
-    {
-      name: 'Undead',
-      traits: [
-        { key: 'Hoods', value: 'Undead' },
-        { key: 'Masks', value: 'Skull' },
-      ],
-    },
-    {
-      name: 'Poncho and Sombrero',
-      traits: [
-        { key: 'Headwear', value: 'Sombrero' },
-        { key: 'Outfits', value: 'Poncho' },
-      ],
-    },
-    {
-      name: 'Hawain Shirt and Sun Hat',
-      traits: [
-        { key: 'Headwear', value: 'Sun Hat' },
-        { key: 'Outfits', value: 'Hawain Shirt' },
+      name: 'Collection Combos',
+      combos: [
+        {
+          name: 'Admiral',
+          traits: [
+            { key: 'Headwear', value: 'Admiral' },
+            { key: 'Outfits', value: 'Admiral' },
+          ],
+        },
+        {
+          name: 'Military',
+          traits: [
+            { key: 'Headwear', value: 'Military' },
+            { key: 'Outfits', value: 'Military' },
+          ],
+        },
+        {
+          name: 'Monster Hunter',
+          traits: [
+            { key: 'Headwear', value: 'Monster Hunter Cap' },
+            { key: 'Outfits', value: 'Monster Hunter' },
+          ],
+        },
+        {
+          name: 'Protagonist',
+          traits: [
+            { key: 'Headwear', value: 'Protagonist Headband' },
+            { key: 'Outfits', value: 'Protagonist' },
+          ],
+        },
+        {
+          name: 'Undead',
+          traits: [
+            { key: 'Hoods', value: 'Undead' },
+            { key: 'Masks', value: 'Skull' },
+          ],
+        },
+        {
+          name: 'Poncho and Sombrero',
+          traits: [
+            { key: 'Headwear', value: 'Sombrero' },
+            { key: 'Outfits', value: 'Poncho' },
+          ],
+        },
+        {
+          name: 'Hawain Shirt and Sun Hat',
+          traits: [
+            { key: 'Headwear', value: 'Sun Hat' },
+            { key: 'Outfits', value: 'Hawain Shirt' },
+          ],
+        },
       ],
     },
   ],

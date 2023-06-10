@@ -1,4 +1,4 @@
-import { CollectionCombo } from './collection-combo'
+import { CollectionComboGroup } from './collection-combo'
 import { CollectionTraitMap } from './collection-trait-map'
 
 export interface Collection {
@@ -10,7 +10,7 @@ export interface Collection {
   accounts: string[]
   traits: CollectionTraitMap
   traitStats?: string[]
-  combos?: CollectionCombo[]
+  comboGroups?: CollectionComboGroup[]
 }
 
 export interface CollectionWallet {

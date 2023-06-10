@@ -37,7 +37,7 @@ export function CollectionMissingTraits() {
           title: 'All traits collected',
           children: (
             <Text>
-              Your collection has all <b>{userTraits.length}</b> traits.
+              This collection has all <b>{userTraits.length}</b> traits.
             </Text>
           ),
         })

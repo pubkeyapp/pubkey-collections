@@ -1,9 +1,22 @@
 import { useLocalStorage } from '@mantine/hooks'
-import { fetchPublicKey } from '@pubkey-collections/web/collection/data-access'
 import { useSolana } from '@pubkey-collections/web/shell/data-access'
 import { CollectionWallet, findCollectionById } from '@pubkeyapp/collections'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { fetchPublicKey } from './use-collection-wallet'
+
+export function useRecentWallets() {
+  const [recentWallets, setRecentWallets] = useLocalStorage<string[]>({
+    defaultValue: ['beeman.sol'],
+    getInitialValueInEffect: true,
+    key: 'pubkey-recent-wallets',
+  })
+
+  return {
+    recentWallets,
+    setRecentWallets,
+  }
+}
 
 export function useCollectionDetail(collectionId: string) {
   const collection = findCollectionById(collectionId)
@@ -12,11 +25,7 @@ export function useCollectionDetail(collectionId: string) {
   const [wallet, setWallet] = useState<CollectionWallet | undefined>(undefined)
   const [loading, setLoading] = useState(false)
 
-  const [recentWallets, setRecentWallets] = useLocalStorage<string[]>({
-    defaultValue: ['beeman.sol'],
-    getInitialValueInEffect: true,
-    key: 'pubkey-recent-wallets',
-  })
+  const { setRecentWallets } = useRecentWallets()
 
   const { connection } = useSolana()
 
@@ -55,7 +64,6 @@ export function useCollectionDetail(collectionId: string) {
     loading,
     collection,
     setAccount: (q: string) => setSearchParams({ q }),
-    recentWallets,
     wallet,
   }
 }
