@@ -28,10 +28,12 @@ describe('create-trait-map', () => {
       Background: [
         { count: 2, key: 'Background', value: 'Blue' },
         { count: 1, key: 'Background', value: 'Red' },
+        { key: 'Background', value: 'Yellow' },
       ],
       Eyes: [
         { count: 4, key: 'Eyes', value: 'Green' },
         { count: 1, key: 'Eyes', value: 'Blue' },
+        { key: 'Eyes', value: 'Brown' },
       ],
     })
   })

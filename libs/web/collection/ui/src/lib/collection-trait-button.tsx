@@ -28,7 +28,7 @@ export function CollectionTraitButton({
       radius="sm"
     >
       {withLabel ? `${trait.key}: ` : null}
-      {trait.value} {trait.count ? `(${trait.count})` : null}
+      {trait.value?.replace('|', ' OR ')} {trait.count ? `(${trait.count})` : null}
     </Badge>
   )
 }

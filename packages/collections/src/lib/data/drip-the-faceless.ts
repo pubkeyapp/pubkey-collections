@@ -20,11 +20,6 @@ export const dripTheFaceless: Collection = {
             { key: 'Outfits', value: 'McDegens' },
           ],
         },
-      ],
-    },
-    {
-      name: 'Collection Combos',
-      combos: [
         {
           name: 'Admiral',
           traits: [
@@ -32,6 +27,18 @@ export const dripTheFaceless: Collection = {
             { key: 'Outfits', value: 'Admiral' },
           ],
         },
+        {
+          name: 'Poncho and Sombrero',
+          traits: [
+            { key: 'Headwear', value: 'Sombrero' },
+            { key: 'Outfits', value: 'Poncho' },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'Collection Combos',
+      combos: [
         {
           name: 'Military',
           traits: [
@@ -54,17 +61,39 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
-          name: 'Undead',
+          name: 'Undead and Skull',
           traits: [
             { key: 'Hoods', value: 'Undead' },
             { key: 'Masks', value: 'Skull' },
           ],
         },
         {
-          name: 'Poncho and Sombrero',
+          name: 'Mummy King',
           traits: [
-            { key: 'Headwear', value: 'Sombrero' },
-            { key: 'Outfits', value: 'Poncho' },
+            { key: 'Headwear', value: 'Crown' },
+            { key: 'Outfits', value: 'Mummy' },
+          ],
+        },
+        {
+          name: 'Howdy and Explorer',
+          traits: [
+            { key: 'Headwear', value: 'Howdy' },
+            { key: 'Outfits', value: 'Explorer' },
+          ],
+        },
+        {
+          name: 'Men in Black',
+          traits: [
+            { key: 'Hoods', value: 'Black' },
+            { key: 'Headwear', value: 'UFO' },
+            { key: 'Outfits', value: 'Blue Suir|Red Suit' },
+          ],
+        },
+        {
+          name: 'Suite and Fedora',
+          traits: [
+            { key: 'Headwear', value: 'Fedora' },
+            { key: 'Outfits', value: 'Blue Suir|Red Suit' },
           ],
         },
         {
@@ -77,6 +106,7 @@ export const dripTheFaceless: Collection = {
       ],
     },
   ],
+  traitGroups: ['Headwear', 'Hoods', 'Masks', 'Outfits'],
   traitStats: ['Background', 'Headwear', 'Hoods', 'Masks', 'Outfits', 'Rarity'],
   traits: expandTraitSummary({
     Backgrounds: [

@@ -19,7 +19,9 @@ export function CollectionCombos({ combos }: { combos: CollectionCombo[] }) {
         {combos.map((combo) => (
           <UiCard key={combo.name} withBorder={false}>
             <Stack align="center">
-              <Title order={4}>{combo.name}</Title>
+              <Title order={4} align="center">
+                {combo.name}
+              </Title>
               <CollectionTraitGroup
                 position="center"
                 spacing="xs"

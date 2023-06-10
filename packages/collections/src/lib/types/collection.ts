@@ -9,7 +9,8 @@ export interface Collection {
   publisher: string
   accounts: string[]
   traits: CollectionTraitMap
-  traitStats?: string[]
+  traitGroups: string[]
+  traitStats: string[]
   comboGroups?: CollectionComboGroup[]
 }
 

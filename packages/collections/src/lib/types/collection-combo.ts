@@ -5,6 +5,7 @@ export interface CollectionCombo {
   name: string
   group?: boolean
   sortKey?: string
+  common?: number
   traits: CollectionTrait[]
   items?: CollectionItem[]
 }

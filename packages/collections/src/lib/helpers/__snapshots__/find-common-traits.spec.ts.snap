@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`find-common-traits should find common traits 1`] = `
+[
+  {
+    "common": 4,
+    "items": [
+      {
+        "collectionId": "items",
+        "id": "item-6",
+        "name": "Item 6",
+        "traits": [
+          {
+            "key": "Background",
+            "value": "Red",
+          },
+          {
+            "key": "Foreground",
+            "value": "White",
+          },
+          {
+            "key": "Shape",
+            "value": "Oval",
+          },
+          {
+            "key": "Border",
+            "value": "Black",
+          },
+        ],
+      },
+      {
+        "collectionId": "items",
+        "id": "item-7",
+        "name": "Item 7",
+        "traits": [
+          {
+            "key": "Background",
+            "value": "Red",
+          },
+          {
+            "key": "Foreground",
+            "value": "White",
+          },
+          {
+            "key": "Shape",
+            "value": "Oval",
+          },
+          {
+            "key": "Border",
+            "value": "Black",
+          },
+        ],
+      },
+    ],
+    "name": "Red, White, Oval, Black",
+    "traits": [
+      {
+        "key": "Background",
+        "value": "Red",
+      },
+      {
+        "key": "Foreground",
+        "value": "White",
+      },
+      {
+        "key": "Shape",
+        "value": "Oval",
+      },
+      {
+        "key": "Border",
+        "value": "Black",
+      },
+    ],
+  },
+  {
+    "common": 2,
+    "items": [
+      {
+        "collectionId": "items",
+        "id": "item-3",
+        "name": "Item 3",
+        "traits": [
+          {
+            "key": "Background",
+            "value": "Red",
+          },
+          {
+            "key": "Foreground",
+            "value": "White",
+          },
+          {
+            "key": "Shape",
+            "value": "Square",
+          },
+        ],
+      },
+      {
+        "collectionId": "items",
+        "id": "item-4",
+        "name": "Item 4",
+        "traits": [
+          {
+            "key": "Background",
+            "value": "Red",
+          },
+          {
+            "key": "Foreground",
+            "value": "White",
+          },
+          {
+            "key": "Shape",
+            "value": "Circle",
+          },
+        ],
+      },
+      {
+        "collectionId": "items",
+        "id": "item-5",
+        "name": "Item 5",
+        "traits": [
+          {
+            "key": "Background",
+            "value": "Red",
+          },
+          {
+            "key": "Foreground",
+            "value": "White",
+          },
+          {
+            "key": "Shape",
+            "value": "Triangle",
+          },
+        ],
+      },
+    ],
+    "name": "Red, White",
+    "traits": [
+      {
+        "key": "Background",
+        "value": "Red",
+      },
+      {
+        "key": "Foreground",
+        "value": "White",
+      },
+    ],
+  },
+]
+`;

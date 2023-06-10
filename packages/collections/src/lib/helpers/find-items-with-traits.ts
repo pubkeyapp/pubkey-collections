@@ -5,7 +5,10 @@ export function findItemsWithTraits(items: CollectionItem[], traits: CollectionT
 
   for (const item of items) {
     const hasAllTraits = traits.every((trait) =>
-      item.traits.find((t) => t.key === trait.key && t.value === trait.value),
+      item.traits.find((t) => {
+        const values = trait.value?.split('|').map((v) => v.trim()) ?? [trait.value]
+        return t.key === trait.key && values.includes(t.value)
+      }),
     )
 
     if (hasAllTraits) {

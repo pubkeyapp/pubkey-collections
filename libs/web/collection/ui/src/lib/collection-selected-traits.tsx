@@ -9,7 +9,7 @@ export function CollectionSelectedTraits({ ...props }: Omit<CollectionTraitGroup
     <CollectionTraitGroup
       label={
         <Badge variant="light" color="gray" size="sm" radius="sm">
-          Selected traits
+          Filtered by
         </Badge>
       }
       {...props}

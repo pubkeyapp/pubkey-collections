@@ -15,6 +15,7 @@ export interface CollectionProviderContext {
   account: string
   collection: Collection
   collectionSet: CollectionSet
+  collectionTraits: CollectionTrait[]
   items: CollectionItem[]
   filteredItems: CollectionItem[]
   missingTraits: CollectionTrait[]
@@ -74,6 +75,7 @@ export function CollectionProvider({
     account,
     collection,
     collectionSet,
+    collectionTraits: Object.keys(collection?.traits).flatMap((t) => collection.traits[t]),
     items,
     filteredItems,
     missingTraits,
