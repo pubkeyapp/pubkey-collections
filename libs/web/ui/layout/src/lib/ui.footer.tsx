@@ -1,13 +1,86 @@
-import { Footer, Group, Text } from '@mantine/core'
+import { ActionIcon, Container, createStyles, Group, Modal, rem, Title, Tooltip } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import { IconBrandDiscord, IconBrandGithub, IconBrandTwitter, IconHeartFilled } from '@tabler/icons-react'
+import { SponsorPanel } from './sponsor-panel'
 
-export function UiFooter({ text }: { text: string }) {
+const useStyles = createStyles((theme) => ({
+  footer: {
+    // marginTop: rem(120),
+    borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]}`,
+  },
+
+  inner: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: theme.spacing.xs,
+    paddingBottom: theme.spacing.xs,
+
+    [theme.fn.smallerThan('xs')]: {
+      flexDirection: 'column',
+    },
+  },
+
+  links: {
+    [theme.fn.smallerThan('xs')]: {
+      marginTop: theme.spacing.md,
+    },
+  },
+}))
+
+export function UiFooter() {
+  const { classes } = useStyles()
+  const [opened, { open, close }] = useDisclosure(false)
   return (
-    <Footer height={60}>
-      <Group position="center" h="100%">
-        <Text size="sm" color="dimmed">
-          {text}
-        </Text>
-      </Group>
-    </Footer>
+    <div className={classes.footer}>
+      <Container className={classes.inner}>
+        <Group spacing={0} className={classes.links} position="right" noWrap>
+          <Tooltip label="Say thanks">
+            <ActionIcon size="lg" color="pink" onClick={open}>
+              <IconHeartFilled size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Join our Discord">
+            <ActionIcon
+              size="lg"
+              color="brand"
+              component="a"
+              target="_blank"
+              href="https://discord.gg/XxuZQeDPNf"
+              rel="noreferrer noopener"
+            >
+              <IconBrandDiscord size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Star us on GitHub">
+            <ActionIcon
+              size="lg"
+              color="brand"
+              component="a"
+              target="_blank"
+              href="https://github.com/pubkeyapp/pubkey-collections"
+              rel="noreferrer noopener"
+            >
+              <IconBrandGithub size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Follow us on Twitter">
+            <ActionIcon
+              size="lg"
+              color="brand"
+              component="a"
+              target="_blank"
+              href="https://twitter.com/pubkeyapp"
+              rel="noreferrer noopener"
+            >
+              <IconBrandTwitter size="1.05rem" stroke={1.5} />
+            </ActionIcon>
+          </Tooltip>
+        </Group>
+      </Container>
+      <Modal opened={opened} onClose={close} size="xl" title={<Title>Say thanks</Title>} centered>
+        <SponsorPanel />
+      </Modal>
+    </div>
   )
 }
