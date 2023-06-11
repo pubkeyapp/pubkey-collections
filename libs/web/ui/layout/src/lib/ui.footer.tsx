@@ -5,10 +5,8 @@ import { SponsorPanel } from './sponsor-panel'
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    // marginTop: rem(120),
     borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]}`,
   },
-
   inner: {
     display: 'flex',
     justifyContent: 'center',
@@ -17,13 +15,8 @@ const useStyles = createStyles((theme) => ({
     paddingBottom: theme.spacing.xs,
 
     [theme.fn.smallerThan('xs')]: {
-      flexDirection: 'column',
-    },
-  },
-
-  links: {
-    [theme.fn.smallerThan('xs')]: {
-      marginTop: theme.spacing.md,
+      paddingTop: 0,
+      paddingBottom: 0,
     },
   },
 }))
@@ -34,7 +27,7 @@ export function UiFooter() {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-        <Group spacing={0} className={classes.links} position="right" noWrap>
+        <Group spacing={0} position="right" noWrap>
           <Tooltip label="Say thanks">
             <ActionIcon size="lg" color="pink" onClick={open}>
               <IconHeartFilled size="1.05rem" stroke={1.5} />

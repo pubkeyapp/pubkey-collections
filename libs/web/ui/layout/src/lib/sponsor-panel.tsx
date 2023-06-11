@@ -8,6 +8,7 @@ export function SponsorPanel() {
       <Text>I'm glad that you are using my product. If you like it, please consider supporting the project.</Text>
       <Text>There are several ways to do it:</Text>
       <SponsorOptions />
+      <Text>❤ Your support is highly appreciated!</Text>
     </UiStack>
   )
 }
@@ -38,25 +39,6 @@ export function SponsorOptions() {
         </Anchor>{' '}
         on Twitter
       </List.Item>
-      <List.Item icon={<IconBrandGithub stroke={1.5} />} sx={{ alignItems: 'center' }}>
-        Sponsor me on{' '}
-        <Anchor
-          href="https://github.com/sponsors/beeman"
-          target="_blank"
-          rel="noreferrer noopener"
-          variant="link"
-          color="blue"
-        >
-          GitHub
-        </Anchor>
-        <List>
-          <List.Item>
-            <Text size="sm" color="dimmed">
-              You can choose between monthly and one-time sponsorship.
-            </Text>
-          </List.Item>
-        </List>
-      </List.Item>
       <List.Item icon={<IconCurrencySolana stroke={1.5} />}>
         Send SOL, SPL tokens or NFTs
         <List>
@@ -85,6 +67,25 @@ export function SponsorOptions() {
           <List.Item>
             <Text size="sm" color="dimmed">
               Feel free to share the tx hash with me on Twitter or Discord so I can thank you personally.
+            </Text>
+          </List.Item>
+        </List>
+      </List.Item>
+      <List.Item icon={<IconBrandGithub stroke={1.5} />} sx={{ alignItems: 'center' }}>
+        Sponsor me on{' '}
+        <Anchor
+          href="https://github.com/sponsors/beeman"
+          target="_blank"
+          rel="noreferrer noopener"
+          variant="link"
+          color="blue"
+        >
+          GitHub
+        </Anchor>
+        <List>
+          <List.Item>
+            <Text size="sm" color="dimmed">
+              You can choose between monthly and one-time sponsorship.
             </Text>
           </List.Item>
         </List>
