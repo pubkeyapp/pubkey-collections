@@ -2,7 +2,10 @@ import { CollectionItem } from './collection-item'
 import { CollectionTrait } from './collection-trait'
 
 export interface CollectionCombo {
+  id: string
   name?: string
+  links?: Links
+  description?: string
   group?: boolean
   sortKey?: string
   common?: number
@@ -10,7 +13,8 @@ export interface CollectionCombo {
   items?: CollectionItem[]
 }
 
-export interface CollectionComboGroup {
-  name: string
-  combos: CollectionCombo[]
+export interface Links {
+  homepage?: string
+  discord?: string
+  twitter?: string
 }

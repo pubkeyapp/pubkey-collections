@@ -1,25 +1,26 @@
-import { Badge, Group, GroupProps } from '@mantine/core'
+import { Button, Group, GroupProps, Menu } from '@mantine/core'
 import { useCollection } from '@pubkey-collections/web/collection/data-access'
 import React from 'react'
-import { CollectionSortButton } from './collection-sort-button'
 
-export interface CollectionSortProps extends GroupProps {
-  label?: string
-}
-
-export function CollectionSort({ label = 'Sort by', ...props }: CollectionSortProps) {
+export function CollectionSort({ ...props }: GroupProps) {
   const { traitKeys: keys, setSortKey: select, sortKey: selected } = useCollection()
 
   return (
     <Group {...props}>
-      {label ? (
-        <Badge variant="light" color="gray" size="sm" radius="sm">
-          Sort by
-        </Badge>
-      ) : null}
-      {keys.map((key) => (
-        <CollectionSortButton key={key} label={key} select={(key) => select(key)} selected={selected === key} />
-      ))}
+      <Menu shadow="md" width={200}>
+        <Menu.Target>
+          <Button size="xs" variant="light">
+            Sort
+          </Button>
+        </Menu.Target>
+        <Menu.Dropdown>
+          {keys.map((key) => (
+            <Menu.Item key={key} onClick={() => select(key)} fw={selected === key ? 'bold' : 'normal'}>
+              {key} {selected === key && '✓'}
+            </Menu.Item>
+          ))}
+        </Menu.Dropdown>
+      </Menu>
     </Group>
   )
 }

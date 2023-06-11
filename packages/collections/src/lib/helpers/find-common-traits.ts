@@ -5,14 +5,14 @@ function findTraitValues(traits: CollectionTrait[], keys: string[]): string[] {
   return keys.map((key) => traits.find((trait) => trait.key === key)?.value ?? '')
 }
 
-function findTraitName(traits: CollectionTrait[]): string {
+function findTraitId(traits: CollectionTrait[]): string {
   return traits.reduce((acc, trait) => {
-    const tag = trait.value
+    const tag = trait.value.replace(/ /g, '-').toLowerCase()
     if (acc === '') {
       return tag
     }
 
-    return `${acc}, ${tag}`
+    return `${acc}-${tag}`
   }, '')
 }
 
@@ -34,12 +34,12 @@ export function findCommonTraits(
 
     // Loop over the common traits and add them to the result counter
     for (const commonTrait of commonTraits) {
-      const name = findTraitName(commonTrait)
+      const id = findTraitId(commonTrait)
       const count = commonTrait.length
 
-      if (!result.find((trait) => trait.name === name && trait.common === count)) {
+      if (!result.find((trait) => trait.id === id && trait.common === count)) {
         result.push({
-          name: name,
+          id: id,
           common: count,
           traits: commonTrait,
           items: [],

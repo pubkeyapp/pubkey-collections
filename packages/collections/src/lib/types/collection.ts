@@ -1,4 +1,4 @@
-import { CollectionComboGroup } from './collection-combo'
+import { CollectionComboGroup } from './collection-combo-group'
 import { CollectionTraitMap } from './collection-trait-map'
 
 export interface Collection {

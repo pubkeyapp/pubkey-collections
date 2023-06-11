@@ -7,7 +7,7 @@ export function WebCollectionFeature() {
   return (
     <Routes>
       <Route index element={<CollectionGrid items={collections} />} />
-      <Route path=":collectionId" element={<WebCollectionDetail />} />
+      <Route path=":collectionId/*" element={<WebCollectionDetail />} />
     </Routes>
   )
 }

@@ -7,7 +7,7 @@ export function CollectionSearch({ handleSearch, value }: { handleSearch: (query
   return (
     <UiSearchField
       placeholder="Wallet address or name"
-      size={isSmall ? 'sm' : 'xl'}
+      size={isSmall ? undefined : 'xl'}
       value={query}
       setValue={setQuery}
       onSearch={() => handleSearch(query.trim())}

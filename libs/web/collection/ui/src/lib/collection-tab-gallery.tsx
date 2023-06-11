@@ -1,4 +1,4 @@
-import { Button, Group } from '@mantine/core'
+import { Badge, Button, Group } from '@mantine/core'
 import { useCollection } from '@pubkey-collections/web/collection/data-access'
 import { UiAlert, UiGroup, UiStack, useUiTheme } from '@pubkey-collections/web/ui/core'
 import { sortCollectionItems } from '@pubkeyapp/collections'
@@ -11,19 +11,22 @@ import { CollectionSort } from './collection-sort'
 import { CollectionTraitSelector } from './collection-trait-selector'
 
 export function CollectionTabGallery() {
-  const { filteredItems, sortKey } = useCollection()
+  const { filteredItems, items, sortKey } = useCollection()
   const { isSmall } = useUiTheme()
   const [showSelector, setShowSelector] = useState(false)
 
   return (
     <UiStack>
       <UiGroup position={isSmall ? 'center' : 'apart'}>
-        <CollectionSort position={isSmall ? 'center' : 'left'} />
+        <Group>
+          <Button size="xs" variant="light" onClick={() => setShowSelector(!showSelector)}>
+            Filter
+          </Button>
+          <CollectionSort position={isSmall ? 'center' : 'left'} />
+        </Group>
         <Group>
           <CollectionMissingTraits />
-          <Button size="xs" variant="light" onClick={() => setShowSelector(!showSelector)}>
-            {showSelector ? 'Hide' : 'Show'} filters
-          </Button>
+          <Badge>{items?.length} items</Badge>
         </Group>
       </UiGroup>
 

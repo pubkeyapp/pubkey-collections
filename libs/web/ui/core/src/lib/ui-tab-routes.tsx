@@ -20,10 +20,11 @@ export function UiTabRoutes({ grow = true, tabs, ...props }: UiTabRoutesProps) {
   const activeTab = tabs.find((tab) => location.pathname.endsWith(tab.value))?.value
   // Set default redirect route to the first tab
   const redirect = tabs.length && tabs[0].value !== '' ? tabs[0].value : undefined
+  const search = location.search
 
   return (
     <Box>
-      <Tabs value={activeTab} onTabChange={(value) => navigate(`${value}`)} mb="md" {...props}>
+      <Tabs value={activeTab} onTabChange={(value) => navigate(`${value}${search}`)} mb="md" {...props}>
         <Tabs.List grow={grow}>
           {tabs.map((tab) => (
             <Tabs.Tab key={tab.value} value={tab.value}>
@@ -33,7 +34,7 @@ export function UiTabRoutes({ grow = true, tabs, ...props }: UiTabRoutesProps) {
         </Tabs.List>
       </Tabs>
       <Routes>
-        {redirect ? <Route index element={<Navigate replace to={`./${redirect}`} />} /> : null}
+        {redirect ? <Route index element={<Navigate replace to={`./${redirect}${search}`} />} /> : null}
         {tabs.map((tab) => (
           <Route key={tab.value} path={`${tab.value}/*`} element={tab.component} />
         ))}

@@ -1,13 +1,12 @@
-import { Tabs, TabsProps } from '@mantine/core'
 import { useCollection } from '@pubkey-collections/web/collection/data-access'
-import { UiAlert, useUiTheme } from '@pubkey-collections/web/ui/core'
+import { UiAlert, UiTabRoutes, useUiTheme } from '@pubkey-collections/web/ui/core'
 
 import { CollectionStats } from './collection-stats'
 import { CollectionTabCombos } from './collection-tab-combos'
 import { CollectionTabCommon } from './collection-tab-common'
 import { CollectionTabGallery } from './collection-tab-gallery'
 
-export function CollectionTabs({ ...props }: Omit<TabsProps, 'children'>) {
+export function CollectionTabs() {
   const { isSmall } = useUiTheme()
   const { collection, items, wallet } = useCollection()
 
@@ -20,29 +19,14 @@ export function CollectionTabs({ ...props }: Omit<TabsProps, 'children'>) {
   }
 
   return (
-    <Tabs defaultValue="gallery" {...props}>
-      <Tabs.List grow={isSmall}>
-        <Tabs.Tab value="gallery">Gallery</Tabs.Tab>
-        <Tabs.Tab value="common">Common</Tabs.Tab>
-        <Tabs.Tab value="combos">Combos</Tabs.Tab>
-        <Tabs.Tab value="stats">Stats</Tabs.Tab>
-      </Tabs.List>
-
-      <Tabs.Panel value="gallery" pt="md">
-        <CollectionTabGallery />
-      </Tabs.Panel>
-
-      <Tabs.Panel value="common" pt="md">
-        <CollectionTabCommon />
-      </Tabs.Panel>
-
-      <Tabs.Panel value="combos" pt="md">
-        <CollectionTabCombos />
-      </Tabs.Panel>
-
-      <Tabs.Panel value="stats" pt="md">
-        <CollectionStats />
-      </Tabs.Panel>
-    </Tabs>
+    <UiTabRoutes
+      grow={isSmall}
+      tabs={[
+        { value: 'gallery', label: 'Gallery', component: <CollectionTabGallery /> },
+        { value: 'common', label: 'Common', component: <CollectionTabCommon /> },
+        { value: 'combos', label: 'Combos', component: <CollectionTabCombos /> },
+        { value: 'stats', label: 'Stats', component: <CollectionStats /> },
+      ]}
+    />
   )
 }

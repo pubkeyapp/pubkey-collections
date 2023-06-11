@@ -47,7 +47,7 @@ export function useCollectionDetail(collectionId: string) {
       .then((res) => {
         setRecentWallets((prev) => {
           if (prev.includes(account)) return prev
-          return [account, ...prev].slice(0, 5)
+          return [account, ...prev].slice(0, 10)
         })
         setWallet({ picture: res?.picture, address: res?.address ?? account })
       })

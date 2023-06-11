@@ -1,3 +1,4 @@
+export * from './lib/ellipsify'
 export * from './lib/form'
 export * from './lib/theme'
 export * from './lib/ui-action.icon'

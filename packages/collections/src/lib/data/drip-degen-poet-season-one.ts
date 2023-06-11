@@ -3,6 +3,7 @@ import { Collection, CollectionCombo } from '../types'
 
 function createDrop(drop: string, rarity?: string): CollectionCombo {
   return {
+    id: 'drop-' + drop + (rarity ? '-' + rarity : ''),
     group: true,
     traits: [{ key: 'drop', value: drop }, ...(rarity ? [{ key: 'rarity', value: rarity }] : [])],
   }

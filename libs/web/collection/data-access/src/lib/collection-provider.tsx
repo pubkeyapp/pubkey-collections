@@ -2,11 +2,13 @@ import {
   Collection,
   CollectionItem,
   CollectionSet,
+  CollectionStatGroup,
   CollectionTrait,
   CollectionTraitMap,
   CollectionWallet,
   findItemsWithTraits,
   findMissingTraits,
+  getCollectionStats,
   sortTraitMapByCount,
 } from '@pubkeyapp/collections'
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react'
@@ -22,7 +24,7 @@ export interface CollectionProviderContext {
   selectedTraits: CollectionTrait[]
   setSortKey: (key: string | undefined) => void
   sortKey: string | undefined
-  stats: CollectionTraitMap
+  statGroups: CollectionStatGroup[]
   toggleTrait: (trait: CollectionTrait) => void
   traitKeys: string[]
   traits: CollectionTraitMap
@@ -49,7 +51,10 @@ export function CollectionProvider({
   const items = useMemo(() => collectionSet.items ?? [], [collectionSet.items])
   const traitKeys = useMemo(() => collectionSet.traitKeys ?? [], [collectionSet.traitKeys])
   const traits = useMemo(() => collectionSet.traits ?? {}, [collectionSet.traits])
-  const stats = useMemo(() => sortTraitMapByCount(traits, collection?.traitStats), [collection?.traitStats, traits])
+  const statGroups = useMemo(
+    () => getCollectionStats(sortTraitMapByCount(traits, collection?.traitStats)),
+    [collection?.traitStats, traits],
+  )
   const filteredItems = useMemo(() => findItemsWithTraits(items, selectedTraits), [items, selectedTraits])
   const missingTraits: CollectionTrait[] = useMemo(
     () => findMissingTraits(collection?.traits ?? {}, traits ?? {}),
@@ -81,7 +86,7 @@ export function CollectionProvider({
     missingTraits,
     selectedTraits,
     sortKey,
-    stats,
+    statGroups,
     setSortKey,
     toggleTrait,
     traitKeys,

@@ -14,13 +14,19 @@ export const dripTheFaceless: Collection = {
       name: `SubDAO's`,
       combos: [
         {
+          id: 'mcdegens',
           name: 'McDegens',
+          links: {
+            homepage: 'https://mcdegen.xyz/',
+            twitter: 'https://twitter.com/McDegensDAO',
+          },
           traits: [
             { key: 'Headwear', value: 'McDegens' },
             { key: 'Outfits', value: 'McDegens' },
           ],
         },
         {
+          id: 'admiral',
           name: 'Admiral',
           traits: [
             { key: 'Headwear', value: 'Admiral' },
@@ -28,6 +34,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'poncho-and-sombrero',
           name: 'Poncho and Sombrero',
           traits: [
             { key: 'Headwear', value: 'Sombrero' },
@@ -40,6 +47,7 @@ export const dripTheFaceless: Collection = {
       name: 'Collection Combos',
       combos: [
         {
+          id: 'Military',
           name: 'Military',
           traits: [
             { key: 'Headwear', value: 'Military' },
@@ -47,6 +55,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'monster-hunter',
           name: 'Monster Hunter',
           traits: [
             { key: 'Headwear', value: 'Monster Hunter Cap' },
@@ -54,6 +63,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'protagonist',
           name: 'Protagonist',
           traits: [
             { key: 'Headwear', value: 'Protagonist Headband' },
@@ -61,6 +71,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'undead-and-skull',
           name: 'Undead and Skull',
           traits: [
             { key: 'Hoods', value: 'Undead' },
@@ -68,6 +79,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'mummy-king',
           name: 'Mummy King',
           traits: [
             { key: 'Headwear', value: 'Crown' },
@@ -75,6 +87,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'howdy-and-explorer',
           name: 'Howdy and Explorer',
           traits: [
             { key: 'Headwear', value: 'Howdy' },
@@ -82,6 +95,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'men-in-black',
           name: 'Men in Black',
           traits: [
             { key: 'Hoods', value: 'Black' },
@@ -90,6 +104,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'suite-and-fedora',
           name: 'Suite and Fedora',
           traits: [
             { key: 'Headwear', value: 'Fedora' },
@@ -97,6 +112,7 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'hawain-shirt-and-sun-hat',
           name: 'Hawain Shirt and Sun Hat',
           traits: [
             { key: 'Headwear', value: 'Sun Hat' },
@@ -107,7 +123,7 @@ export const dripTheFaceless: Collection = {
     },
   ],
   traitGroups: ['Headwear', 'Hoods', 'Masks', 'Outfits'],
-  traitStats: ['Background', 'Headwear', 'Hoods', 'Masks', 'Outfits', 'Rarity'],
+  traitStats: ['Backgrounds', 'Headwear', 'Hoods', 'Masks', 'Outfits', 'Rarity'],
   traits: expandTraitSummary({
     Backgrounds: [
       'Solana Gradient',

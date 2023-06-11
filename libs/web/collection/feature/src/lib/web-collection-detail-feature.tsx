@@ -1,6 +1,5 @@
-import { Badge, Button, Group, Stack } from '@mantine/core'
-import { useCollectionDetail, useRecentWallets } from '@pubkey-collections/web/collection/data-access'
-import { CollectionPage, CollectionPanel, CollectionSearch } from '@pubkey-collections/web/collection/ui'
+import { useCollectionDetail } from '@pubkey-collections/web/collection/data-access'
+import { CollectionPage, CollectionPanel, CollectionSearch, RecentWallets } from '@pubkey-collections/web/collection/ui'
 import { UiAlert, UiStack } from '@pubkey-collections/web/ui/core'
 import React from 'react'
 import { useParams } from 'react-router-dom'
@@ -8,7 +7,6 @@ import { useParams } from 'react-router-dom'
 export function WebCollectionDetail() {
   const { collectionId } = useParams() as { collectionId: string }
   const { collection, account, setAccount, wallet, loading } = useCollectionDetail(collectionId)
-  const { recentWallets } = useRecentWallets()
 
   if (!collection) {
     return <UiAlert title="Collection not found" message="Please check the URL" />
@@ -26,18 +24,7 @@ export function WebCollectionDetail() {
     <CollectionPanel collection={collection} title={`Search for wallet address or name to see the collection`}>
       <UiStack spacing={64}>
         <CollectionSearch handleSearch={setAccount} value="" />
-        <Group position="center">
-          <Stack spacing="xs" align="center">
-            <Badge variant="light" color="gray" size="sm" radius="sm">
-              Recent wallets
-            </Badge>
-            {recentWallets.map((wallet) => (
-              <Button size="xs" variant="subtle" key={wallet} onClick={() => setAccount(wallet)}>
-                {wallet}
-              </Button>
-            ))}
-          </Stack>
-        </Group>
+        <RecentWallets select={(wallet) => setAccount(wallet)} />
       </UiStack>
     </CollectionPanel>
   )

@@ -1,6 +1,6 @@
 import { Avatar, Group, Stack } from '@mantine/core'
 import { CollectionProvider, useCollectionItems } from '@pubkey-collections/web/collection/data-access'
-import { UiAlert } from '@pubkey-collections/web/ui/core'
+import { ellipsify, UiAlert } from '@pubkey-collections/web/ui/core'
 import { Collection, CollectionWallet } from '@pubkeyapp/collections'
 import React from 'react'
 import { CollectionHeader } from './collection-header'
@@ -27,7 +27,7 @@ export function CollectionPage({
   }
 
   if (query.isLoading) {
-    return <CollectionPanel collection={collection} loader title={`Loading collection for ${account}...`} />
+    return <CollectionPanel collection={collection} loader title={`Loading collection for ${ellipsify(account)}...`} />
   }
 
   if (!query.data) {
