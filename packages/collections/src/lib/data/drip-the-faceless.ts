@@ -12,7 +12,7 @@ export const dripTheFaceless: Collection = {
   accounts: ['WoMbiTtXKwUtf4wosoffv45khVF8yA2mPkinGosCFQ4'],
   comboGroups: [
     {
-      name: `SubDAO's`,
+      name: `Collection Combos`,
       combos: [
         {
           id: 'mcdegens',
@@ -50,11 +50,6 @@ export const dripTheFaceless: Collection = {
             { key: 'Outfits', value: 'Poncho' },
           ],
         },
-      ],
-    },
-    {
-      name: 'Collection Combos',
-      combos: [
         {
           id: 'Military',
           name: 'Military',

@@ -3,6 +3,7 @@ import { amount, MetaplexError, Pda, toBigNumber } from '@metaplex-foundation/js
 import { PROGRAM_ID as BUBBLEGUM_PROGRAM_ID } from '@metaplex-foundation/mpl-bubblegum'
 
 import { TokenStandard } from '@metaplex-foundation/mpl-token-metadata'
+import { ApiAsset } from '@pubkeyapp/collections'
 import { Connection, PublicKey } from '@solana/web3.js'
 import BN from 'bn.js'
 
@@ -29,7 +30,7 @@ type JsonRpcOutput<ReadApiJsonOutput> = {
 
 /** @group Errors */
 export class ReadApiError extends MetaplexError {
-  readonly name: string = 'ReadApiError'
+  override readonly name: string = 'ReadApiError'
   constructor(message: string, cause?: Error) {
     super(message, 'rpc', undefined, cause)
   }
@@ -244,5 +245,38 @@ export class WrappedConnection extends Connection {
     if (!result) throw new ReadApiError('No results returned')
 
     return result
+  }
+
+  async getAllAssetsByOwner(address: string): Promise<ApiAsset[]> {
+    const result: ApiAsset[] = []
+
+    // If a user has more than 1000 items, we need to make multiple requests to get all of them
+    const firstPage = await this.getItemsPerPage(address, 1)
+    const totalItems = firstPage.total
+
+    console.log(`getAllItems for ${address} has ${firstPage.items.length} items and ${totalItems} pages`)
+    result.push(...firstPage.items)
+
+    let loadMore = firstPage.total === firstPage.limit
+    let i = 1
+    while (loadMore) {
+      const page = await this.getItemsPerPage(address, result.length / firstPage.limit + 1)
+      console.log(
+        `getAllItems ${i} for ${address} page ${result.length / firstPage.limit + 1} has ${page.items.length} items`,
+      )
+      result.push(...page.items)
+      loadMore = page.total === page.limit
+      i++
+    }
+    console.log(`getAllItems for ${address} done: ${result.length} items`)
+    return result
+  }
+
+  getItemsPerPage(address: string, page: number): Promise<ReadApiAssetList> {
+    return this.getAssetsByOwner({
+      ownerAddress: address,
+      limit: 1000,
+      page: page,
+    })
   }
 }

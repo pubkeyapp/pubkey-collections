@@ -56,7 +56,8 @@
       "@pubkey-collections/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
       "@pubkey-collections/web/ui/notifications": ["libs/web/ui/notifications/src/index.ts"],
       "@pubkey-collections/web/user/ui": ["libs/web/user/ui/src/index.ts"],
-      "@pubkeyapp/collections": ["packages/collections/src/index.ts"]
+      "@pubkeyapp/collections": ["packages/collections/src/index.ts"],
+      "@pubkeyapp/connection": ["packages/connection/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
