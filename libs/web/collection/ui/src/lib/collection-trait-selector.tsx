@@ -28,6 +28,10 @@ export function CollectionTraitSelector() {
     setSelected(checked ? keys : [])
   }, [checked, keys])
 
+  const filteredItems = useMemo(() => {
+    return Object.keys(filtered).filter((key) => filtered[key].length > 0)
+  }, [filtered])
+
   return (
     <UiStack>
       <UiGroup>
@@ -38,10 +42,9 @@ export function CollectionTraitSelector() {
           <Switch label="Expand" checked={checked} onChange={(event) => setChecked(event.currentTarget.checked)} />
         </UiGroup>
       </UiGroup>
-      <Accordion mb={0} variant="default" multiple value={selected} onChange={(value) => setSelected(value)}>
-        {Object.keys(filtered)
-          .filter((key) => filtered[key].length > 0)
-          .map((key) => (
+      {filteredItems?.length ? (
+        <Accordion mb={0} variant="default" multiple value={selected} onChange={(value) => setSelected(value)}>
+          {filteredItems.map((key) => (
             <Accordion.Item key={key} value={key}>
               <Accordion.Control>
                 <Group align="center" spacing="xs">
@@ -54,7 +57,12 @@ export function CollectionTraitSelector() {
               </Accordion.Panel>
             </Accordion.Item>
           ))}
-      </Accordion>
+        </Accordion>
+      ) : (
+        <Text align={'center'} color="dimmed">
+          No traits found
+        </Text>
+      )}
     </UiStack>
   )
 }

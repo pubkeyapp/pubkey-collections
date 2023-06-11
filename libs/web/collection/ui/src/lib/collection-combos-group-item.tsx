@@ -1,6 +1,6 @@
-import { Title } from '@mantine/core'
+import { Box, Title } from '@mantine/core'
 import { useCollection } from '@pubkey-collections/web/collection/data-access'
-import { UiAlert, UiCard, UiStack } from '@pubkey-collections/web/ui/core'
+import { UiAlert, UiStack } from '@pubkey-collections/web/ui/core'
 import { CollectionComboGroup, findItemsWithCombos } from '@pubkeyapp/collections'
 import React, { useMemo } from 'react'
 import { CollectionCombos } from './collection-combos'
@@ -14,7 +14,7 @@ export function CollectionCombosGroupItem({ group }: { group: CollectionComboGro
   }, [group.combos, items])
 
   return (
-    <UiCard>
+    <Box p="md">
       <UiStack key={group.name}>
         <Title align="center" order={3}>
           {group.name}
@@ -25,6 +25,6 @@ export function CollectionCombosGroupItem({ group }: { group: CollectionComboGro
           <UiAlert message={`No combos found for ${collection?.name}`} />
         )}
       </UiStack>
-    </UiCard>
+    </Box>
   )
 }

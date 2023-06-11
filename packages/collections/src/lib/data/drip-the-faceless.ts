@@ -8,6 +8,7 @@ export const dripTheFaceless: Collection = {
   image:
     'https://i6z5zem6ofbyazty7mmrhz4xohr6lynyrfufwklttgjuytivjgqq.arweave.net/R7PckZ5xQ4BmePsZE-eXcePl4biJaFspc5mTTE0VSaE?ext=gif',
   publisher: 'DRiP',
+  marketplace: 'https://www.tensor.trade/trade/drip_the_faceless',
   accounts: ['WoMbiTtXKwUtf4wosoffv45khVF8yA2mPkinGosCFQ4'],
   comboGroups: [
     {
@@ -15,7 +16,7 @@ export const dripTheFaceless: Collection = {
       combos: [
         {
           id: 'mcdegens',
-          name: 'McDegens',
+          name: 'McDegens DAO',
           links: {
             homepage: 'https://mcdegen.xyz/',
             twitter: 'https://twitter.com/McDegensDAO',
@@ -26,8 +27,16 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'undead-and-skull',
+          name: 'The Soulless DAO',
+          traits: [
+            { key: 'Hoods', value: 'Undead' },
+            { key: 'Masks', value: 'Skull' },
+          ],
+        },
+        {
           id: 'admiral',
-          name: 'Admiral',
+          name: 'Admirals DAO',
           traits: [
             { key: 'Headwear', value: 'Admiral' },
             { key: 'Outfits', value: 'Admiral' },
@@ -35,7 +44,7 @@ export const dripTheFaceless: Collection = {
         },
         {
           id: 'poncho-and-sombrero',
-          name: 'Poncho and Sombrero',
+          name: 'Poncho and Sombrero DAO',
           traits: [
             { key: 'Headwear', value: 'Sombrero' },
             { key: 'Outfits', value: 'Poncho' },
@@ -68,14 +77,6 @@ export const dripTheFaceless: Collection = {
           traits: [
             { key: 'Headwear', value: 'Protagonist Headband' },
             { key: 'Outfits', value: 'Protagonist' },
-          ],
-        },
-        {
-          id: 'undead-and-skull',
-          name: 'Undead and Skull',
-          traits: [
-            { key: 'Hoods', value: 'Undead' },
-            { key: 'Masks', value: 'Skull' },
           ],
         },
         {

@@ -5,7 +5,6 @@ export interface CollectionCombo {
   id: string
   name?: string
   links?: Links
-  description?: string
   group?: boolean
   sortKey?: string
   common?: number

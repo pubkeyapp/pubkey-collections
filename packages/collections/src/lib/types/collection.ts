@@ -7,6 +7,7 @@ export interface Collection {
   name: string
   image: string
   publisher: string
+  marketplace?: string
   accounts: string[]
   traits: CollectionTraitMap
   traitGroups: string[]

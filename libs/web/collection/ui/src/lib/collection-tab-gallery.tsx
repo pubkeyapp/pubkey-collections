@@ -18,23 +18,22 @@ export function CollectionTabGallery() {
   return (
     <UiStack>
       <UiGroup position={isSmall ? 'center' : 'apart'}>
+        <Badge>{filteredItems?.length} items</Badge>
         <Group>
-          <Button size="xs" variant="light" onClick={() => setShowSelector(!showSelector)}>
+          <Button size="xs" variant={showSelector ? 'filled' : 'light'} onClick={() => setShowSelector(!showSelector)}>
             Filter
           </Button>
           <CollectionSort position={isSmall ? 'center' : 'left'} />
-        </Group>
-        <Group>
           <CollectionMissingTraits />
-          <Badge>{items?.length} items</Badge>
         </Group>
       </UiGroup>
 
       {showSelector && <CollectionTraitSelector />}
 
-      <Group>
+      <UiGroup position={isSmall ? 'center' : 'apart'}>
         <CollectionSelectedTraits position={isSmall ? 'center' : 'apart'} />
-      </Group>
+        <Group></Group>
+      </UiGroup>
 
       {filteredItems.length ? (
         <UiStack>

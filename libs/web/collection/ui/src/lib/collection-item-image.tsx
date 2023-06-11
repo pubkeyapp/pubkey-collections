@@ -16,6 +16,7 @@ export function CollectionItemImage({ item, ...props }: CollectionItemProps) {
       <Modal
         opened={opened}
         onClose={close}
+        size="xl"
         title={
           <Group position="center" spacing="xs">
             <UiCopy text={item.id} tooltip={`Copy Collection Item ID (${item.id.slice(0, 4)})... `} />

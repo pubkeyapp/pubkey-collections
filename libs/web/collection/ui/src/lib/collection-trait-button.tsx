@@ -19,11 +19,11 @@ export function CollectionTraitButton({
   const count = trait.count ?? 0
   return (
     <Badge
-      color={count > 0 || selected ? 'brand' : 'gray'}
-      sx={{ cursor: 'pointer' }}
+      color={count > 0 || selected ? 'brand' : 'yellow'}
+      sx={{ cursor: toggleTrait ? 'pointer' : 'default' }}
       component={'button'}
       onClick={() => (toggleTrait ? toggleTrait(trait) : null)}
-      variant={selected ? 'light' : count > 0 ? 'dot' : 'dot'}
+      variant={selected ? 'light' : 'outline'}
       size={size ?? 'sm'}
       radius="sm"
     >

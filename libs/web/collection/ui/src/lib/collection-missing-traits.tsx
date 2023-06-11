@@ -1,11 +1,12 @@
-import { Button, Text } from '@mantine/core'
+import { Anchor, Button, Group, Text } from '@mantine/core'
 import { modals } from '@mantine/modals'
 import { useCollection } from '@pubkey-collections/web/collection/data-access'
+import { UiStack } from '@pubkey-collections/web/ui/core'
 import React from 'react'
 import { CollectionTraitGroup } from './collection-trait-group'
 
 export function CollectionMissingTraits() {
-  const { missingTraits, traits } = useCollection()
+  const { collection, missingTraits, traits } = useCollection()
   const userTraits = Object.keys(traits).flatMap((key) => traits[key])
   return missingTraits?.length ? (
     <Button
@@ -18,7 +19,25 @@ export function CollectionMissingTraits() {
           centered: true,
           size: 'lg',
           title: 'Missing traits',
-          children: <CollectionTraitGroup buttonSize="lg" traits={missingTraits} withLabel />,
+          children: (
+            <UiStack align="center" spacing="xl">
+              <CollectionTraitGroup buttonSize="lg" traits={missingTraits} withLabel position="center" />
+              {collection?.marketplace ? (
+                <Group position="center">
+                  <Button
+                    uppercase
+                    variant="light"
+                    component={'a'}
+                    href={collection.marketplace}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Buy missing traits
+                  </Button>
+                </Group>
+              ) : null}
+            </UiStack>
+          ),
         })
       }
     >

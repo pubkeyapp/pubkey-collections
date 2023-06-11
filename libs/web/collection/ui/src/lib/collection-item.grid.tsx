@@ -1,5 +1,4 @@
-import { SimpleGrid } from '@mantine/core'
-import { UiCard } from '@pubkey-collections/web/ui/core'
+import { Box, SimpleGrid } from '@mantine/core'
 import { CollectionItem } from '@pubkeyapp/collections'
 import React from 'react'
 import { CollectionItemImage } from './collection-item-image'
@@ -18,9 +17,9 @@ export function CollectionItemGrid({ items }: { items: CollectionItem[] }) {
       ]}
     >
       {items.map((item) => (
-        <UiCard key={item.id} p={0}>
+        <Box key={item.id} p={0}>
           <CollectionItemImage item={item} />
-        </UiCard>
+        </Box>
       ))}
     </SimpleGrid>
   )
