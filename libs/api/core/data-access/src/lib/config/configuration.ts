@@ -26,6 +26,10 @@ export interface ApiCoreConfig {
   databaseProvision: boolean
   host: string
   port: number
+  storageEndpoint: string
+  storageBucket: string
+  storageAccessKey: string
+  storageSecretAccessKey: string
   webUrl: string
 }
 
@@ -42,6 +46,10 @@ export const configuration = (): ApiCoreConfig => ({
   host: process.env['HOST'] as string,
   port: parseInt(process.env['PORT'] as string, 10) || 3000,
   webUrl: WEB_URL,
+  storageEndpoint: process.env['STORAGE_ENDPOINT'] as string,
+  storageBucket: process.env['STORAGE_BUCKET'] as string,
+  storageAccessKey: process.env['STORAGE_ACCESS_KEY'] as string,
+  storageSecretAccessKey: process.env['STORAGE_SECRET_ACCESS_KEY'] as string,
 })
 
 // Get the cookie domains from the ENV

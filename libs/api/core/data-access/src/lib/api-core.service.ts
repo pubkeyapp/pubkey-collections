@@ -1,11 +1,26 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, OnModuleInit } from '@nestjs/common'
 import { User as PrismaUser, UserRole, UserStatus } from '@prisma/client'
+import { WrappedConnection } from '@pubkeyapp/connection'
+import { join } from 'path'
+import { writeFileSync } from 'fs'
 import { ApiCoreConfigService } from './api-core-config.service'
 import { ApiCoreDataService } from './api-core-data.service'
 
 @Injectable()
-export class ApiCoreService {
+export class ApiCoreService implements OnModuleInit {
+  readonly connection = new WrappedConnection(process.env['SOLANA_RPC_URL'] ?? '')
   constructor(readonly config: ApiCoreConfigService, readonly data: ApiCoreDataService) {}
+
+  async onModuleInit() {
+    // const account = 'WoMbiTtXKwUtf4wosoffv45khVF8yA2mPkinGosCFQ4'
+    // this.connection.getAllAssetsByGroup(account).then((res) => {
+    //   console.log(`Found ${res.length} assets for ${account}`)
+    //   // console.log(JSON.stringify(res.length, null, 2))
+    //   const filename = join(process.cwd(), 'tmp', account + '.json')
+    //   console.log('Writing to', filename)
+    //   writeFileSync(filename, JSON.stringify(res, null, 2))
+    // })
+  }
 
   async ensureUser(userId: string): Promise<PrismaUser> {
     const user = await this.getUserById(userId)

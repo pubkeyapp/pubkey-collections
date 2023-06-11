@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
+import { S3ModuleOptions } from 'nestjs-s3'
 import { ApiCoreConfig } from './config/configuration'
 import { CookieOptions } from 'express-serve-static-core'
 
@@ -71,6 +72,36 @@ export class ApiCoreConfigService {
 
   get prefix() {
     return 'api'
+  }
+
+  get storageEndpoint(): string {
+    return this.service.get<string>('storageEndpoint') as string
+  }
+
+  get storageBucket(): string {
+    return this.service.get<string>('storageBucket') as string
+  }
+  get storageAccessKey(): string {
+    return this.service.get<string>('storageAccessKey') as string
+  }
+
+  get storageSecretAccessKey(): string {
+    return this.service.get<string>('storageSecretAccessKey') as string
+  }
+
+  get storage(): S3ModuleOptions {
+    return {
+      config: {
+        credentials: {
+          accessKeyId: this.storageAccessKey,
+          secretAccessKey: this.storageSecretAccessKey,
+        },
+        // region: 'us-east-1',
+        endpoint: this.storageEndpoint,
+        forcePathStyle: true,
+        // signatureVersion: 'v4',
+      },
+    }
   }
 
   get isDevelopment(): boolean {

@@ -13,4 +13,8 @@ export const validationSchema = Joi.object({
   HOST: Joi.string().default('0.0.0.0'),
   NODE_ENV: Joi.string().valid('development', 'production', 'test', 'provision').default('development'),
   PORT: Joi.number().default(3000),
+  STORAGE_ENDPOINT: Joi.string().required(),
+  STORAGE_BUCKET: Joi.string().required(),
+  STORAGE_ACCESS_KEY: Joi.string().required(),
+  STORAGE_SECRET_ACCESS_KEY: Joi.string().required(),
 })

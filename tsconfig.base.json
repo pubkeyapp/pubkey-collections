@@ -27,6 +27,8 @@
       "@pubkey-collections/api/invite/feature": ["libs/api/invite/feature/src/index.ts"],
       "@pubkey-collections/api/notification/data-access": ["libs/api/notification/data-access/src/index.ts"],
       "@pubkey-collections/api/notification/feature": ["libs/api/notification/feature/src/index.ts"],
+      "@pubkey-collections/api/storage/data-access": ["libs/api/storage/data-access/src/index.ts"],
+      "@pubkey-collections/api/storage/feature": ["libs/api/storage/feature/src/index.ts"],
       "@pubkey-collections/api/user/data-access": ["libs/api/user/data-access/src/index.ts"],
       "@pubkey-collections/api/user/feature": ["libs/api/user/feature/src/index.ts"],
       "@pubkey-collections/sdk": ["libs/sdk/src/index.ts"],
