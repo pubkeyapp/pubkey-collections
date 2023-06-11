@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { UserRole, User as PrismaUser, UserStatus } from '@prisma/client'
+import { User as PrismaUser, UserRole, UserStatus } from '@prisma/client'
 import { ApiCoreConfigService } from './api-core-config.service'
 import { ApiCoreDataService } from './api-core-data.service'
 

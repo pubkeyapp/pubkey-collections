@@ -4,6 +4,7 @@ exports[`find-common-traits should find common traits 1`] = `
 [
   {
     "common": 4,
+    "id": "red-white-oval-black",
     "items": [
       {
         "collectionId": "items",
@@ -52,7 +53,6 @@ exports[`find-common-traits should find common traits 1`] = `
         ],
       },
     ],
-    "name": "Red, White, Oval, Black",
     "traits": [
       {
         "key": "Background",
@@ -74,6 +74,7 @@ exports[`find-common-traits should find common traits 1`] = `
   },
   {
     "common": 2,
+    "id": "red-white",
     "items": [
       {
         "collectionId": "items",
@@ -133,7 +134,6 @@ exports[`find-common-traits should find common traits 1`] = `
         ],
       },
     ],
-    "name": "Red, White",
     "traits": [
       {
         "key": "Background",
@@ -142,6 +142,73 @@ exports[`find-common-traits should find common traits 1`] = `
       {
         "key": "Foreground",
         "value": "White",
+      },
+    ],
+  },
+]
+`;
+
+exports[`find-common-traits should work with another example 1`] = `
+[
+  {
+    "common": 2,
+    "id": "1-2",
+    "items": [
+      {
+        "collectionId": "c1",
+        "id": "id3",
+        "name": "3",
+        "traits": [
+          {
+            "key": "a",
+            "value": "1",
+          },
+          {
+            "key": "b",
+            "value": "2",
+          },
+          {
+            "key": "c",
+            "value": "3",
+          },
+          {
+            "key": "d",
+            "value": "X",
+          },
+        ],
+      },
+      {
+        "collectionId": "c1",
+        "id": "id4",
+        "name": "4",
+        "traits": [
+          {
+            "key": "a",
+            "value": "1",
+          },
+          {
+            "key": "b",
+            "value": "2",
+          },
+          {
+            "key": "c",
+            "value": "4",
+          },
+          {
+            "key": "d",
+            "value": "X",
+          },
+        ],
+      },
+    ],
+    "traits": [
+      {
+        "key": "a",
+        "value": "1",
+      },
+      {
+        "key": "b",
+        "value": "2",
       },
     ],
   },

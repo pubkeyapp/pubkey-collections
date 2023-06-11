@@ -140,39 +140,6 @@ describe('find-common-traits', () => {
     const result: CollectionCombo[] = findCommonTraits(items, keys)
 
     // Assert
-    expect(result).toEqual([
-      {
-        name: '1, 2',
-        common: 2,
-        traits: [
-          { key: 'a', value: '1' },
-          { key: 'b', value: '2' },
-        ],
-        items: [
-          {
-            id: 'id3',
-            name: '3',
-            collectionId: 'c1',
-            traits: [
-              { key: 'a', value: '1' },
-              { key: 'b', value: '2' },
-              { key: 'c', value: '3' },
-              { key: 'd', value: 'X' },
-            ],
-          },
-          {
-            id: 'id4',
-            name: '4',
-            collectionId: 'c1',
-            traits: [
-              { key: 'a', value: '1' },
-              { key: 'b', value: '2' },
-              { key: 'c', value: '4' },
-              { key: 'd', value: 'X' },
-            ],
-          },
-        ],
-      },
-    ])
+    expect(result).toMatchSnapshot()
   })
 })

@@ -247,36 +247,38 @@ export class WrappedConnection extends Connection {
     return result
   }
 
-  async getAllAssetsByOwner(address: string): Promise<ApiAsset[]> {
-    const result: ApiAsset[] = []
-
-    // If a user has more than 1000 items, we need to make multiple requests to get all of them
-    const firstPage = await this.getItemsPerPage(address, 1)
-    const totalItems = firstPage.total
-
-    console.log(`getAllItems for ${address} has ${firstPage.items.length} items and ${totalItems} pages`)
-    result.push(...firstPage.items)
-
-    let loadMore = firstPage.total === firstPage.limit
-    let i = 1
-    while (loadMore) {
-      const page = await this.getItemsPerPage(address, result.length / firstPage.limit + 1)
-      console.log(
-        `getAllItems ${i} for ${address} page ${result.length / firstPage.limit + 1} has ${page.items.length} items`,
-      )
-      result.push(...page.items)
-      loadMore = page.total === page.limit
-      i++
+  async getAllAssetsByOwner(ownerAddress: string): Promise<ApiAsset[]> {
+    const items: ApiAsset[] = []
+    const limit = 1000
+    let page: number | boolean = 1
+    while (page) {
+      const result = await this.getAssetsByOwner({
+        limit,
+        ownerAddress,
+        page,
+      })
+      items.push(...result.items)
+      page = result.total === limit ? page + 1 : false
     }
-    console.log(`getAllItems for ${address} done: ${result.length} items`)
-    return result
+    return items
   }
 
-  getItemsPerPage(address: string, page: number): Promise<ReadApiAssetList> {
-    return this.getAssetsByOwner({
-      ownerAddress: address,
-      limit: 1000,
-      page: page,
-    })
+  async getAllAssetsByGroup(groupValue: string): Promise<ApiAsset[]> {
+    console.time('getAllAssetsByGroup')
+    const items: ApiAsset[] = []
+    const limit = 1000
+    let page: number | boolean = 1
+    while (page) {
+      const result = await this.getAssetsByGroup({
+        groupKey: 'collection',
+        groupValue,
+        limit,
+        page,
+      })
+      items.push(...result.items)
+      page = result.total === limit ? page + 1 : false
+    }
+    console.timeEnd('getAllAssetsByGroup')
+    return items
   }
 }
