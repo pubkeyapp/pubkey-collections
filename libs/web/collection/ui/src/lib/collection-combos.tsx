@@ -17,53 +17,55 @@ export function CollectionCombos({ combos }: { combos: CollectionCombo[] }) {
           { minWidth: 'md', cols: 3 },
         ]}
       >
-        {combos.map((combo) => (
-          <Flex direction="column" justify="space-between" align="center" key={combo.id}>
-            {combo.name ? (
-              <Group spacing={6} mih={50} align="center">
-                <Title order={4}>{combo.name}</Title>
-                {combo.links ? <ComboLinks links={combo.links} /> : null}
-              </Group>
-            ) : null}
-            <Stack
-              align="center"
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexGrow: 1,
-              }}
-            >
-              <Group mih={50}>
-                <CollectionTraitGroup
-                  position="center"
-                  spacing="xs"
-                  buttonSize="xs"
-                  withLabel
-                  traits={combo.traits}
-                  selected={combo.traits}
-                />
-              </Group>
-              <Stack sx={{ flexGrow: 1 }} mb="xl">
-                {combo.items?.length ? (
-                  combo.group ? (
-                    <CollectionItemImage item={combo.items[0]} width={110} />
+        {combos
+          // .sort((a, b) => (b.items?.length ?? 0) - (a.items?.length ?? 0))
+          .map((combo) => (
+            <Flex direction="column" justify="space-between" align="center" key={combo.id}>
+              {combo.name ? (
+                <Group spacing={6} mih={50} align="center">
+                  <Title order={4}>{combo.name}</Title>
+                  {combo.links ? <ComboLinks links={combo.links} /> : null}
+                </Group>
+              ) : null}
+              <Stack
+                align="center"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexGrow: 1,
+                }}
+              >
+                <Group mih={50}>
+                  <CollectionTraitGroup
+                    position="center"
+                    spacing="xs"
+                    buttonSize="xs"
+                    withLabel
+                    traits={combo.traits}
+                    selected={combo.traits}
+                  />
+                </Group>
+                <Stack sx={{ flexGrow: 1 }} mb="xl">
+                  {combo.items?.length ? (
+                    combo.group ? (
+                      <CollectionItemImage item={combo.items[0]} width={110} />
+                    ) : (
+                      <CollectionItemGroup items={sortCollectionItems(combo.items, combo.sortKey)} width={110} />
+                    )
                   ) : (
-                    <CollectionItemGroup items={sortCollectionItems(combo.items, combo.sortKey)} width={110} />
-                  )
-                ) : (
-                  <UiStack>
-                    <Avatar color="yellow" size={110}>
-                      <span role="img" aria-label="question mark">
-                        ?
-                      </span>
-                    </Avatar>
-                  </UiStack>
-                )}
+                    <UiStack>
+                      <Avatar color="yellow" size={110}>
+                        <span role="img" aria-label="question mark">
+                          ?
+                        </span>
+                      </Avatar>
+                    </UiStack>
+                  )}
+                </Stack>
               </Stack>
-            </Stack>
-          </Flex>
-        ))}
+            </Flex>
+          ))}
       </SimpleGrid>
     </UiStack>
   )

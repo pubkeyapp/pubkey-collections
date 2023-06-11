@@ -22,6 +22,7 @@ export interface CollectionProviderContext {
   filteredItems: CollectionItem[]
   missingTraits: CollectionTrait[]
   selectedTraits: CollectionTrait[]
+  resetTraits: () => void
   setSortKey: (key: string | undefined) => void
   sortKey: string | undefined
   statGroups: CollectionStatGroup[]
@@ -84,6 +85,7 @@ export function CollectionProvider({
     items,
     filteredItems,
     missingTraits,
+    resetTraits: () => setSelectedTraits([]),
     selectedTraits,
     sortKey,
     statGroups,

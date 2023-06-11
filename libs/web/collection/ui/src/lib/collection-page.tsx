@@ -7,6 +7,7 @@ import { CollectionHeader } from './collection-header'
 
 import { CollectionPanel } from './collection-panel'
 import { CollectionSearch } from './collection-search'
+import { CollectionSummary } from './collection-summary'
 import { CollectionTabs } from './collection-tabs'
 
 export function CollectionPage({
@@ -47,6 +48,7 @@ export function CollectionPage({
             <CollectionSearch handleSearch={setAccount} value={account} />
           </Group>
         </CollectionHeader>
+        <CollectionSummary />
         <CollectionTabs />
       </Stack>
     </CollectionProvider>

@@ -16,7 +16,7 @@ export const dripTheFaceless: Collection = {
       combos: [
         {
           id: 'mcdegens',
-          name: 'McDegens DAO',
+          name: 'McDegen DAO',
           links: {
             homepage: 'https://mcdegen.xyz/',
             twitter: 'https://twitter.com/McDegensDAO',
@@ -24,6 +24,22 @@ export const dripTheFaceless: Collection = {
           traits: [
             { key: 'Headwear', value: 'McDegens' },
             { key: 'Outfits', value: 'McDegens' },
+          ],
+        },
+        {
+          id: 'admiral',
+          name: 'Admiral DAO',
+          traits: [
+            { key: 'Headwear', value: 'Admiral' },
+            { key: 'Outfits', value: 'Admiral' },
+          ],
+        },
+        {
+          id: 'poncho-and-sombrero',
+          name: 'Tequila Cartel DAO',
+          traits: [
+            { key: 'Headwear', value: 'Sombrero' },
+            { key: 'Outfits', value: 'Poncho' },
           ],
         },
         {
@@ -35,46 +51,6 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
-          id: 'admiral',
-          name: 'Admirals DAO',
-          traits: [
-            { key: 'Headwear', value: 'Admiral' },
-            { key: 'Outfits', value: 'Admiral' },
-          ],
-        },
-        {
-          id: 'poncho-and-sombrero',
-          name: 'Poncho and Sombrero DAO',
-          traits: [
-            { key: 'Headwear', value: 'Sombrero' },
-            { key: 'Outfits', value: 'Poncho' },
-          ],
-        },
-        {
-          id: 'Military',
-          name: 'Military',
-          traits: [
-            { key: 'Headwear', value: 'Military' },
-            { key: 'Outfits', value: 'Military' },
-          ],
-        },
-        {
-          id: 'monster-hunter',
-          name: 'Monster Hunter',
-          traits: [
-            { key: 'Headwear', value: 'Monster Hunter Cap' },
-            { key: 'Outfits', value: 'Monster Hunter' },
-          ],
-        },
-        {
-          id: 'protagonist',
-          name: 'Protagonist',
-          traits: [
-            { key: 'Headwear', value: 'Protagonist Headband' },
-            { key: 'Outfits', value: 'Protagonist' },
-          ],
-        },
-        {
           id: 'mummy-king',
           name: 'Mummy King',
           traits: [
@@ -83,11 +59,11 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
-          id: 'howdy-and-explorer',
-          name: 'Howdy and Explorer',
+          id: 'Military',
+          name: 'Military',
           traits: [
-            { key: 'Headwear', value: 'Howdy' },
-            { key: 'Outfits', value: 'Explorer' },
+            { key: 'Headwear', value: 'Military' },
+            { key: 'Outfits', value: 'Military' },
           ],
         },
         {
@@ -100,6 +76,14 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
+          id: 'protagonist',
+          name: 'Protagonist',
+          traits: [
+            { key: 'Headwear', value: 'Protagonist Headband' },
+            { key: 'Outfits', value: 'Protagonist' },
+          ],
+        },
+        {
           id: 'suite-and-fedora',
           name: 'Suite and Fedora',
           traits: [
@@ -108,11 +92,27 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
-          id: 'hawain-shirt-and-sun-hat',
-          name: 'Hawain Shirt and Sun Hat',
+          id: 'monster-hunter',
+          name: 'Monster Hunter',
+          traits: [
+            { key: 'Headwear', value: 'Monster Hunter Cap' },
+            { key: 'Outfits', value: 'Monster Hunter' },
+          ],
+        },
+        {
+          id: 'tourist',
+          name: 'Tourist',
           traits: [
             { key: 'Headwear', value: 'Sun Hat' },
             { key: 'Outfits', value: 'Hawain Shirt' },
+          ],
+        },
+        {
+          id: 'howdy-and-explorer',
+          name: 'Howdy and Explorer',
+          traits: [
+            { key: 'Headwear', value: 'Howdy' },
+            { key: 'Outfits', value: 'Explorer' },
           ],
         },
       ],

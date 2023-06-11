@@ -16,7 +16,7 @@ export function CollectionTabCommon() {
     combos.forEach((combo) => {
       const countTraits = combo.traits?.length ?? 0
       const countItems = combo.items?.length ?? 0
-      const groupName = `${countItems} items with ${countTraits} traits in common`
+      const groupName = `${countTraits} common traits - ${countItems} items`
 
       // We get the group with the same number of traits or create a new one
       const theGroup = groups.find((group) => group.name === groupName) ?? { name: groupName, combos: [] }

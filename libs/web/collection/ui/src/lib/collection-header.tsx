@@ -8,25 +8,26 @@ export function CollectionHeader({ children, collection }: { children?: ReactNod
   const { isSmall } = useUiTheme()
   return (
     <Stack
-      sx={{ flexDirection: isSmall ? 'column' : 'row' }}
+      sx={{ flexDirection: 'row' }}
       justify={isSmall ? 'stretch' : 'space-between'}
       align={'center'}
       spacing={isSmall ? 'xs' : 'md'}
     >
-      <Group spacing="xs">
-        <Avatar size="lg" src={collection.image} alt={collection.name} />
+      <Group spacing={isSmall ? 4 : 'xs'} sx={{ flexGrow: 1 }}>
+        <Avatar size={isSmall ? 'md' : 'lg'} src={collection.image} alt={collection.name} />
         <UiStack spacing={0}>
-          <Text component={Link} to={`/collections/${collection.id}`} size="xl" weight={700}>
+          <Text component={Link} to={`/collections/${collection.id}`} size={isSmall ? 'md' : 'xl'} weight={700}>
             {collection.name}
           </Text>
           {collection.publisher ? (
-            <Text size="sm" weight={500} color="dimmed">
+            <Text size={isSmall ? 'xs' : 'sm'} weight={500} color="dimmed">
               by {collection.publisher}
             </Text>
           ) : null}
         </UiStack>
       </Group>
-      {children}
+
+      {children ? <Group sx={{ width: isSmall ? '150px' : undefined }}>{children}</Group> : null}
     </Stack>
   )
 }

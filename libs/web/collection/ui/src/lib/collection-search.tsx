@@ -8,6 +8,7 @@ export function CollectionSearch({ handleSearch, value }: { handleSearch: (query
     <UiSearchField
       placeholder="Wallet address or name"
       size={isSmall ? undefined : 'xl'}
+      width={isSmall ? '50px' : undefined}
       value={query}
       setValue={setQuery}
       onSearch={() => handleSearch(query.trim())}

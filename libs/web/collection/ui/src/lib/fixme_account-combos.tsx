@@ -4,7 +4,7 @@ export const FIXME_accountCombos: { [key: string]: { [key: string]: CollectionCo
   Dd1JSwojUsptwFa97A3WRZU1SijCWYo9Qa3xLxT8yzb7: {
     drip_the_faceless: [
       {
-        name: 'Groups',
+        name: 'Account Combos',
         combos: [
           {
             id: 'black-and-blue',
