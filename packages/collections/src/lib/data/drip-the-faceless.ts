@@ -83,8 +83,8 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
-          id: 'suit-and-fedora',
-          name: 'Suit and Fedora',
+          id: 'mafia',
+          name: 'Mafia',
           traits: [
             { key: 'Headwear', value: 'Fedora' },
             { key: 'Outfits', value: 'Blue Suir|Red Suit' },
@@ -107,8 +107,8 @@ export const dripTheFaceless: Collection = {
           ],
         },
         {
-          id: 'howdy-and-explorer',
-          name: 'Howdy and Explorer',
+          id: 'tomb-raiders',
+          name: 'Tomb Raiders',
           traits: [
             { key: 'Headwear', value: 'Howdy' },
             { key: 'Outfits', value: 'Explorer' },
