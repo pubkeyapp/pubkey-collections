@@ -53,8 +53,10 @@ export function CollectionCombos({ combos }: { combos: CollectionCombo[] }) {
                   )
                 ) : (
                   <UiStack>
-                    <Avatar color="brand" size={110}>
-                      <IconPhotoQuestion size={40} />
+                    <Avatar color="yellow" size={110}>
+                      <span role="img" aria-label="question mark">
+                        ?
+                      </span>
                     </Avatar>
                   </UiStack>
                 )}

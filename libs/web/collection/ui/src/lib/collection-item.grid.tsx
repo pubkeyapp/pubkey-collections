@@ -14,6 +14,10 @@ export function CollectionItemGrid({ items }: { items: CollectionItem[] }) {
         { minWidth: 1500, cols: 8 },
         { minWidth: 1800, cols: 10 },
         { minWidth: 2100, cols: 12 },
+        { minWidth: 2400, cols: 14 },
+        { minWidth: 2700, cols: 18 },
+        { minWidth: 3000, cols: 24 },
+        { minWidth: 3300, cols: 28 },
       ]}
     >
       {items.map((item) => (
