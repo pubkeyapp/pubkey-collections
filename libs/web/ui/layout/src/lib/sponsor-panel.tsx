@@ -5,7 +5,7 @@ import { IconBrandGithub, IconBrandTwitter, IconCurrencySolana, IconGift } from 
 export function SponsorPanel() {
   return (
     <UiStack>
-      <Text>We are glad that you are using my product. If you like it, please consider supporting the project.</Text>
+      <Text>I'm glad that you are using my product. If you like it, please consider supporting the project.</Text>
       <Text>There are several ways to do it:</Text>
       <SponsorOptions />
     </UiStack>
