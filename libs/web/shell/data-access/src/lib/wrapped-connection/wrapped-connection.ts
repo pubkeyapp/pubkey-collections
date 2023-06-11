@@ -1,5 +1,4 @@
 import type { Metadata, Mint, NftOriginalEdition, SplTokenCurrency } from '@metaplex-foundation/js'
-// import from the `@metaplex-foundation/js`
 import { amount, MetaplexError, Pda, toBigNumber } from '@metaplex-foundation/js'
 import { PROGRAM_ID as BUBBLEGUM_PROGRAM_ID } from '@metaplex-foundation/mpl-bubblegum'
 

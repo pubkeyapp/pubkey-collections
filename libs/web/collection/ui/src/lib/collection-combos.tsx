@@ -1,5 +1,5 @@
-import { SimpleGrid, Stack, Title } from '@mantine/core'
-import { UiAlert, UiCard, UiStack } from '@pubkey-collections/web/ui/core'
+import { Box, SimpleGrid, Stack } from '@mantine/core'
+import { UiAlert, UiStack } from '@pubkey-collections/web/ui/core'
 import { CollectionCombo, sortCollectionItems } from '@pubkeyapp/collections'
 import React from 'react'
 import { CollectionItemGroup } from './collection-item-group'
@@ -17,11 +17,8 @@ export function CollectionCombos({ combos }: { combos: CollectionCombo[] }) {
         ]}
       >
         {combos.map((combo) => (
-          <UiCard key={combo.name} withBorder={false}>
+          <Box key={combo.name}>
             <Stack align="center">
-              <Title order={4} align="center">
-                {combo.name}
-              </Title>
               <CollectionTraitGroup
                 position="center"
                 spacing="xs"
@@ -40,7 +37,7 @@ export function CollectionCombos({ combos }: { combos: CollectionCombo[] }) {
                 <UiAlert message={`No items found for combo ${combo.name}`} />
               )}
             </Stack>
-          </UiCard>
+          </Box>
         ))}
       </SimpleGrid>
     </UiStack>

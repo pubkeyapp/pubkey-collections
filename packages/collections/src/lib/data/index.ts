@@ -1,4 +1,4 @@
-import { Collection } from '../types/collection'
+import { Collection } from '../types'
 import { dripDegenPoetSeasonOne } from './drip-degen-poet-season-one'
 import { dripTheFaceless } from './drip-the-faceless'
 

@@ -3,7 +3,6 @@ import { Collection, CollectionCombo } from '../types'
 
 function createDrop(drop: string, rarity?: string): CollectionCombo {
   return {
-    name: `Drop ${drop} ${rarity ? ` - ${rarity}` : ''}`,
     group: true,
     traits: [{ key: 'drop', value: drop }, ...(rarity ? [{ key: 'rarity', value: rarity }] : [])],
   }
@@ -27,7 +26,7 @@ export const dripDegenPoetSeasonOne: Collection = {
     { name: 'Drop 7', combos: [createDrop('7', 'common'), createDrop('7', 'rare'), createDrop('7', 'legendary')] },
     { name: 'Drop 8', combos: [createDrop('8', 'common'), createDrop('8', 'rare'), createDrop('8', 'legendary')] },
   ],
-  traitGroups: ['dimensions', 'drop', 'filetype', 'rarity'],
+  traitGroups: ['drop', 'rarity'],
   traitStats: ['created', 'dimensions', 'drop', 'filetype', 'orientation', 'rarity'],
   traits: expandTraitSummary({
     created: [

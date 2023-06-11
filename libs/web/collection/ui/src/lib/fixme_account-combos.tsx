@@ -156,6 +156,15 @@ export const FIXME_accountCombos: { [key: string]: { [key: string]: CollectionCo
             ],
           },
           {
+            name: 'Black and White',
+            sortKey: 'Headwear',
+            traits: [
+              { key: 'Outfits', value: 'Blue Suir' },
+              { key: 'Masks', value: 'White' },
+              { key: 'Hoods', value: 'Black' },
+            ],
+          },
+          {
             name: 'Blue and White',
             sortKey: 'Headwear',
             traits: [

@@ -16,7 +16,9 @@ export function CollectionCombosGroupItem({ group }: { group: CollectionComboGro
   return (
     <UiCard>
       <UiStack key={group.name}>
-        <Title order={3}>{group.name}</Title>
+        <Title align="center" order={3}>
+          {group.name}
+        </Title>
         {group.combos?.length ? (
           <CollectionCombos combos={collectionCombos ?? []} />
         ) : (

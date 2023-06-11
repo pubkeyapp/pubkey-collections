@@ -2,7 +2,7 @@ import { CollectionItem } from './collection-item'
 import { CollectionTrait } from './collection-trait'
 
 export interface CollectionCombo {
-  name: string
+  name?: string
   group?: boolean
   sortKey?: string
   common?: number

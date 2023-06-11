@@ -19,7 +19,7 @@ function findTraitName(traits: CollectionTrait[]): string {
 export function findCommonTraits(
   items: CollectionItem[] = [],
   keys: string[] = [],
-  minCommonTraits = 2,
+  minCommonTraits = 1,
 ): CollectionCombo[] {
   const result: CollectionCombo[] = []
 
@@ -30,7 +30,7 @@ export function findCommonTraits(
     // Check for each of the other items if they have common traits with the current item
     const commonTraits = others
       .map((other) => compareCollectionTraitArrays(keys, item.traits, other.traits))
-      .filter((item) => item.length > 1)
+      .filter((item) => item.length >= minCommonTraits)
 
     // Loop over the common traits and add them to the result counter
     for (const commonTrait of commonTraits) {
