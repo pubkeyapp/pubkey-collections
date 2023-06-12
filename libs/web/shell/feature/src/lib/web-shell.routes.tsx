@@ -45,11 +45,9 @@ export function SettingsFeature() {
           <Group position="apart">
             <Text>Solana Cluster</Text>
             <Group spacing="xs">
-              {!isDefault ? (
-                <Button size="xs" onClick={reset}>
-                  Reset to default
-                </Button>
-              ) : null}
+              <Button disabled={isDefault} size="xs" onClick={reset}>
+                Set to default
+              </Button>
               <Button size="xs" variant="light" onClick={update}>
                 {cleanCluster}
               </Button>
