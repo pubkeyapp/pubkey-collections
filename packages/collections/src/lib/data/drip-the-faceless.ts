@@ -16,7 +16,7 @@ export const dripTheFaceless: Collection = {
       combos: [
         {
           id: 'mcdegens',
-          name: 'McDegen DAO',
+          name: 'McDegens DAO',
           links: {
             homepage: 'https://mcdegen.xyz/',
             twitter: 'https://twitter.com/McDegensDAO',
@@ -113,6 +113,69 @@ export const dripTheFaceless: Collection = {
             { key: 'Headwear', value: 'Howdy' },
             { key: 'Outfits', value: 'Explorer' },
           ],
+        },
+        {
+          id: 'boogle',
+          name: 'Boogle',
+          traits: [
+            { key: 'Hoods', value: 'Black' },
+            { key: 'Masks', value: 'White' },
+          ],
+          sortKey: 'Outfits',
+        },
+        {
+          id: 'minifig',
+          name: 'Minifig',
+          traits: [
+            { key: 'Hoods', value: 'Gold' },
+            { key: 'Masks', value: 'Gold' },
+          ],
+          sortKey: 'Outfits',
+        },
+        {
+          id: 'monke',
+          name: 'Monke',
+          traits: [
+            { key: 'Hoods', value: 'Black' },
+            { key: 'Masks', value: 'Wood' },
+          ],
+          sortKey: 'Outfits',
+        },
+        {
+          id: 'bandito',
+          name: 'Bandito',
+          traits: [
+            { key: 'Headwear', value: 'Sombrero' },
+            { key: 'Outfits', value: 'Military' },
+          ],
+          sortKey: 'Headwear',
+        },
+        {
+          id: 'fiesta',
+          name: 'Fiesta',
+          traits: [
+            { key: 'Headwear', value: 'Sombrero' },
+            { key: 'Outfits', value: 'Hawain Shirt' },
+          ],
+          sortKey: 'Headwear',
+        },
+        {
+          id: 'farmer',
+          name: 'Farmer',
+          traits: [
+            { key: 'Headwear', value: 'Sun Hat|Sombrero' },
+            { key: 'Outfits', value: 'Overalls' },
+          ],
+          sortKey: 'Headwear',
+        },
+        {
+          id: 'trainee',
+          name: 'Trainee',
+          traits: [
+            { key: 'Headwear', value: 'McDegens' },
+            { key: 'Outfits', value: 'Hawain Shirt' },
+          ],
+          sortKey: 'Headwear',
         },
       ],
     },
