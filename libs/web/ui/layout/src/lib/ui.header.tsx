@@ -1,4 +1,5 @@
-import { Anchor, Group, Header } from '@mantine/core'
+import { ActionIcon, Anchor, Group, Header } from '@mantine/core'
+import { IconMoonStars, IconSettings, IconSun } from '@tabler/icons-react'
 import { ComponentType } from 'react'
 import { Link } from 'react-router-dom'
 import { UiThemeToggle } from './ui-theme.toggle'
@@ -17,7 +18,19 @@ export function UiHeader({ icon: Icon }: UiHeaderProps) {
               <Icon size={24} />
             </Group>
           </Anchor>
-          <Group>
+          <Group spacing="xs">
+            <ActionIcon
+              component={Link}
+              to="/settings"
+              size="lg"
+              color="brand"
+              sx={(theme) => ({
+                backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+                color: theme.colorScheme === 'dark' ? theme.colors.brand[4] : theme.colors.brand[6],
+              })}
+            >
+              <IconSettings size="1.05rem" stroke={1.5} />
+            </ActionIcon>
             <UiThemeToggle />
           </Group>
         </Group>

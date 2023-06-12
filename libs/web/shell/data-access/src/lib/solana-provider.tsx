@@ -5,6 +5,7 @@ import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react
 import { SolflareWalletAdapter } from '@solana/wallet-adapter-solflare'
 import { clusterApiUrl } from '@solana/web3.js'
 import { createContext, ReactNode, useContext, useMemo } from 'react'
+import { useCluster } from './cluster-provider'
 
 export interface SolanaProviderContext {
   connection: WrappedConnection
@@ -13,7 +14,8 @@ export interface SolanaProviderContext {
 
 const SolanaContext = createContext<SolanaProviderContext>({} as SolanaProviderContext)
 
-export function SolanaProvider({ children, cluster }: { children: ReactNode; cluster: string | WalletAdapterNetwork }) {
+export function SolanaProvider({ children }: { children: ReactNode | WalletAdapterNetwork }) {
+  const { cluster } = useCluster()
   const endpoint = useMemo(() => {
     const value = cluster
 

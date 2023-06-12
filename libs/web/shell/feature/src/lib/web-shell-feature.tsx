@@ -1,4 +1,4 @@
-import { SolanaProvider } from '@pubkey-collections/web/shell/data-access'
+import { ClusterProvider, SolanaProvider } from '@pubkey-collections/web/shell/data-access'
 import { UiThemeProvider } from '@pubkey-collections/web/ui/core'
 import { showNotificationError } from '@pubkey-collections/web/ui/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -20,9 +20,11 @@ export function WebShellFeature() {
     <BrowserRouter>
       <QueryClientProvider client={client}>
         <UiThemeProvider>
-          <SolanaProvider cluster="https://rpc.pubkey.network">
-            <WebShellRoutes />
-          </SolanaProvider>
+          <ClusterProvider>
+            <SolanaProvider>
+              <WebShellRoutes />
+            </SolanaProvider>
+          </ClusterProvider>
         </UiThemeProvider>
       </QueryClientProvider>
     </BrowserRouter>

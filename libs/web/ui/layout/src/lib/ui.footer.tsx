@@ -1,7 +1,6 @@
-import { ActionIcon, Container, createStyles, Group, Modal, rem, Title, Tooltip } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
-import { IconBrandDiscord, IconBrandGithub, IconBrandTwitter, IconHeartFilled } from '@tabler/icons-react'
-import { SponsorPanel } from './sponsor-panel'
+import { ActionIcon, Container, createStyles, Group, rem, Tooltip } from '@mantine/core'
+import { IconBrandDiscord, IconBrandGithub, IconBrandTwitter } from '@tabler/icons-react'
+import { SponsorButton } from './sponsor-button'
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -23,16 +22,11 @@ const useStyles = createStyles((theme) => ({
 
 export function UiFooter() {
   const { classes } = useStyles()
-  const [opened, { open, close }] = useDisclosure(false)
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
         <Group spacing={0} position="right" noWrap>
-          <Tooltip label="Say thanks">
-            <ActionIcon size="lg" color="pink" onClick={open}>
-              <IconHeartFilled size="1.05rem" stroke={1.5} />
-            </ActionIcon>
-          </Tooltip>
+          <SponsorButton />
           <Tooltip label="Join our Discord">
             <ActionIcon
               size="lg"
@@ -71,9 +65,6 @@ export function UiFooter() {
           </Tooltip>
         </Group>
       </Container>
-      <Modal opened={opened} onClose={close} size="xl" title={<Title>Say thanks</Title>} centered>
-        <SponsorPanel />
-      </Modal>
     </div>
   )
 }
