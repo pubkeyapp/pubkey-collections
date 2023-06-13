@@ -1,6 +1,6 @@
-import { Button, Code, Container, Group, Text } from '@mantine/core'
+import { Button, Container, Group, Text } from '@mantine/core'
 import { useCluster } from '@pubkey-collections/web/shell/data-access'
-import { ellipsify, UiCard, UiNotFound, UiStack } from '@pubkey-collections/web/ui/core'
+import { UiCard, UiNotFound, UiStack } from '@pubkey-collections/web/ui/core'
 import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'

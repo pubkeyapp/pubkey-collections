@@ -1,7 +1,8 @@
 import { ActionIcon, Anchor, Group, Header } from '@mantine/core'
-import { IconMoonStars, IconSettings, IconSun } from '@tabler/icons-react'
+import { IconSettings } from '@tabler/icons-react'
 import { ComponentType } from 'react'
 import { Link } from 'react-router-dom'
+import { SponsorButton } from './sponsor-button'
 import { UiThemeToggle } from './ui-theme.toggle'
 
 export interface UiHeaderProps {
@@ -19,6 +20,7 @@ export function UiHeader({ icon: Icon }: UiHeaderProps) {
             </Group>
           </Anchor>
           <Group spacing="xs">
+            <SponsorButton />
             <ActionIcon
               component={Link}
               to="/settings"

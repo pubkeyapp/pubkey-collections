@@ -1,5 +1,114 @@
 import { expandTraitSummary } from '../helpers'
-import { Collection } from '../types'
+import { Collection, CollectionCombo, CollectionTrait } from '../types'
+
+enum TraitType {
+  Backgrounds = 'Backgrounds',
+  Headwear = 'Headwear',
+  Hoods = 'Hoods',
+  Masks = 'Masks',
+  Outfits = 'Outfits',
+  Rarity = 'Rarity',
+}
+
+type Headwear =
+  | 'Big Brain Cap'
+  | 'Crown'
+  | 'UFO'
+  | 'Admiral'
+  | 'Purple Cap'
+  | 'Blue Cap'
+  | 'Monster Hunter Cap'
+  | 'Top Hat'
+  | 'Sun Hat'
+  | 'Green Cap'
+  | 'Protagonist Headband'
+  | 'McDegens'
+  | 'Military'
+  | 'Pirate'
+  | 'Sombrero'
+  | 'Fedora'
+  | 'Howdy'
+  | 'Arrow'
+type Hoods =
+  | 'Gold'
+  | 'Undead'
+  | 'Black'
+  | 'Mint'
+  | 'Purple'
+  | 'Orange'
+  | 'Red'
+  | 'Turquoise'
+  | 'Blue'
+  | 'White'
+  | 'Brown'
+type Masks = 'Gold' | 'Blue' | 'Orange' | 'Wood' | 'Pink' | 'Green' | 'White' | 'Clown' | 'Skull' | 'Jason' | 'Hacker'
+type Outfits =
+  | 'Hawain Shirt'
+  | 'Protagonist'
+  | 'Monster Hunter'
+  | 'Red Suit'
+  | 'Blue Suir'
+  | 'McDegens'
+  | 'Prisoner'
+  | 'Explorer'
+  | 'Superhero'
+  | 'Military'
+  | 'Poncho'
+  | 'Mummy'
+  | 'Police'
+  | 'Admiral'
+  | 'Overalls'
+type Rarity = 'Legendary' | 'Rare' | 'Common'
+type Backgrounds =
+  | 'Solana Gradient'
+  | 'Sunset Orange'
+  | 'Riley Yellow'
+  | 'Space Gray'
+  | 'Pastel Red'
+  | 'Faded Purple'
+  | 'Piggy Pink'
+  | 'Forest Green'
+  | 'Paper'
+  | 'Dessert'
+  | 'Mint'
+  | 'Clouded'
+  | 'Purple'
+  | 'Aquamarine'
+
+type Trait = {
+  key: TraitType
+  value: string
+}
+
+function Backgrounds(value: Backgrounds): Trait {
+  return { key: TraitType.Backgrounds, value }
+}
+function Headwear(value: Headwear): Trait {
+  return { key: TraitType.Headwear, value }
+}
+function HeadwearDouble(value1: Headwear, value2: Headwear): Trait {
+  return { key: TraitType.Headwear, value: `${value1}|${value2}` }
+}
+function Hoods(value: Hoods): Trait {
+  return { key: TraitType.Hoods, value }
+}
+function Masks(value: Masks): Trait {
+  return { key: TraitType.Masks, value }
+}
+function Outfits(value: Outfits): Trait {
+  return { key: TraitType.Outfits, value }
+}
+function OutfitsDouble(value1: Outfits, value2: Outfits): Trait {
+  return { key: TraitType.Outfits, value: `${value1}|${value2}` }
+}
+
+function createCombo(name: string, traits: CollectionTrait[]): CollectionCombo {
+  return {
+    id: name.toLowerCase().replace(/\s/g, '-'),
+    name,
+    traits,
+  }
+}
 
 export const dripTheFaceless: Collection = {
   id: 'drip_the_faceless',
@@ -15,168 +124,45 @@ export const dripTheFaceless: Collection = {
       name: `Collection Combos`,
       combos: [
         {
-          id: 'mcdegens',
-          name: 'McDegens DAO',
-          links: {
-            homepage: 'https://mcdegen.xyz/',
-            twitter: 'https://twitter.com/McDegensDAO',
-          },
-          traits: [
-            { key: 'Headwear', value: 'McDegens' },
-            { key: 'Outfits', value: 'McDegens' },
-          ],
+          ...createCombo('McDegens DAO', [Headwear('McDegens'), Outfits('McDegens')]),
+          links: { homepage: 'https://mcdegen.xyz/', twitter: 'https://twitter.com/McDegensDAO' },
         },
-        {
-          id: 'admiral',
-          name: 'Admiral DAO',
-          traits: [
-            { key: 'Headwear', value: 'Admiral' },
-            { key: 'Outfits', value: 'Admiral' },
-          ],
-        },
-        {
-          id: 'poncho-and-sombrero',
-          name: 'Tequila Cartel DAO',
-          traits: [
-            { key: 'Headwear', value: 'Sombrero' },
-            { key: 'Outfits', value: 'Poncho' },
-          ],
-        },
-        {
-          id: 'undead-and-skull',
-          name: 'The Soulless DAO',
-          traits: [
-            { key: 'Hoods', value: 'Undead' },
-            { key: 'Masks', value: 'Skull' },
-          ],
-        },
-        {
-          id: 'mummy-king',
-          name: 'Mummy King',
-          traits: [
-            { key: 'Headwear', value: 'Crown' },
-            { key: 'Outfits', value: 'Mummy' },
-          ],
-        },
-        {
-          id: 'Military',
-          name: 'Military',
-          traits: [
-            { key: 'Headwear', value: 'Military' },
-            { key: 'Outfits', value: 'Military' },
-          ],
-        },
-        {
-          id: 'men-in-black',
-          name: 'Men in Black',
-          traits: [
-            { key: 'Headwear', value: 'UFO' },
-            { key: 'Outfits', value: 'Blue Suir|Red Suit' },
-          ],
-        },
-        {
-          id: 'protagonist',
-          name: 'Protagonist',
-          traits: [
-            { key: 'Headwear', value: 'Protagonist Headband' },
-            { key: 'Outfits', value: 'Protagonist' },
-          ],
-        },
-        {
-          id: 'mafia',
-          name: 'Mafia',
-          traits: [
-            { key: 'Headwear', value: 'Fedora' },
-            { key: 'Outfits', value: 'Blue Suir|Red Suit' },
-          ],
-        },
-        {
-          id: 'monster-hunter',
-          name: 'Monster Hunter',
-          traits: [
-            { key: 'Headwear', value: 'Monster Hunter Cap' },
-            { key: 'Outfits', value: 'Monster Hunter' },
-          ],
-        },
-        {
-          id: 'tourist',
-          name: 'Tourist',
-          traits: [
-            { key: 'Headwear', value: 'Sun Hat' },
-            { key: 'Outfits', value: 'Hawain Shirt' },
-          ],
-        },
-        {
-          id: 'tomb-raiders',
-          name: 'Tomb Raiders',
-          traits: [
-            { key: 'Headwear', value: 'Howdy' },
-            { key: 'Outfits', value: 'Explorer' },
-          ],
-        },
-        {
-          id: 'boogle',
-          name: 'Boogle',
-          traits: [
-            { key: 'Hoods', value: 'Black' },
-            { key: 'Masks', value: 'White' },
-          ],
-          sortKey: 'Outfits',
-        },
-        {
-          id: 'minifig',
-          name: 'Minifig',
-          traits: [
-            { key: 'Hoods', value: 'Gold' },
-            { key: 'Masks', value: 'Gold' },
-          ],
-          sortKey: 'Outfits',
-        },
-        {
-          id: 'monke',
-          name: 'Monke',
-          traits: [
-            { key: 'Hoods', value: 'Black' },
-            { key: 'Masks', value: 'Wood' },
-          ],
-          sortKey: 'Outfits',
-        },
-        {
-          id: 'bandito',
-          name: 'Bandito',
-          traits: [
-            { key: 'Headwear', value: 'Sombrero' },
-            { key: 'Outfits', value: 'Military' },
-          ],
-          sortKey: 'Headwear',
-        },
-        {
-          id: 'fiesta',
-          name: 'Fiesta',
-          traits: [
-            { key: 'Headwear', value: 'Sombrero' },
-            { key: 'Outfits', value: 'Hawain Shirt' },
-          ],
-          sortKey: 'Headwear',
-        },
-        {
-          id: 'farmer',
-          name: 'Farmer',
-          traits: [
-            { key: 'Headwear', value: 'Sun Hat|Sombrero' },
-            { key: 'Outfits', value: 'Overalls' },
-          ],
-          sortKey: 'Headwear',
-        },
-        {
-          id: 'trainee',
-          name: 'Trainee',
-          traits: [
-            { key: 'Headwear', value: 'McDegens' },
-            { key: 'Outfits', value: 'Hawain Shirt' },
-          ],
-          sortKey: 'Headwear',
-        },
+        createCombo('Admiral DAO', [Headwear('Admiral'), Outfits('Admiral')]),
+        createCombo('Tequila Cartel DAO', [Headwear('Sombrero'), Outfits('Poncho')]),
+        createCombo('The Soulless DAO', [Hoods('Undead'), Masks('Skull')]),
+        createCombo('Mummy King', [Headwear('Crown'), Outfits('Mummy')]),
+        createCombo('Military', [Headwear('Military'), Outfits('Military')]),
+        createCombo('Men in Black', [Headwear('UFO'), OutfitsDouble('Blue Suir', 'Red Suit')]),
+        createCombo('Protagonist', [Headwear('Protagonist Headband'), Outfits('Protagonist')]),
+        createCombo('Mafia', [Headwear('Fedora'), OutfitsDouble('Blue Suir', 'Red Suit')]),
+        createCombo('Monster Hunter', [Headwear('Monster Hunter Cap'), Outfits('Monster Hunter')]),
+        createCombo('Tourist', [Headwear('Sun Hat'), Outfits('Hawain Shirt')]),
+        createCombo('Tomb Raiders', [Headwear('Howdy'), Outfits('Explorer')]),
+        { ...createCombo('Boogle', [Hoods('Black'), Masks('White')]), sortKey: 'Outfits' },
+        { ...createCombo('Minifig', [Hoods('Gold'), Masks('Gold')]), sortKey: 'Outfits' },
+        { ...createCombo('Monke', [Hoods('Black'), Masks('Wood')]), sortKey: 'Outfits' },
+        createCombo('Bandito', [Headwear('Sombrero'), Outfits('Military')]),
+        createCombo('Fiesta', [Headwear('Sombrero'), Outfits('Hawain Shirt')]),
+        createCombo('Farmer', [HeadwearDouble('Sun Hat', 'Sombrero'), Outfits('Overalls')]),
+        createCombo('Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
+        createCombo('Only Possible On Solana', [Headwear('Big Brain Cap'), Backgrounds('Solana Gradient')]),
+        createCombo('Frontier', [Headwear('Arrow'), Outfits('Overalls')]),
+        createCombo('Last Crusade', [Headwear('Arrow'), Outfits('Explorer')]),
+        createCombo('Cop', [Headwear('Blue Cap'), Outfits('Police')]),
+        createCombo('Gangs of New York', [HeadwearDouble('Top Hat', 'Fedora'), Outfits('Overalls')]),
+        createCombo('Gentleman', [Headwear('Top Hat'), OutfitsDouble('Blue Suir', 'Red Suit')]),
+        createCombo('Prison Gang', [Headwear('Fedora'), Outfits('Prisoner')]),
+        createCombo('Everyday Hero', [Headwear('Blue Cap'), Outfits('Superhero')]),
+        createCombo('Swash Buckler', [Headwear('Pirate'), Outfits('Mummy')]),
+        createCombo('Homesteader', [Headwear('Howdy'), Outfits('Overalls')]),
+        createCombo('Mountie', [Headwear('Howdy'), Outfits('McDegens')]),
+        createCombo('Roughneck', [Headwear('Admiral'), Outfits('Overalls')]),
+        createCombo('Zombie', [Hoods('Undead'), Masks('Green')]),
+        createCombo('Ape', [Hoods('Black'), Masks('Skull')]),
+        createCombo('Vendetta', [Headwear('Pirate'), Masks('Hacker')]),
+        createCombo('Prince', [Headwear('Crown'), Outfits('Admiral')]),
+        createCombo('King', [Headwear('Crown'), Outfits('McDegens')]),
+        createCombo('Hawaiian King', [Headwear('Crown'), Outfits('Hawain Shirt')]),
       ],
     },
   ],
