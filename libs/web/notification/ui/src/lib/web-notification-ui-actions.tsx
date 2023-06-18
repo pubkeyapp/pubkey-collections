@@ -23,7 +23,7 @@ export function WebNotificationUiActions({ notification }: { notification: Notif
             size="xs"
             variant="light"
             component={Link}
-            to={`/profile/${notification.actor?.username}`}
+            to={`${notification.actor?.profileUrl}`}
             leftIcon={<WebUserUiAvatar size={16} user={notification.actor as User} />}
           >
             View profile

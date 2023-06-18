@@ -62,7 +62,7 @@ export function AdminUiUserTable({ deleteUser, users = [] }: AdminUserTableProps
             textAlignment: 'right',
             render: (item) => (
               <Group spacing={0} position="right" noWrap>
-                <ActionIcon color="brand" component={Link} to={`/profile/${item.username}`}>
+                <ActionIcon color="brand" component={Link} to={`${item.profileUrl}`}>
                   <IconUser size={16} />
                 </ActionIcon>
                 <ActionIcon color="brand" component={Link} to={`/admin/users/${item.id}/settings`}>

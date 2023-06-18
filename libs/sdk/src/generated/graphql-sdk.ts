@@ -374,6 +374,7 @@ export type User = {
   language?: Maybe<Scalars['String']>
   location?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
+  profileUrl?: Maybe<Scalars['String']>
   role: UserRole
   status: UserStatus
   updatedAt: Scalars['DateTime']
@@ -423,6 +424,7 @@ export type LoginMutation = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -451,6 +453,7 @@ export type RegisterMutation = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -473,6 +476,7 @@ export type MeQuery = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -634,6 +638,7 @@ export type InviteDetailsFragment = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -670,6 +675,7 @@ export type AdminGetInviteQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -686,6 +692,7 @@ export type AdminGetInviteQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -730,6 +737,7 @@ export type AdminFindInvitesQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -767,6 +775,7 @@ export type AdminCreateInviteMutation = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -805,6 +814,7 @@ export type AdminUpdateInviteMutation = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -842,6 +852,7 @@ export type AdminDeleteInviteMutation = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -879,6 +890,7 @@ export type AnonGetInviteQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -895,6 +907,7 @@ export type AnonGetInviteQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -930,6 +943,7 @@ export type UserGetInvitesQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -965,6 +979,7 @@ export type UserGetInviteQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -981,6 +996,7 @@ export type UserGetInviteQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -1018,6 +1034,7 @@ export type UserAcceptInviteMutation = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -1045,6 +1062,7 @@ export type NotificationDetailsFragment = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1084,6 +1102,7 @@ export type AdminFindNotificationsQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -1130,6 +1149,7 @@ export type UserFindNotificationsQuery = {
       __typename?: 'User'
       allowDm?: boolean | null
       avatarUrl?: string | null
+      profileUrl?: string | null
       createdAt: Date
       developer?: boolean | null
       id: string
@@ -1171,6 +1191,7 @@ export type UserDetailsFragment = {
   __typename?: 'User'
   allowDm?: boolean | null
   avatarUrl?: string | null
+  profileUrl?: string | null
   createdAt: Date
   developer?: boolean | null
   id: string
@@ -1201,6 +1222,7 @@ export type AdminFindUsersQuery = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1225,6 +1247,7 @@ export type AdminGetUserQuery = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1249,6 +1272,7 @@ export type AdminCreateUserMutation = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1274,6 +1298,7 @@ export type AdminUpdateUserMutation = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1311,6 +1336,7 @@ export type UserFindUsersQuery = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1335,6 +1361,7 @@ export type UserGetUserByUsernameQuery = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1359,6 +1386,7 @@ export type UserUpdateUserMutation = {
     __typename?: 'User'
     allowDm?: boolean | null
     avatarUrl?: string | null
+    profileUrl?: string | null
     createdAt: Date
     developer?: boolean | null
     id: string
@@ -1405,6 +1433,7 @@ export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     allowDm
     avatarUrl
+    profileUrl
     createdAt
     developer
     id

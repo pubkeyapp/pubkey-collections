@@ -23,7 +23,7 @@ export function WebUserUiUser({ action, avatar, children, content, status, user,
         <UiGroup>
           <UiGroup position="left" spacing={4} align="baseline">
             {user?.username ? (
-              <Anchor component={Link} to={`/profile/${user.username}`} weight={700}>
+              <Anchor component={Link} to={`${user.profileUrl}`} weight={700}>
                 {user?.username ?? 'Unknown'}
               </Anchor>
             ) : null}

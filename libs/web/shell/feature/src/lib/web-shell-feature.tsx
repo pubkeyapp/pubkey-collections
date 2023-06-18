@@ -1,4 +1,5 @@
-import { ClusterProvider, SolanaProvider } from '@pubkey-collections/web/shell/data-access'
+import { WebAuthProvider } from '@pubkey-collections/web/auth/data-access'
+import { ClusterProvider, SolanaProvider, WebSdkProvider } from '@pubkey-collections/web/shell/data-access'
 import { UiThemeProvider } from '@pubkey-collections/web/ui/core'
 import { notifyError } from '@pubkey-collections/web/ui/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -22,7 +23,11 @@ export function WebShellFeature() {
         <UiThemeProvider>
           <ClusterProvider>
             <SolanaProvider>
-              <WebShellRoutes />
+              <WebSdkProvider>
+                <WebAuthProvider>
+                  <WebShellRoutes />
+                </WebAuthProvider>
+              </WebSdkProvider>
             </SolanaProvider>
           </ClusterProvider>
         </UiThemeProvider>

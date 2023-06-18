@@ -1,6 +1,7 @@
 fragment UserDetails on User {
   allowDm
   avatarUrl
+  profileUrl
   createdAt
   developer
   id
