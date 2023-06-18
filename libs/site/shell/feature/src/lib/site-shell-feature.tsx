@@ -3,7 +3,7 @@ import { UiThemeProvider } from '@pubkey-collections/web/ui/core'
 import { notifyError } from '@pubkey-collections/web/ui/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
-import { WebShellRoutes } from './web-shell.routes'
+import { SiteShellRoutes } from './site-shell.routes'
 
 const client = new QueryClient({
   defaultOptions: {
@@ -15,14 +15,14 @@ const client = new QueryClient({
   },
 })
 
-export function WebShellFeature() {
+export function SiteShellFeature() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={client}>
         <UiThemeProvider>
           <ClusterProvider>
             <SolanaProvider>
-              <WebShellRoutes />
+              <SiteShellRoutes />
             </SolanaProvider>
           </ClusterProvider>
         </UiThemeProvider>

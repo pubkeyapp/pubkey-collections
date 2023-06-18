@@ -1,5 +1,5 @@
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { useQuery } from '@tanstack/react-query'
 
 export function useUserInterests() {
@@ -25,14 +25,14 @@ export function useUserInterests() {
         .then(async (res) => {
           await userGetInterestsQuery.refetch()
           if (res.data) {
-            showNotificationSuccess('Interest added')
+            notifySuccess('Interest added')
             return !!res.data
           }
-          showNotificationError('Interest not added')
+          notifyError('Interest not added')
           return false
         })
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           return false
         }),
     removeInterest: (interestId: string) =>
@@ -41,15 +41,15 @@ export function useUserInterests() {
         .then(async (res) => {
           await userGetInterestsQuery.refetch()
           if (res.data) {
-            showNotificationSuccess('Interest removed')
+            notifySuccess('Interest removed')
             return !!res.data
           }
-          showNotificationError('Interest not removed')
+          notifyError('Interest not removed')
           return false
         })
 
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           return false
         }),
   }

@@ -1,6 +1,6 @@
 import { LoginInput, RegisterInput, User } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 
 import { createContext, ReactNode, useContext, useEffect, useReducer } from 'react'
 import { useMeQuery } from './use-me-query'
@@ -90,14 +90,14 @@ export function WebAuthProvider({ children }: { children: ReactNode }) {
         .login({ input })
         .then((res) => {
           if (res.data.login) {
-            showNotificationSuccess('Login successful')
+            notifySuccess('Login successful')
             dispatch({ type: 'login', payload: res.data.login })
             return res.data.login
           }
-          showNotificationError('Login failed')
+          notifyError('Login failed')
         })
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           dispatch({ type: 'error', payload: err })
           return undefined
         }),
@@ -106,14 +106,14 @@ export function WebAuthProvider({ children }: { children: ReactNode }) {
         .logout()
         .then((res) => {
           if (res.data.logout) {
-            showNotificationSuccess('Logout successful')
+            notifySuccess('Logout successful')
             dispatch({ type: 'logout' })
             return res.data.logout
           }
-          showNotificationError('Logout failed')
+          notifyError('Logout failed')
         })
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           dispatch({ type: 'error', payload: err })
           return undefined
         }),
@@ -122,14 +122,14 @@ export function WebAuthProvider({ children }: { children: ReactNode }) {
         .register({ input })
         .then((res) => {
           if (res.data.register) {
-            showNotificationSuccess('Register successful')
+            notifySuccess('Register successful')
             dispatch({ type: 'login', payload: res.data.register })
             return res.data.register
           }
-          showNotificationError('Register failed')
+          notifyError('Register failed')
         })
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           dispatch({ type: 'error', payload: err })
           return undefined
         }),

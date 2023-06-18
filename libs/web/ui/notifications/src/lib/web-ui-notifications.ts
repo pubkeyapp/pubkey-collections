@@ -1,9 +1,6 @@
 import { NotificationProps, showNotification } from '@mantine/notifications'
 
-export function showNotificationError(
-  message?: string,
-  { title, ...props }: Omit<NotificationProps, 'message'> = {},
-): boolean {
+export function notifyError(message?: string, { title, ...props }: Omit<NotificationProps, 'message'> = {}): boolean {
   showNotification({
     title: title ?? 'An error occurred',
     message: message ?? 'Unknown error',
@@ -13,10 +10,7 @@ export function showNotificationError(
   return false
 }
 
-export function showNotificationSuccess(
-  message?: string,
-  { title, ...props }: Omit<NotificationProps, 'message'> = {},
-): boolean {
+export function notifySuccess(message?: string, { title, ...props }: Omit<NotificationProps, 'message'> = {}): boolean {
   showNotification({
     message: message ?? 'Success',
     title: title ?? 'Success',

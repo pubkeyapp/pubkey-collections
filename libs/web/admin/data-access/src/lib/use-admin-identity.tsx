@@ -1,6 +1,6 @@
 import { AdminCreateIdentityInput, AdminFindIdentitiesInput, Identity } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { modals } from '@mantine/modals'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -22,26 +22,26 @@ export function useAdminIdentity(userId: string) {
         const res = await sdk.adminCreateIdentity({ input: { ...input, ownerId: userId } })
 
         if (res) {
-          showNotificationSuccess('Identity created')
+          notifySuccess('Identity created')
           modals.closeAll()
           await query.refetch()
           return true
         }
-        showNotificationError('Error creating identity')
+        notifyError('Error creating identity')
         return false
       } catch (err) {
-        showNotificationError(`${err}`)
+        notifyError(`${err}`)
         return false
       }
     },
     deleteIdentity: (identity: Identity) => {
       return sdk.adminDeleteIdentity({ identityId: identity.id }).then(async (res) => {
         if (res) {
-          showNotificationSuccess('Identity deleted')
+          notifySuccess('Identity deleted')
           await query.refetch()
           return true
         }
-        showNotificationError('Error deleting identity')
+        notifyError('Error deleting identity')
         return false
       })
     },

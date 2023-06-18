@@ -1,7 +1,7 @@
 import { AdminCreateInviteInput, AdminFindInvitesInput, Invite } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
 import { useUiPagination } from '@pubkey-collections/web/ui/core'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
@@ -39,24 +39,24 @@ export function useAdminInvites() {
         .adminCreateInvite({ input })
         .then(async (res) => {
           if (res.data.item) {
-            showNotificationSuccess('Invite created')
+            notifySuccess('Invite created')
             await query.refetch()
             return res.data.item
           }
           return false
         })
-        .catch((err) => showNotificationError(err.message)),
+        .catch((err) => notifyError(err.message)),
     deleteInvite: (inviteId: string): Promise<boolean> => {
       return sdk
         .adminDeleteInvite({ inviteId })
         .then(async (result) => {
           await query.refetch()
           if (result.data?.item) {
-            return showNotificationSuccess(`Invite  deleted`)
+            return notifySuccess(`Invite  deleted`)
           }
           return false
         })
-        .catch((err) => showNotificationError(err.message))
+        .catch((err) => notifyError(err.message))
     },
   }
 }

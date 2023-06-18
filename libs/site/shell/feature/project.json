@@ -1,0 +1,16 @@
+{
+  "name": "site-shell-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/site/shell/feature/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/site/shell/feature/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

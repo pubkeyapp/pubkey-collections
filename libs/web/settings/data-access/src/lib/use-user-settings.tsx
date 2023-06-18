@@ -2,7 +2,7 @@ import { UserUpdateUserInput } from '@pubkey-collections/sdk'
 import { useWebAuth } from '@pubkey-collections/web/auth/data-access'
 import { useUserProfile } from '@pubkey-collections/web/profile/data-access'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError } from '@pubkey-collections/web/ui/notifications'
+import { notifyError } from '@pubkey-collections/web/ui/notifications'
 
 export function useUserSettings() {
   const sdk = useWebSdk()
@@ -22,7 +22,7 @@ export function useUserSettings() {
           return !!res.data
         })
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           return false
         })
     },

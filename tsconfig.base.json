@@ -32,6 +32,8 @@
       "@pubkey-collections/api/user/data-access": ["libs/api/user/data-access/src/index.ts"],
       "@pubkey-collections/api/user/feature": ["libs/api/user/feature/src/index.ts"],
       "@pubkey-collections/sdk": ["libs/sdk/src/index.ts"],
+      "@pubkey-collections/site/shell/feature": ["libs/site/shell/feature/src/index.ts"],
+      "@pubkey-collections/site/ui/layout": ["libs/site/ui/layout/src/index.ts"],
       "@pubkey-collections/web/admin/data-access": ["libs/web/admin/data-access/src/index.ts"],
       "@pubkey-collections/web/admin/feature": ["libs/web/admin/feature/src/index.ts"],
       "@pubkey-collections/web/admin/ui": ["libs/web/admin/ui/src/index.ts"],

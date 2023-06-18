@@ -1,4 +1,4 @@
-import { WebShellFeature } from '@pubkey-collections/web/shell/feature'
+import { SiteShellFeature } from '@pubkey-collections/site/shell/feature'
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
 
@@ -8,6 +8,6 @@ global.Buffer = require('buffer').Buffer
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <StrictMode>
-    <WebShellFeature />
+    <SiteShellFeature />
   </StrictMode>,
 )

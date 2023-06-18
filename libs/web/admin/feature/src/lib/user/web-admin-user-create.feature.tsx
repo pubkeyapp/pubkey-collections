@@ -2,7 +2,7 @@ import { AdminCreateUserInput } from '@pubkey-collections/sdk'
 import { useAdminUsers } from '@pubkey-collections/web/admin/data-access'
 import { AdminUiBack, AdminUiPage, AuthUiCreateUserForm } from '@pubkey-collections/web/admin/ui'
 import { UiCard } from '@pubkey-collections/web/ui/core'
-import { showNotificationError } from '@pubkey-collections/web/ui/notifications'
+import { notifyError } from '@pubkey-collections/web/ui/notifications'
 
 import { Button, Group } from '@mantine/core'
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,7 @@ export function WebAdminUserCreateFeature() {
       .then((res) => navigate(`/admin/users/${res?.id}`))
       .then(() => true)
       .catch((err) => {
-        showNotificationError(err.message)
+        notifyError(err.message)
         return false
       })
 

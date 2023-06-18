@@ -1,6 +1,6 @@
 import { AdminUpdateInviteInput } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { useQuery } from '@tanstack/react-query'
 
 export function useAdminInvite(inviteId: string) {
@@ -26,10 +26,10 @@ export function useAdminInvite(inviteId: string) {
         .then(async (res) => {
           await query.refetch()
           if (res.data?.item) {
-            return showNotificationSuccess('Invite created')
+            return notifySuccess('Invite created')
           }
           return false
         })
-        .catch((err) => showNotificationError(err.message)),
+        .catch((err) => notifyError(err.message)),
   }
 }

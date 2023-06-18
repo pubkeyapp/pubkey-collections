@@ -4,12 +4,12 @@ import { UiCard, UiNotFound, UiStack } from '@pubkey-collections/web/ui/core'
 import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
-import { useGuardedRoutes } from './use-guarded-routes'
+import { useSiteRoutes } from './use-site-routes'
 
 export const LazyCollectionFeature = lazy(() => import('@pubkey-collections/web/collection/feature'))
 
-export function WebShellRoutes() {
-  return useGuardedRoutes({
+export function SiteShellRoutes() {
+  return useSiteRoutes({
     index: 'collections',
     layout: [
       // Here you can add routes that are part of the main layout

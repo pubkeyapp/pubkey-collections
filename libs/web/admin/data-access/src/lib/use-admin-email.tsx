@@ -1,6 +1,6 @@
 import { AdminCreateEmailInput, AdminFindEmailsInput, AdminUpdateEmailInput, Email } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { modals } from '@mantine/modals'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
@@ -24,26 +24,26 @@ export function useAdminEmail(userId: string) {
         .adminCreateEmail({ input: { email: input.email, ownerId: userId } })
         .then(async (res) => {
           if (res) {
-            showNotificationSuccess('Email created')
+            notifySuccess('Email created')
             modals.closeAll()
             await query.refetch()
             return true
           }
-          showNotificationError('Error creating email')
+          notifyError('Error creating email')
           return false
         })
         .catch((err) => {
-          showNotificationError(`${err}`)
+          notifyError(`${err}`)
           return false
         }),
     deleteEmail: (email: Email) => {
       return sdk.adminDeleteEmail({ emailId: email.id }).then(async (res) => {
         if (res) {
-          showNotificationSuccess('Email deleted')
+          notifySuccess('Email deleted')
           await query.refetch()
           return true
         }
-        showNotificationError('Error deleting email')
+        notifyError('Error deleting email')
         return false
       })
     },
@@ -55,16 +55,16 @@ export function useAdminEmail(userId: string) {
         })
         .then(async (res) => {
           if (res) {
-            showNotificationSuccess('Email created')
+            notifySuccess('Email created')
             modals.closeAll()
             await query.refetch()
             return true
           }
-          showNotificationError('Error creating email')
+          notifyError('Error creating email')
           return false
         })
         .catch((err) => {
-          showNotificationError(`${err}`)
+          notifyError(`${err}`)
           return false
         })
     },

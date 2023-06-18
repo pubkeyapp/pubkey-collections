@@ -2,7 +2,7 @@ import { AdminCreateUserInput, AdminFindUsersInput, UserRole, UserStatus } from 
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
 
 import { useUiPagination } from '@pubkey-collections/web/ui/core'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
@@ -25,19 +25,19 @@ export function useAdminUsers() {
         .then((res) => res.data)
         .then((res) => {
           if (res.created) {
-            showNotificationSuccess(`User  created`)
+            notifySuccess(`User  created`)
           } else {
-            showNotificationError(`User not created`)
+            notifyError(`User not created`)
           }
           return res.created
         })
         .catch((err) => {
-          showNotificationError(err.message)
+          notifyError(err.message)
           return undefined
         }),
     deleteUser: (userId: string) =>
       sdk.adminDeleteUser({ userId }).then(() => {
-        showNotificationSuccess('User deleted')
+        notifySuccess('User deleted')
         return query.refetch()
       }),
     query,

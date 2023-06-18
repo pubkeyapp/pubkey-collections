@@ -1,6 +1,6 @@
 import { Notification, UserFindNotificationsInput } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 
 import { useUiPagination } from '@pubkey-collections/web/ui/core'
 import { useQuery } from '@tanstack/react-query'
@@ -59,7 +59,7 @@ export function UserNotificationsProvider({ children }: { children: ReactNode })
         .then(() => query.refetch())
         .then(() => true)
         .catch((err) => {
-          showNotificationError(err?.message)
+          notifyError(err?.message)
           return false
         })
     },
@@ -69,19 +69,19 @@ export function UserNotificationsProvider({ children }: { children: ReactNode })
         .then(() => query.refetch())
         .then(() => true)
         .catch((err) => {
-          showNotificationError(err?.message)
+          notifyError(err?.message)
           return false
         }),
     poke: (pokeId: string) =>
       sdk
         .userPoke({ pokeId })
         .then((res) => {
-          return res.data.poked ? showNotificationSuccess('Poked') : showNotificationError('Already poked')
+          return res.data.poked ? notifySuccess('Poked') : notifyError('Already poked')
         })
         .then(() => query.refetch())
         .then(() => true)
         .catch((err) => {
-          showNotificationError(err?.message)
+          notifyError(err?.message)
           return false
         }),
   }

@@ -1,6 +1,6 @@
 import { AdminFindNotificationsInput, Notification } from '@pubkey-collections/sdk'
 import { useWebSdk } from '@pubkey-collections/web/shell/data-access'
-import { showNotificationError, showNotificationSuccess } from '@pubkey-collections/web/ui/notifications'
+import { notifyError, notifySuccess } from '@pubkey-collections/web/ui/notifications'
 
 import { useUiPagination } from '@pubkey-collections/web/ui/core'
 import { useQuery } from '@tanstack/react-query'
@@ -38,17 +38,17 @@ export function useAdminUserNotifications(userId: string) {
       return sdk
         .adminDeleteNotification({ notificationId: notification.id })
         .then(() => query.refetch())
-        .catch((err) => showNotificationError(err.message))
+        .catch((err) => notifyError(err.message))
     },
     poke: () => {
       return sdk
         .userPoke({ pokeId: userId })
         .then((res) => res.data)
         .then((res) => {
-          showNotificationSuccess(res.poked ? 'Poked' : 'Failed to poke')
+          notifySuccess(res.poked ? 'Poked' : 'Failed to poke')
           return query.refetch()
         })
-        .catch((err) => showNotificationError(err.message))
+        .catch((err) => notifyError(err.message))
     },
   }
 }
