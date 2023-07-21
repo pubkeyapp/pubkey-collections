@@ -163,7 +163,7 @@ export const dripTheFaceless: Collection = {
         createCombo('Ape', [Hoods('Black'), Masks('Skull')]),
         { ...createCombo('Boogle', [Hoods('Black'), Masks('White')]), sortKey: 'Outfits' },
         createCombo('Mountie', [Headwear('Howdy'), Outfits('McDegens')]),
-        createCombo('McDegen CEO', [Headwear('McDegens'), OutfitsDouble('Blue Suir', 'Red Suit')]),
+        createCombo('McDegen CEO', [Headwear('McDegens'), Outfits('Red Suit')]),
         createCombo('Wombo Combo', [Headwear('Fedora'), Outfits('Hawain Shirt')]),
       ],
     },
