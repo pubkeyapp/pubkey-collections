@@ -121,12 +121,19 @@ export const dripTheFaceless: Collection = {
   accounts: ['WoMbiTtXKwUtf4wosoffv45khVF8yA2mPkinGosCFQ4'],
   comboGroups: [
     {
-      name: `Collection Combos`,
+      name: `McDegens DAO`,
       combos: [
         {
           ...createCombo('McDegens DAO', [Headwear('McDegens'), Outfits('McDegens')]),
           links: { homepage: 'https://mcdegen.xyz/', twitter: 'https://twitter.com/McDegensDAO' },
         },
+        createCombo('McDegen Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
+        createCombo('McDegen CEO', [Headwear('McDegens'), Outfits('Red Suit')]),
+      ],
+    },
+    {
+      name: `Collection Combos`,
+      combos: [
         createCombo('Admiral DAO', [Headwear('Admiral'), Outfits('Admiral')]),
         createCombo('Tequila Cartel DAO', [Headwear('Sombrero'), Outfits('Poncho')]),
         createCombo('The Soulless DAO', [Hoods('Undead'), Masks('Skull')]),
@@ -154,7 +161,6 @@ export const dripTheFaceless: Collection = {
         createCombo('Hawaiian King', [Headwear('Crown'), Outfits('Hawain Shirt')]),
         createCombo('Tourist', [Headwear('Sun Hat'), Outfits('Hawain Shirt')]),
         createCombo('Fiesta', [Headwear('Sombrero'), Outfits('Hawain Shirt')]),
-        createCombo('McDegen Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
         createCombo('Only Possible On Solana', [Headwear('Big Brain Cap'), Backgrounds('Solana Gradient')]),
         createCombo('Protagonist', [Headwear('Protagonist Headband'), Outfits('Protagonist')]),
         createCombo('Monster Hunter', [Headwear('Monster Hunter Cap'), Outfits('Monster Hunter')]),
@@ -163,7 +169,6 @@ export const dripTheFaceless: Collection = {
         createCombo('Ape', [Hoods('Black'), Masks('Skull')]),
         { ...createCombo('Boogle', [Hoods('Black'), Masks('White')]), sortKey: 'Outfits' },
         createCombo('Mountie', [Headwear('Howdy'), Outfits('McDegens')]),
-        createCombo('McDegen CEO', [Headwear('McDegens'), Outfits('Red Suit')]),
         createCombo('Wombo Combo', [Headwear('Fedora'), Outfits('Hawain Shirt')]),
       ],
     },
