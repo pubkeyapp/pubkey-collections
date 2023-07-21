@@ -154,7 +154,7 @@ export const dripTheFaceless: Collection = {
         createCombo('Hawaiian King', [Headwear('Crown'), Outfits('Hawain Shirt')]),
         createCombo('Tourist', [Headwear('Sun Hat'), Outfits('Hawain Shirt')]),
         createCombo('Fiesta', [Headwear('Sombrero'), Outfits('Hawain Shirt')]),
-        createCombo('Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
+        createCombo('McDegen Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
         createCombo('Only Possible On Solana', [Headwear('Big Brain Cap'), Backgrounds('Solana Gradient')]),
         createCombo('Protagonist', [Headwear('Protagonist Headband'), Outfits('Protagonist')]),
         createCombo('Monster Hunter', [Headwear('Monster Hunter Cap'), Outfits('Monster Hunter')]),
