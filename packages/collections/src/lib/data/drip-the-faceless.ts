@@ -127,8 +127,8 @@ export const dripTheFaceless: Collection = {
           ...createCombo('McDegens DAO', [Headwear('McDegens'), Outfits('McDegens')]),
           links: { homepage: 'https://mcdegen.xyz/', twitter: 'https://twitter.com/McDegensDAO' },
         },
-        createCombo('McDegen Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
-        createCombo('McDegen CEO', [Headwear('McDegens'), Outfits('Red Suit')]),
+        createCombo('McDegens Trainee', [Headwear('McDegens'), Outfits('Hawain Shirt')]),
+        createCombo('McDegens CEO', [Headwear('McDegens'), Outfits('Red Suit')]),
       ],
     },
     {
