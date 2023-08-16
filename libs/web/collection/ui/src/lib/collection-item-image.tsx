@@ -1,6 +1,6 @@
 import { Group, Image, ImageProps, Modal, Text, UnstyledButton } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { UiCopy, UiExplorerIcon } from '@pubkey-collections/web/ui/core'
+import { UiCopy, UiDebugModal, UiExplorerIcon } from '@pubkey-collections/web/ui/core'
 import { CollectionItem } from '@pubkeyapp/collections'
 import { CollectionItemCard } from './collection-item-card'
 
@@ -19,6 +19,7 @@ export function CollectionItemImage({ item, ...props }: CollectionItemProps) {
         size="xl"
         title={
           <Group position="center" spacing="xs">
+            <UiDebugModal data={item} />
             <UiCopy text={item.id} tooltip={`Copy Collection Item ID (${item.id.slice(0, 4)})... `} />
             <UiExplorerIcon path={`token/${item.id}`} />
             <Text>{item.name}</Text>
