@@ -132,7 +132,7 @@ export const dripTheFaceless: Collection = {
       ],
     },
     {
-      name: `Collection Combos`,
+      name: `Other Faceless Combos`,
       combos: [
         createCombo('Admiral DAO', [Headwear('Admiral'), Outfits('Admiral')]),
         createCombo('Tequila Cartel DAO', [Headwear('Sombrero'), Outfits('Poncho')]),
